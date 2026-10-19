@@ -19,6 +19,28 @@ app.secret_key = os.getenv("FLASK_SECRET_KEY") or secrets.token_hex(32)
 app.config.update(SESSION_COOKIE_HTTPONLY=True, SESSION_COOKIE_SAMESITE="Lax", SESSION_COOKIE_SECURE=os.getenv("COOKIE_SECURE", "0") == "1")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 APPROVED_CHAT_ID = str(os.getenv("TELEGRAM_CHAT_ID") or "")
+BOT_CONTROL_LOCK = threading.RLock()
+BOT_ENABLED = threading.Event()
+
+
+def control_start():
+    """Resume scheduled scans and position management (paper trading only)."""
+    with BOT_CONTROL_LOCK:
+        BOT_ENABLED.set()
+    publish_status("Bot scanning resumed via control command.", "success")
+    return True
+
+
+def control_stop():
+    """Pause scheduled scans and position management (paper trading only)."""
+    with BOT_CONTROL_LOCK:
+        BOT_ENABLED.clear()
+    publish_status("Bot scanning paused via control command.", "warning")
+    return True
+
+
+def bot_control_snapshot():
+    return {"status": "running" if BOT_ENABLED.is_set() else "paused"}
 
 # Serializes quantity updates handled by this Flask process.
 # CSV replacement is atomic so readers do not see a partially-written file.
@@ -135,7 +157,7 @@ def get_active_position_price(symbol):
     if market_open_with_holidays():
         live = fetch_stock_data_with_fallback(symbol)
         if live:
-            return {"price": float(live["price"]), "source": live.get("provider", "Live quote"), "captured_at": "Live market quote", "is_snapshot": False}
+            return {"price": float(live["price"]), "source": live.get("provider", "Live quote"), "captured_at": live.get("quote_timestamp", "Quote timestamp unavailable"), "quote_timestamp_source": live.get("quote_timestamp_source", "unknown"), "instrument_key": live.get("instrument_key"), "is_snapshot": False}
         return None
     saved = _read_closing_snapshot().get("prices", {}).get(symbol)
     if isinstance(saved, dict) and float(saved.get("price", 0) or 0) > 0:
@@ -144,7 +166,7 @@ def get_active_position_price(symbol):
     # while clearly identifying it as a fallback in the UI.
     live = fetch_stock_data_with_fallback(symbol)
     if live:
-        return {"price": float(live["price"]), "source": "Yahoo Finance fallback (no NSE snapshot yet)", "captured_at": "Fallback; not an NSE snapshot", "is_snapshot": True}
+        return {"price": float(live["price"]), "source": live.get("provider", "Yahoo Finance fallback") + " (no NSE snapshot yet)", "captured_at": live.get("quote_timestamp", "Fallback timestamp unavailable"), "quote_timestamp_source": live.get("quote_timestamp_source", "unknown"), "is_snapshot": True}
     return None
 
 def csrf_token():
@@ -177,11 +199,31 @@ def telegram_command_listener():
                 last_update_id = max(last_update_id, int(update.get("update_id", 0)))
                 message = update.get("message", {})
                 chat_id = str(message.get("chat", {}).get("id", ""))
-                command = (message.get("text") or "").strip().lower()
+                command = (message.get("text") or "").strip().lower().split()[0] if (message.get("text") or "").strip() else ""
+                command = command.split("@", 1)[0]
                 if chat_id != APPROVED_CHAT_ID: continue
-                if command == "/summary": send_portfolio_summary(chat_id)
+                if command in {"/help", "/commands"}:
+                    send_telegram("Nifty paper bot commands\n/start — resume scheduled scans and position management\n/stop — pause scans and position management\n/status — running/paused state and provider\n/scan — run one manual scan (market hours only)\n/summary — paper portfolio P&L summary\n/health — check configured API integrations\n/help — show commands\n\nWarning: /stop also pauses automated exit management. This bot submits no real broker orders.")
+                elif command == "/start":
+                    control_start()
+                    send_telegram("▶️ Bot resumed. Scheduled scans and automated paper-position exit checks are enabled. No real broker orders are submitted.")
+                elif command == "/stop":
+                    control_stop()
+                    send_telegram("⏸ Bot paused. Scheduled scans and automated paper-position exit checks are disabled until /start. Existing paper positions will not be auto-managed while paused.")
+                elif command == "/status":
+                    state = bot_control_snapshot()["status"]
+                    provider = get_provider_status()
+                    import bot_engine
+                    send_telegram(f"Bot status: {state}\nMarket open: {market_open_with_holidays()}\nMarket data: {provider.get('last_quote_provider') or 'not fetched'}\nGemini last model: {bot_engine.LAST_GEMINI_MODEL or bot_engine.GEMINI_MODEL}\nGemini fallbacks: {', '.join(bot_engine.GEMINI_FALLBACK_MODELS) or 'none'}")
+                elif command == "/summary": send_portfolio_summary(chat_id)
+                elif command == "/health":
+                    healthy, results = run_api_health_checks(include_rss=True)
+                    details = "\n".join(f"{name}: {'OK' if ok else 'FAILED'}" for name, ok in results.items())
+                    send_telegram(f"API health: {'ALL REQUIRED CHECKS PASSED' if healthy else 'CHECKS FAILED'}\n{details}")
                 elif command == "/scan":
-                    if not market_open_with_holidays():
+                    if not BOT_ENABLED.is_set():
+                        send_telegram("Manual scan rejected: bot is paused. Send /start first.")
+                    elif not market_open_with_holidays():
                         send_telegram("Manual scan rejected: market is closed or holiday.")
                     else:
                         send_telegram("Paper scan started.")
@@ -227,13 +269,13 @@ def pre_market_api_check():
 
 def background_scheduler():
     publish_status("Background scheduler started.")
-    publish_status("Market data: Yahoo Finance for intraday scans; best-effort NSE website snapshots for active positions after close.", "info")
+    publish_status("Market data: Upstox Analytics primary; Yahoo Finance fallback is controlled by UPSTOX_YAHOO_FALLBACK_ENABLED. Post-close position snapshots remain best-effort NSE snapshots.", "info")
     publish_status("Dashboard has no login by design; keep it on localhost and use an SSH tunnel on GCP.", "info")
     refresh_nse_equity_symbols()
     schedule.every().day.at("08:00").do(pre_market_api_check)
     schedule.every().day.at("08:05").do(refresh_nse_equity_symbols)
     schedule.every().day.at("15:45").do(capture_post_close_prices)
-    schedule.every(SCAN_INTERVAL_MINUTES).minutes.do(lambda: run_market_scan() if market_open_with_holidays() else None)
+    schedule.every(SCAN_INTERVAL_MINUTES).minutes.do(lambda: run_market_scan() if BOT_ENABLED.is_set() and market_open_with_holidays() else None)
     while True:
         schedule.run_pending(); time.sleep(1)
 
@@ -264,8 +306,10 @@ def about_page():
     from bot_engine import (MIN_PRICE, MAX_PRICE, RSI_BUY_THRESHOLD, RSI_MAX_BUY_THRESHOLD,
         RSI_EXIT_THRESHOLD, MAX_OPEN_POSITIONS, MAX_BUYS_PER_SCAN, MAX_SCAN_SYMBOLS,
         SCAN_INTERVAL_MINUTES, COOLING_HOURS, MIN_AVG_DAILY_TURNOVER_INR, MIN_AVG_DAILY_VOLUME)
+    from bot_engine import GEMINI_MODEL, GEMINI_FALLBACK_MODELS
     return render_template("about.html",
-        provider_name="Yahoo Finance for intraday scans; NSE website post-close snapshot for active positions",
+        gemini_primary=GEMINI_MODEL, gemini_fallbacks=GEMINI_FALLBACK_MODELS, bot_status=bot_control_snapshot()["status"],
+        provider_name="Upstox Analytics primary with configurable Yahoo Finance fallback; NSE website post-close snapshots",
         min_price=MIN_PRICE, max_price=MAX_PRICE, rsi_min=RSI_BUY_THRESHOLD, rsi_max=RSI_MAX_BUY_THRESHOLD,
         rsi_exit=RSI_EXIT_THRESHOLD, max_open=MAX_OPEN_POSITIONS, max_buys=MAX_BUYS_PER_SCAN,
         max_scan=MAX_SCAN_SYMBOLS, scan_interval=SCAN_INTERVAL_MINUTES, cooling_hours=COOLING_HOURS,
@@ -327,7 +371,8 @@ def update_quantity():
 
 @app.route("/trigger_scan", methods=["POST"])
 def trigger_scan():
-    if not market_open_with_holidays(): flash("Market closed or holiday; scan not run.", "warning")
+    if not BOT_ENABLED.is_set(): flash("Bot is paused; use Telegram /start to resume.", "warning")
+    elif not market_open_with_holidays(): flash("Market closed or holiday; scan not run.", "warning")
     else:
         result = run_market_scan()
         flash(f"Scan result: {result}", "success" if result.get("status") == "complete" else "warning")
@@ -345,6 +390,7 @@ if __name__ == "__main__":
     # Preserve the configured strict-mode value for a healthy pre-market reset.
     os.environ.setdefault("REQUIRE_AI_NEWS_CONFIRMATION_CONFIGURED", os.getenv("REQUIRE_AI_NEWS_CONFIRMATION", "true"))
     publish_status("API checks passed. Web dashboard starting in localhost-only mode.")
+    control_start()
     threading.Thread(target=background_scheduler, daemon=True).start()
     threading.Thread(target=telegram_command_listener, daemon=True).start()
     app.run(host=os.getenv("FLASK_HOST", "127.0.0.1"), port=int(os.getenv("FLASK_PORT", "5000")), debug=False)

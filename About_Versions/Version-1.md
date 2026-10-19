@@ -507,3 +507,21 @@ warnings after the close. 8. Back up the data/ directory and keep the
 dashboard private.
 
 ⋮⋮⋮⋮⋮⋮⋮⋮
+
+## Update — Gemini model fallback and Telegram operations controls (2026-10-19)
+
+### Changes
+- Added configurable Gemini model fallback: primary `GEMINI_MODEL`, followed by `GEMINI_FALLBACK_MODELS` when a request raises an API exception or returns an empty response.
+- Set recommended defaults to `gemini-3.6-flash` → `gemini-3.5-flash-lite` → `gemini-3.1-flash-lite`. These are listed with free-tier API access in Google's current pricing docs, subject to project-specific rate limits and future availability changes. The legacy `gemini-3.5-flash` ID is deprecated and routes to `gemini-3.6-flash`.
+- Health checks use the same fallback chain as stock news assessment; the last successful model is exposed to Telegram status.
+- Added allowlisted Telegram commands `/start`, `/stop`, `/status`, `/scan`, `/summary`, `/health`, and `/help`. Only `TELEGRAM_CHAT_ID` is authorized to control the bot.
+- `/stop` pauses scheduled scans and automated paper-position exit management; `/start` resumes them. This operational risk is documented on the About page and README.
+- Updated the About page to describe Upstox-first market data, Gemini fallback behavior, configuration, and Telegram controls.
+- Added automated tests for Gemini model rotation and failure handling.
+
+### Validation
+- Python compilation and the full automated test suite are run before packaging.
+- Gemini live API behavior still needs validation with the user's own API key; rate limits and free-tier model availability can vary by project.
+
+### Commit message
+`feat: add Gemini free-tier model fallback and Telegram bot controls`

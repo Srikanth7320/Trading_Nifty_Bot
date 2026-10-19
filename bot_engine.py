@@ -1,11 +1,12 @@
 """Paper-trading engine for the NSE bot.
 
-This version of the uploaded project uses Yahoo Finance for quotes. It does not
-implement Upstox; do not label a scan as Upstox unless a real Upstox fetcher is
-added and successfully returns usable data.
+Upstox Analytics Token is the primary read-only market-data provider. Yahoo Finance
+may be used only when explicitly enabled in configuration. No broker orders are sent.
 """
 import os
 import time
+import json
+import gzip
 import xml.etree.ElementTree as ET
 from urllib.parse import quote_plus
 from datetime import datetime, time as dtime, timedelta
@@ -30,6 +31,9 @@ IST = ZoneInfo("Asia/Kolkata")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "").strip()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "").strip()
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.6-flash").strip() or "gemini-3.6-flash"
+GEMINI_FALLBACK_MODELS = [m.strip() for m in os.getenv("GEMINI_FALLBACK_MODELS", "gemini-3.5-flash-lite,gemini-3.1-flash-lite").split(",") if m.strip()]
+LAST_GEMINI_MODEL = ""
 NEWS_API_KEY = os.getenv("NEWS_API_KEY", "").strip()
 
 MIN_PRICE = float(os.getenv("MIN_STOCK_PRICE", "50"))
@@ -58,6 +62,50 @@ if GEMINI_API_KEY and genai is not None:
         client = genai.Client(api_key=GEMINI_API_KEY)
     except Exception as exc:
         print(f"Gemini client initialization failed: {exc}")
+
+def gemini_model_chain():
+    """Return ordered unique Gemini model IDs, with the configured model first.
+
+    gemini-3.5-flash is a legacy alias that Google routes to gemini-3.6-flash,
+    so avoid retrying that same effective model as a separate fallback.
+    """
+    primary = os.getenv("GEMINI_MODEL", GEMINI_MODEL).strip() or GEMINI_MODEL
+    configured = [m.strip() for m in os.getenv(
+        "GEMINI_FALLBACK_MODELS", ",".join(GEMINI_FALLBACK_MODELS)
+    ).split(",") if m.strip()]
+    if primary == "gemini-3.5-flash":
+        configured = [m for m in configured if m != "gemini-3.6-flash"]
+    result = []
+    for model in [primary, *configured]:
+        if model not in result:
+            result.append(model)
+    return result
+
+
+def generate_gemini_content(contents):
+    """Generate content with model fallback on quota, rate-limit and API errors.
+
+    Returns the SDK response from the first successful model. If every model
+    fails, raises RuntimeError with model/error-type details (never API secrets).
+    """
+    global LAST_GEMINI_MODEL
+    if client is None:
+        raise RuntimeError("Gemini client is not configured")
+    failures = []
+    for model in gemini_model_chain():
+        try:
+            response = client.models.generate_content(model=model, contents=contents)
+            if not (getattr(response, "text", None) or "").strip():
+                failures.append(f"{model}:EmptyResponse")
+                continue
+            LAST_GEMINI_MODEL = model
+            return response
+        except Exception as exc:
+            error_name = type(exc).__name__
+            failures.append(f"{model}:{error_name}")
+            print(f"Gemini model {model} failed ({error_name}); trying next configured model if available")
+    raise RuntimeError("All configured Gemini models failed: " + ", ".join(failures))
+
 
 DATA_DIR = os.getenv("DATA_DIR", "data")
 os.makedirs(DATA_DIR, exist_ok=True)
@@ -89,6 +137,8 @@ LAST_SCAN_NOTE = "Waiting for the next market scan"
 LAST_SCAN_TIME = ""
 LAST_QUOTE_PROVIDER = "None"
 LAST_QUOTE_TIME = ""
+LAST_QUOTE_TIMESTAMP_SOURCE = "unknown"
+LAST_QUOTE_INSTRUMENT_KEY = ""
 
 
 def get_current_ist_time():
@@ -117,6 +167,8 @@ def get_provider_status():
         "last_scan_time": LAST_SCAN_TIME,
         "last_quote_provider": LAST_QUOTE_PROVIDER,
         "last_quote_time": LAST_QUOTE_TIME,
+        "last_quote_timestamp_source": LAST_QUOTE_TIMESTAMP_SOURCE,
+        "last_quote_instrument_key": LAST_QUOTE_INSTRUMENT_KEY,
     }
 
 
@@ -189,83 +241,222 @@ def calculate_rsi(hist, window=14):
     return float(100 - (100 / (1 + (last_gain / last_loss))))
 
 
-def fetch_stock_data_with_fallback(symbol):
-    """Fetch daily history plus a recent intraday quote from Yahoo Finance.
+def _upstox_token():
+    return os.getenv("UPSTOX_ANALYTICS_TOKEN", os.getenv("UPSTOX_ACCESS_TOKEN", "")).strip()
 
-    Yahoo is unofficial and may be delayed. Missing/stale intraday data makes a
-    candidate unusable for new entries; it is never replaced with yesterday's close.
-    """
-    global LAST_QUOTE_PROVIDER, LAST_QUOTE_TIME
-    clean_symbol = str(symbol).strip().upper()
-    ticker_symbol = clean_symbol if clean_symbol.endswith(".NS") else f"{clean_symbol}.NS"
+
+def _upstox_instrument_map():
+    """Return NSE_EQ trading-symbol -> instrument_key map using a cached official master."""
+    cache_path = os.getenv("UPSTOX_INSTRUMENTS_CACHE", os.path.join(DATA_DIR, "upstox_instruments.json"))
+    rows = None
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r", encoding="utf-8") as f:
+                cached = json.load(f)
+            if isinstance(cached, list) and cached:
+                rows = cached
+        except Exception:
+            rows = None
+    refresh_hours = max(1, int(os.getenv("UPSTOX_INSTRUMENTS_REFRESH_HOURS", "24")))
+    should_refresh = not os.path.exists(cache_path) or time.time() - os.path.getmtime(cache_path) > refresh_hours * 3600
+    if rows is None or should_refresh:
+        url = os.getenv("UPSTOX_INSTRUMENTS_URL", "https://assets.upstox.com/market-quote/instruments/exchange/complete.json.gz")
+        try:
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
+            raw = response.content
+            if raw[:2] == b"\x1f\x8b":
+                raw = gzip.decompress(raw)
+            downloaded = json.loads(raw.decode("utf-8"))
+            if not isinstance(downloaded, list) or not downloaded:
+                raise ValueError("instrument master was empty or not a JSON list")
+            rows = downloaded
+            os.makedirs(os.path.dirname(cache_path) or ".", exist_ok=True)
+            tmp = cache_path + ".tmp"
+            with open(tmp, "w", encoding="utf-8") as f:
+                json.dump(rows, f)
+            os.replace(tmp, cache_path)
+        except Exception as exc:
+            if rows is None:
+                raise RuntimeError(f"Upstox instrument master unavailable ({type(exc).__name__})") from exc
+            print(f"Upstox instrument-master refresh failed; using cached file ({type(exc).__name__})")
+    result = {}
+    for row in rows or []:
+        if not isinstance(row, dict):
+            continue
+        segment = str(row.get("segment", "")).upper()
+        symbol = str(row.get("trading_symbol", row.get("tradingsymbol", ""))).strip().upper()
+        key = row.get("instrument_key")
+        if segment == "NSE_EQ" and symbol and key:
+            result[symbol] = str(key)
+    if not result:
+        raise RuntimeError("Upstox instrument master contains no NSE_EQ symbols")
+    return result
+
+
+def _upstox_get(url, params=None):
+    token = _upstox_token()
+    if not token:
+        raise RuntimeError("UPSTOX_ANALYTICS_TOKEN is not configured")
+    response = requests.get(url, params=params, headers={
+        "Authorization": f"Bearer {token}", "Accept": "application/json"
+    }, timeout=max(5, int(os.getenv("UPSTOX_HTTP_TIMEOUT_SECONDS", "15"))))
+    response.raise_for_status()
+    payload = response.json()
+    if payload.get("status") == "error":
+        raise RuntimeError("Upstox API returned an error")
+    return payload
+
+
+def _fetch_upstox_data(clean_symbol):
+    """Fetch daily candles and a quote using Upstox read-only market-data APIs."""
+    from urllib.parse import quote
+    instrument_key = _upstox_instrument_map().get(clean_symbol)
+    if not instrument_key:
+        raise RuntimeError(f"No Upstox NSE_EQ instrument key for {clean_symbol}")
+    today = datetime.now(IST).date()
+    from_date = today - timedelta(days=400)
+    candle_url = ("https://api.upstox.com/v3/historical-candle/" + quote(instrument_key, safe="")
+                  + f"/days/1/{today.isoformat()}/{from_date.isoformat()}")
+    candle_payload = _upstox_get(candle_url)
+    candles = candle_payload.get("data", {}).get("candles", [])
+    if not candles:
+        raise RuntimeError(f"Upstox returned no daily candles for {clean_symbol}")
+    hist = pd.DataFrame(candles, columns=["Datetime", "Open", "High", "Low", "Close", "Volume", "OpenInterest"][:len(candles[0])])
+    hist["Datetime"] = pd.to_datetime(hist["Datetime"], errors="coerce", utc=True).dt.tz_convert(IST).dt.tz_localize(None)
+    hist = hist.dropna(subset=["Datetime", "Open", "High", "Low", "Close"]).set_index("Datetime").sort_index()
+    hist = hist.loc[[stamp.date() < today for stamp in hist.index]]
+    if len(hist) < 150:
+        raise RuntimeError(f"Upstox returned insufficient completed daily candles for {clean_symbol}: {len(hist)}")
+    quote_payload = _upstox_get("https://api.upstox.com/v2/market-quote/quotes", {"instrument_key": instrument_key})
+    quote_data = quote_payload.get("data", {})
+    q = quote_data.get(instrument_key)
+    if q is None:
+        q = next((v for k, v in quote_data.items() if isinstance(v, dict) and str(v.get("instrument_token", "")) == instrument_key), None)
+    if q is None and len(quote_data) == 1:
+        q = next(iter(quote_data.values()))
+    if not isinstance(q, dict):
+        raise RuntimeError(f"Upstox quote response did not contain {clean_symbol}")
+    price = float(q.get("last_price") or 0)
+    if price <= 0:
+        raise RuntimeError(f"Upstox returned an invalid last price for {clean_symbol}")
+    raw_ts = q.get("last_trade_time") or q.get("exchange_timestamp") or q.get("timestamp")
+    quote_timestamp_source = "exchange_timestamp"
+    if raw_ts:
+        try:
+            # Upstox quote timestamps are commonly epoch milliseconds; accept ISO too.
+            if isinstance(raw_ts, (int, float)) or str(raw_ts).isdigit():
+                n = float(raw_ts)
+                if n > 10**12: n /= 1000
+                quote_ts = datetime.fromtimestamp(n, IST)
+            else:
+                quote_ts = pd.Timestamp(raw_ts)
+                quote_ts = quote_ts.tz_localize(IST) if quote_ts.tzinfo is None else quote_ts.tz_convert(IST)
+                quote_ts = quote_ts.to_pydatetime()
+            age = (datetime.now(IST) - quote_ts).total_seconds() / 60
+            max_age = max(5, int(os.getenv("UPSTOX_MAX_QUOTE_AGE_MINUTES", "30")))
+            if is_market_open() and (age < -2 or age > max_age):
+                raise RuntimeError(f"Upstox quote is stale ({age:.1f} minutes old)")
+            quote_time = quote_ts.isoformat()
+        except (ValueError, TypeError, OverflowError) as exc:
+            raise RuntimeError("Upstox quote timestamp could not be validated") from exc
+    else:
+        quote_time = datetime.now(IST).isoformat()
+        quote_timestamp_source = "retrieval_time_only"
+    low_52w = float(hist["Low"].tail(252).min())
+    high_52w = float(hist["High"].tail(252).max())
+    rsi = calculate_rsi(hist)
+    if not (pd.notna(rsi) and pd.notna(low_52w) and pd.notna(high_52w)):
+        raise RuntimeError(f"Upstox data failed indicator validation for {clean_symbol}")
+    return {"symbol": clean_symbol, "price": price, "low_52w": low_52w, "high_52w": high_52w,
+            "rsi": rsi, "history": hist, "intraday": pd.DataFrame(), "provider": "Upstox Analytics",
+            "quote_timestamp": quote_time, "quote_timestamp_source": quote_timestamp_source,
+            "instrument_key": instrument_key, "fallback_used": False}
+
+
+def _fetch_yahoo_data(clean_symbol):
+    """Explicitly configured fallback. Returns None on stale/missing intraday quotes."""
     if yf is None:
-        print("Yahoo Finance unavailable: yfinance package is not installed")
-        return None
-    try:
-        ticker = yf.Ticker(ticker_symbol)
-        hist = ticker.history(period="1y", interval="1d", auto_adjust=False)
-        if hist is None or hist.empty:
-            print(f"Yahoo Finance returned insufficient daily history for {clean_symbol}")
-            return None
-        # Daily indicators must use completed candles only; the current day's partial
-        # daily bar is not allowed into MACD/RSI/SMA/base calculations.
-        idx = pd.DatetimeIndex(hist.index)
-        if idx.tz is not None:
-            idx = idx.tz_convert(IST).tz_localize(None)
-        hist.index = idx
-        if is_market_open():
-            today_ist = datetime.now(IST).date()
-            hist = hist.loc[[stamp.date() < today_ist for stamp in hist.index]]
-        if len(hist) < 150:
-            print(f"Yahoo Finance returned insufficient completed daily history for {clean_symbol}")
-            return None
-        required = {"Open", "Close", "Low", "High", "Volume"}
-        if not required.issubset(hist.columns):
-            print(f"Yahoo Finance response missing required OHLCV columns for {clean_symbol}")
-            return None
-        hist = hist.dropna(subset=["Open", "Close", "Low", "High"])
-        if len(hist) < 150:
-            return None
-        current_price = float(hist["Close"].iloc[-1])
-        intraday = pd.DataFrame()
-        quote_interval = os.getenv("YFINANCE_QUOTE_INTERVAL", "5m")
+        raise RuntimeError("yfinance package is not installed")
+    ticker_symbol = clean_symbol if clean_symbol.endswith(".NS") else f"{clean_symbol}.NS"
+    ticker = yf.Ticker(ticker_symbol)
+    hist = ticker.history(period="1y", interval="1d", auto_adjust=False)
+    if hist is None or hist.empty:
+        raise RuntimeError("Yahoo Finance returned no daily history")
+    idx = pd.DatetimeIndex(hist.index)
+    if idx.tz is not None:
+        idx = idx.tz_convert(IST).tz_localize(None)
+    hist.index = idx
+    if is_market_open():
+        today_ist = datetime.now(IST).date()
+        hist = hist.loc[[stamp.date() < today_ist for stamp in hist.index]]
+    hist = hist.dropna(subset=["Open", "Close", "Low", "High"])
+    if len(hist) < 150 or not {"Open", "Close", "Low", "High", "Volume"}.issubset(hist.columns):
+        raise RuntimeError("Yahoo Finance returned insufficient daily OHLCV history")
+    current_price = float(hist["Close"].iloc[-1])
+    intraday = pd.DataFrame()
+    if is_market_open():
+        interval = os.getenv("YFINANCE_QUOTE_INTERVAL", "5m")
+        intraday = ticker.history(period="5d", interval=interval, auto_adjust=False)
+        if intraday is None or intraday.empty or "Close" not in intraday:
+            raise RuntimeError("Yahoo intraday quote unavailable")
+        intraday = intraday.dropna(subset=["Close"])
+        if intraday.empty:
+            raise RuntimeError("Yahoo intraday quote unavailable")
+        latest_ts = pd.Timestamp(intraday.index[-1])
+        latest_ts = latest_ts.tz_localize(IST) if latest_ts.tzinfo is None else latest_ts.tz_convert(IST)
+        age = (pd.Timestamp.now(tz=IST) - latest_ts).total_seconds() / 60
         max_age = max(5, int(os.getenv("YFINANCE_MAX_QUOTE_AGE_MINUTES", "30")))
-        if is_market_open():
-            try:
-                intraday = ticker.history(period="5d", interval=quote_interval, auto_adjust=False)
-                if intraday is not None and not intraday.empty and "Close" in intraday:
-                    intraday = intraday.dropna(subset=["Close"])
-                    latest_ts = pd.Timestamp(intraday.index[-1])
-                    now_ts = pd.Timestamp.now(tz=IST)
-                    if latest_ts.tzinfo is None:
-                        latest_ts = latest_ts.tz_localize(IST)
-                    else:
-                        latest_ts = latest_ts.tz_convert(IST)
-                    age_minutes = (now_ts - latest_ts).total_seconds() / 60
-                    if age_minutes < -2 or age_minutes > max_age:
-                        print(f"Skipping {clean_symbol}: Yahoo intraday quote is stale ({age_minutes:.1f} min)")
-                        return None
-                    current_price = float(intraday["Close"].iloc[-1])
-                else:
-                    print(f"Skipping {clean_symbol}: no recent Yahoo intraday quote")
-                    return None
-            except Exception as quote_exc:
-                print(f"Skipping {clean_symbol}: intraday quote unavailable ({type(quote_exc).__name__})")
-                return None
-        low_52w = float(hist["Low"].tail(252).min())
-        high_52w = float(hist["High"].tail(252).max())
-        rsi = calculate_rsi(hist)
-        if not (current_price > 0 and pd.notna(rsi) and pd.notna(low_52w) and pd.notna(high_52w)):
-            return None
-        LAST_QUOTE_PROVIDER = "Yahoo Finance daily + intraday (unofficial)"
-        LAST_QUOTE_TIME = get_current_ist_time()
-        return {"symbol": clean_symbol.removesuffix(".NS"), "price": current_price,
-                "low_52w": low_52w, "high_52w": high_52w, "rsi": rsi,
-                "history": hist, "intraday": intraday, "provider": LAST_QUOTE_PROVIDER}
-    except Exception as exc:
-        print(f"Yahoo Finance quote error for {clean_symbol}: {type(exc).__name__}")
-        return None
+        if age < -2 or age > max_age:
+            raise RuntimeError(f"Yahoo intraday quote is stale ({age:.1f} minutes old)")
+        current_price = float(intraday["Close"].iloc[-1])
+        quote_time = latest_ts.isoformat()
+    else:
+        quote_time = datetime.now(IST).isoformat()
+    low_52w = float(hist["Low"].tail(252).min())
+    high_52w = float(hist["High"].tail(252).max())
+    rsi = calculate_rsi(hist)
+    if current_price <= 0 or pd.isna(rsi):
+        raise RuntimeError("Yahoo data failed indicator validation")
+    return {"symbol": clean_symbol, "price": current_price, "low_52w": low_52w, "high_52w": high_52w,
+            "rsi": rsi, "history": hist, "intraday": intraday, "provider": "Yahoo Finance (fallback)",
+            "quote_timestamp": quote_time, "quote_timestamp_source": "yahoo_bar_timestamp" if not intraday.empty else "retrieval_time_only",
+            "instrument_key": None, "fallback_used": True}
 
+
+def fetch_stock_data_with_fallback(symbol):
+    """Use Upstox first; optionally use Yahoo only after an Upstox failure."""
+    global LAST_QUOTE_PROVIDER, LAST_QUOTE_TIME, LAST_QUOTE_TIMESTAMP_SOURCE, LAST_QUOTE_INSTRUMENT_KEY
+    clean_symbol = str(symbol).strip().upper().removesuffix(".NS")
+    if not clean_symbol:
+        return None
+    token = _upstox_token()
+    fallback_enabled = os.getenv("UPSTOX_YAHOO_FALLBACK_ENABLED", "true").strip().lower() in {"1", "true", "yes", "on"}
+    errors = []
+    if token:
+        try:
+            result = _fetch_upstox_data(clean_symbol)
+        except Exception as exc:
+            errors.append(f"Upstox: {type(exc).__name__}: {str(exc)[:160]}")
+            print(f"Upstox data failed for {clean_symbol}: {type(exc).__name__}: {str(exc)[:160]}")
+            result = None
+    else:
+        errors.append("Upstox Analytics token is not configured")
+        result = None
+    if result is None and fallback_enabled:
+        try:
+            result = _fetch_yahoo_data(clean_symbol)
+        except Exception as exc:
+            errors.append(f"Yahoo fallback: {type(exc).__name__}: {str(exc)[:160]}")
+            print(f"Yahoo fallback failed for {clean_symbol}: {type(exc).__name__}: {str(exc)[:160]}")
+    if result is None:
+        print(f"Skipping {clean_symbol}: no valid market data ({'; '.join(errors)})")
+        return None
+    LAST_QUOTE_PROVIDER = result["provider"]
+    LAST_QUOTE_TIME = result.get("quote_timestamp", get_current_ist_time())
+    LAST_QUOTE_TIMESTAMP_SOURCE = result.get("quote_timestamp_source", "unknown")
+    LAST_QUOTE_INSTRUMENT_KEY = result.get("instrument_key") or ""
+    return result
 
 def run_api_health_checks(include_rss=True):
     """Check required integrations before startup or before the trading day.
@@ -274,28 +465,13 @@ def run_api_health_checks(include_rss=True):
     make the required integrations unhealthy. Returns (all_required_ok, results).
     """
     results = {}
-    # Quote provider health: require a recent response with usable OHLCV data.
+    # Market-data health uses the configured primary provider, with fallback only if enabled.
     try:
-        if yf is None:
-            raise RuntimeError("yfinance package is not installed")
-        ticker = yf.Ticker("RELIANCE.NS")
-        hist = ticker.history(period="5d", interval="1d", auto_adjust=False)
-        daily_ok = bool(hist is not None and not hist.empty and "Close" in hist.columns and hist["Close"].dropna().size)
-        if is_market_open():
-            intraday = ticker.history(period="1d", interval=os.getenv("YFINANCE_QUOTE_INTERVAL", "5m"), auto_adjust=False)
-            intraday_ok = bool(intraday is not None and not intraday.empty and "Close" in intraday.columns and intraday["Close"].dropna().size)
-            if intraday_ok:
-                latest = pd.Timestamp(intraday.index[-1])
-                if latest.tzinfo is None: latest = latest.tz_localize(IST)
-                else: latest = latest.tz_convert(IST)
-                age = (pd.Timestamp.now(tz=IST) - latest).total_seconds() / 60
-                intraday_ok = -2 <= age <= max(5, int(os.getenv("YFINANCE_MAX_QUOTE_AGE_MINUTES", "30")))
-            results["Yahoo Finance"] = daily_ok and intraday_ok
-        else:
-            results["Yahoo Finance"] = daily_ok
+        sample = fetch_stock_data_with_fallback("RELIANCE")
+        results["Market data (Upstox primary / Yahoo fallback)"] = bool(sample and sample.get("price", 0) > 0 and sample.get("history") is not None and len(sample["history"]) >= 150)
     except Exception as exc:
-        results["Yahoo Finance"] = False
-        print(f"Startup health check Yahoo Finance failed: {type(exc).__name__}")
+        results["Market data (Upstox primary / Yahoo fallback)"] = False
+        print(f"Startup market-data health check failed: {type(exc).__name__}")
 
     if NEWS_API_KEY:
         try:
@@ -310,7 +486,7 @@ def run_api_health_checks(include_rss=True):
 
     if GEMINI_API_KEY and client is not None:
         try:
-            response = client.models.generate_content(model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash"), contents="Reply with exactly: HEALTH_OK")
+            response = generate_gemini_content("Reply with exactly: HEALTH_OK")
             results["Gemini"] = "HEALTH_OK" in (getattr(response, "text", "") or "").upper()
         except Exception as exc:
             results["Gemini"] = False
@@ -336,7 +512,7 @@ def run_api_health_checks(include_rss=True):
         _, rss_status = fetch_google_news_rss("RELIANCE")
         results["Google News RSS (supplementary)"] = not rss_status.startswith("Google News RSS unavailable")
 
-    required = [results.get(name, False) for name in ("Yahoo Finance", "NewsAPI", "Gemini", "Telegram")]
+    required = [results.get(name, False) for name in ("Market data (Upstox primary / Yahoo fallback)", "NewsAPI", "Gemini", "Telegram")]
     return all(required), results
 
 
@@ -345,7 +521,7 @@ def report_api_health(results, prefix="API health check"):
     print(f"[{prefix}] {details}")
     try:
         from bot_status import publish_status
-        publish_status(f"{prefix}: {details}", "success" if all(results.get(n, False) for n in ("Yahoo Finance", "NewsAPI", "Gemini", "Telegram")) else "warning")
+        publish_status(f"{prefix}: {details}", "success" if all(results.get(n, False) for n in ("Market data (Upstox primary / Yahoo fallback)", "NewsAPI", "Gemini", "Telegram")) else "warning")
     except Exception:
         pass
     return details
@@ -462,7 +638,7 @@ PASS only when evidence is sufficient and there is no clear material adverse sig
     gemini_pass = False
     answer = ""
     try:
-        response = client.models.generate_content(model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash"), contents=prompt)
+        response = generate_gemini_content(prompt)
         answer = (getattr(response, "text", None) or "").strip()
         upper = answer.upper()
         gemini_pass = bool(answer and "STATUS: PASS" in upper and "STATUS: FAIL" not in upper)

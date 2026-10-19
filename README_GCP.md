@@ -4,7 +4,7 @@ This application generates **paper-trading** entries/exits for short-term swing 
 
 ## 1. Market-data provider status
 
-This archive implements **Yahoo Finance daily history plus recent Yahoo intraday bars only**. The code in this archive does **not** implement Upstox quotes or Upstox historical candles, even if an Upstox token is present. Do not assume setting `UPSTOX_ACCESS_TOKEN` switches providers. Yahoo Finance is unofficial, can be delayed/incomplete/rate-limited, and is not an exchange-grade feed. During market hours the bot rejects missing or stale intraday bars rather than using yesterday's close for new trade decisions. No broker orders are submitted; this is paper trading only.
+This archive uses **Upstox Analytics market quotes and historical candles as the primary provider**, with an explicitly configurable Yahoo Finance fallback. Configure `UPSTOX_ANALYTICS_TOKEN` in `.env`; legacy `UPSTOX_ACCESS_TOKEN` is also accepted. If Upstox fails and `UPSTOX_YAHOO_FALLBACK_ENABLED=true`, the Yahoo fallback is attempted and its provider/timestamp source is returned with the quote. Set it to `false` to fail closed. No broker orders are submitted; this is paper trading only.
 
 ## 2. Configuration (`.env`)
 
@@ -95,7 +95,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-Check the `.env` file before starting. This archive currently uses Yahoo Finance only; an Upstox token will not change the provider until Upstox integration is implemented.
+Check `.env` before starting. Upstox is primary when `UPSTOX_ANALYTICS_TOKEN` (or legacy `UPSTOX_ACCESS_TOKEN`) is configured; Yahoo is used only if `UPSTOX_YAHOO_FALLBACK_ENABLED=true`.
 
 ### C. Run it as a persistent service
 
@@ -110,10 +110,10 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-User=YOUR_LINUX_USERNAME
-WorkingDirectory=/opt/niftybot
+User=kvslakshmi77
+WorkingDirectory=/home/kvslakshmi77/Nifty_Bot
 Environment=PYTHONUNBUFFERED=1
-ExecStart=/opt/niftybot/.venv/bin/python /opt/niftybot/app.py
+ExecStart=/home/kvslakshmi77/Nifty_Bot/.venv/bin/python /home/kvslakshmi77/Nifty_Bot/app.py
 Restart=always
 RestartSec=10
 
@@ -152,9 +152,17 @@ gcloud compute ssh INSTANCE_NAME --zone ZONE -- -N -L 5000:127.0.0.1:5000
 
 Keep that terminal open, then visit `http://127.0.0.1:5000` in your browser. There is no login yet; keep the tunnel private and do not expose port 5000 to the internet. Close the tunnel with Ctrl+C when finished.
 
-### E. Upstox integration status
+### E. Upstox Analytics setup and provider behavior
 
-Upstox integration is not included in this archive. Receiving a token will not activate Upstox until a real quote/history adapter is implemented and tested. Continue with Yahoo only if its limitations are acceptable, or wait for the Upstox adapter before relying on this bot.
+1. Copy `.env.example` to `.env` and set `UPSTOX_ANALYTICS_TOKEN` locally. Never paste the token into chat, source code, logs, or a shared ZIP.
+2. `UPSTOX_YAHOO_FALLBACK_ENABLED=true` enables Yahoo only after an Upstox failure; set it to `false` for Upstox-only fail-closed behavior.
+3. The app downloads/caches the Upstox complete instrument master at `data/upstox_instruments.json` and maps NSE EQ trading symbols to `instrument_key` values. It refreshes the cache every 24 hours by default.
+4. Daily technical indicators use completed Upstox daily candles from Historical Candle Data V3. The decision price comes from the Full Market Quotes API. The bot records the selected provider, quote timestamp and timestamp source in returned data and provider status.
+5. During market hours, an exchange timestamp older than `UPSTOX_MAX_QUOTE_AGE_MINUTES` (default 30 minutes) is rejected. If the response has no usable exchange timestamp, the app marks it `retrieval_time_only`; this is not proof of exchange freshness.
+6. Yahoo fallback uses recent intraday bars during market hours and rejects stale bars. A scan may contain both providers if only some symbols fail on Upstox; the scan status records the providers actually used.
+7. The Analytics Token is read-only and cannot place orders. This bot remains paper trading only.
+
+Relevant official API docs: [Analytics Token](https://upstox.com/developer/api-documentation/analytics-token/), [Historical Candle Data V3](https://upstox.com/developer/api-documentation/v3/get-historical-candle-data/), [Full Market Quotes](https://upstox.com/developer/api-documentation/get-full-market-quote/).
 
 ### F. Persist and back up paper-trading data
 
@@ -168,13 +176,14 @@ The CSV files live under `/opt/niftybot/data/` on the VM's disk. Back up this di
 - `data/cooling_period.csv` — re-entry cooldown records.
 - `data/nse_equity_symbols.csv` — full NSE EQ-series universe cache.
 - `data/scan_state.json` — persistent rotating scan cursor.
+- `data/upstox_instruments.json` — cached Upstox instrument master used to map NSE symbols to instrument keys (generated automatically; contains no credential).
 
 The full NSE EQ-series symbol universe is refreshed from NSE's official equity-list CSV. Only regular `EQ` series equities are included; ETFs, debt instruments, SME listings, and other non-EQ series are excluded. If NSE is unavailable, a previously downloaded full-universe cache is retained. A fresh installation without a valid cache skips scanning instead of silently substituting a small sample. The list refresh is from NSE directly; Gemini/Google search is not used as a source of trading symbols because search results are not a stable, authoritative machine-readable security master.
 
 ## 7. Risk and data limitations
 
 - Paper trading only; no broker orders are sent.
-- Yahoo Finance is a third-party source, may be delayed or incomplete, and is not guaranteed to provide real-time exchange data.
+- Yahoo Finance fallback is a third-party source, may be delayed or incomplete, and is not guaranteed to provide real-time exchange data. Upstox quote timestamps and provider identity should be checked in scan logs.
 - An analytics token is read-only; it is not an order-placement token.
 - No fixed percentage stop-loss exists by design. An ATR-based trailing exit is not a guaranteed risk cap.
 - Strategy heuristics are not a promise of returns. Test over many market conditions, including slippage, fees, taxes, gaps, and unavailable data.
@@ -187,7 +196,7 @@ The dashboard displays a scrolling runtime ticker for provider selection, NSE un
 
 ## API startup checks and supplementary news RSS
 
-Before launching the dashboard/scheduler, the bot checks Yahoo Finance quote access, NewsAPI, Gemini, and Telegram. If any required check fails, startup aborts; fix the integration/network issue and restart. Google News RSS is checked as a supplementary source, but an RSS outage alone does not fail the required integration check.
+Before launching the dashboard/scheduler, the bot checks configured market-data access (Upstox primary / optional Yahoo fallback), NewsAPI, Gemini, and Telegram. If any required check fails, startup aborts; fix the integration/network issue and restart. Google News RSS is checked as a supplementary source, but an RSS outage alone does not fail the required integration check.
 
 At 08:00 IST each day, required integrations are checked again and a Telegram status alert is sent. If a required pre-market check fails, the process sets `REQUIRE_AI_NEWS_CONFIRMATION=false` for the day as a clearly logged technical-only fallback. This does not make news confirmation complete; BUY signals and logs should be understood as operating without full AI/news confirmation during that fallback. A healthy pre-market check restores the configured value.
 
@@ -214,4 +223,11 @@ Use one row per symbol per trading date. Expected values include `institutional_
 
 ### Important implementation limitations
 
-This is still **paper trading only**. The project does not submit broker orders. Yahoo Finance is unofficial and can be delayed; the bot rejects stale/missing intraday bars, but this does not make Yahoo an exchange-grade feed. The SOP's wick-angle, true multi-swing HH/HL, bearish RSI divergence, sector-wide breadth, corporate catalyst materiality, and NSE delivery/circuit/surveillance checks are approximated or manually supplied, not independently validated from official feeds. The external CSV is a control mechanism, not a live NSE integration. Validate on historical data and paper trade before considering any real capital.
+This is still **paper trading only**. The project does not submit broker orders. Yahoo fallback is unofficial and can be delayed; stale/missing intraday bars are rejected, but this does not make Yahoo an exchange-grade feed. Upstox data quality, timestamp availability, and API outages still need monitoring. The SOP's wick-angle, true multi-swing HH/HL, bearish RSI divergence, sector-wide breadth, corporate catalyst materiality, and NSE delivery/circuit/surveillance checks are approximated or manually supplied, not independently validated from official feeds. The external CSV is a control mechanism, not a live NSE integration. Validate on historical data and paper trade before considering any real capital.
+
+
+## Gemini model fallback and Telegram controls
+
+Gemini calls use `GEMINI_MODEL` first, then try the comma-separated `GEMINI_FALLBACK_MODELS` sequence after API errors, quota/rate-limit responses, transient failures, or empty responses. Recommended free-tier defaults in `.env.example` are `gemini-3.6-flash`, followed by `gemini-3.5-flash-lite` and `gemini-3.1-flash-lite`. Google currently routes the legacy `gemini-3.5-flash` ID to `gemini-3.6-flash`; use the current ID for new deployments. Free-tier access and limits vary by project and can change; model rotation does not guarantee unlimited requests. See the [official Gemini API pricing and free-tier table](https://ai.google.dev/gemini-api/docs/pricing) and [model list](https://ai.google.dev/gemini-api/docs/models).
+
+With `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` configured, the approved chat can use `/start`, `/stop`, `/status`, `/scan`, `/summary`, `/health`, and `/help`. Only the configured chat ID is authorized. `/stop` pauses scheduled scans and automated paper-position exit management; existing paper positions will not be managed until `/start` resumes the bot. Commands affect paper-trading only and never place real broker orders. Keep Telegram credentials private.
