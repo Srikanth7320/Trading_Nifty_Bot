@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block body %}<h4>Watchlist</h4><p class="text-muted">Stocks that scored well but did not (yet) qualify - usually no breakout above the 20-day high. They are re-checked each time their turn comes up in the rotation.</p>
+<div class="card"><div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Symbol</th><th>Score</th><th>Price</th><th>20-day high</th><th>RSI</th><th>Seen</th><th class="reason">Why not a signal yet</th></tr>
+{% for w in watch %}<tr><td><a href="/symbol/{{ w.symbol }}">{{ w.symbol }}</a></td><td>{{ w.score }}</td><td>{{ w.price }}</td><td>{{ w.prior_20d_high }}</td><td>{{ w.rsi }}</td><td>{{ w.date }} {{ w.time }}</td><td class="reason">{{ w.reason }}</td></tr>
+{% else %}<tr><td colspan="7" class="p-3 text-muted">Empty.</td></tr>{% endfor %}</table></div></div>{% endblock %}

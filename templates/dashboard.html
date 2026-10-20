@@ -1,13 +1,24 @@
-{% extends "base.html" %}
-{% block content %}
-<div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4"><div><h2>Dashboard Overview</h2><div class="text-muted small">Paper trading only · No broker orders are sent</div></div><form action="{{ url_for('trigger_scan') }}" method="POST"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button type="submit" class="btn {{ 'btn-primary' if market_open else 'btn-secondary' }}" {% if not market_open %}disabled{% endif %}>{% if market_open %}🚀 Trigger Manual Scan{% else %}🔒 Market Closed{% endif %}</button></form></div>
-{% if not market_open %}<div class="alert alert-info py-2">Market is closed. Active-position values use saved post-close NSE snapshots when available; those values remain unchanged until live quote mode resumes in the next market session. See <a href="{{ url_for('about_page') }}">About &amp; Rules</a> for data-source limitations.</div>{% endif %}
-
-<div class="row g-3">
-<div class="col-md-3"><div class="card text-white bg-primary h-100"><div class="card-body"><h5>Active Positions</h5><p class="display-6">{{ summary.active_count }}</p></div></div></div>
-<div class="col-md-3"><div class="card text-white bg-success h-100"><div class="card-body"><h5>Realized P&amp;L</h5><p class="display-6">₹{{ summary.realized_pnl }}</p></div></div></div>
-<div class="col-md-3"><div class="card text-white bg-info h-100"><div class="card-body"><h5>Unrealized P&amp;L</h5><p class="display-6">{% if summary.unrealized_pnl is not none %}₹{{ summary.unrealized_pnl }}{% else %}Unavailable{% endif %}</p>{% if summary.unpriced_count %}<small>{{ summary.unpriced_count }} position(s) missing fresh price data</small>{% endif %}</div></div></div>
-<div class="col-md-3"><div class="card text-white bg-secondary h-100"><div class="card-body"><h5>Cooling List</h5><p class="display-6">{{ summary.cooling_count }}</p></div></div></div></div>
-<div class="row mt-4 g-3"><div class="col-12"><div class="card h-100"><div class="card-body"><h5>Capital Overview</h5><ul class="list-group list-group-flush"><li class="list-group-item d-flex justify-content-between"><span>Total Invested Amount</span><strong>₹{{ summary.total_invested }}</strong></li><li class="list-group-item d-flex justify-content-between"><span>Current Portfolio Value</span><strong>₹{{ summary.total_current }}</strong></li><li class="list-group-item d-flex justify-content-between"><span>Total Sold Trades</span><strong>{{ summary.sold_count }}</strong></li></ul></div></div></div></div>
-<div class="card shadow-sm mb-4"><div class="card-header d-flex justify-content-between"><span class="fw-semibold">Live Bot Activity</span><span class="badge text-bg-success">Paper mode</span></div><div class="status-feed" id="statusFeed" aria-live="polite" aria-label="Recent bot status messages"><div class="status-feed-item">Waiting for the bot to start…</div></div><div class="card-footer text-muted small">Auto-refreshes every 3 seconds. Provider, universe refresh, scan progress and paper signals appear here.</div></div>
-{% endblock %}
+{% extends "base.html" %}{% block body %}
+{% if warn %}<div class="alert alert-warning">{{ warn }}</div>{% endif %}
+<div class="alert {{ 'alert-danger' if not worker.alive else 'alert-info' }} d-flex justify-content-between flex-wrap gap-2">
+<div><strong>{{ market[1] }}</strong> &middot; {{ explain }}</div>
+<div class="d-flex gap-2">
+<form method="post" action="/control"><input type="hidden" name="csrf" value="{{ csrf() }}"><input type="hidden" name="action" value="scan"><button class="btn btn-sm btn-primary">Scan now{{ '' if market[0]=='OPEN' else ' (analysis only)' }}</button></form>
+<form method="post" action="/control"><input type="hidden" name="csrf" value="{{ csrf() }}"><input type="hidden" name="action" value="{{ 'pause' if ctl.enabled else 'resume' }}"><button class="btn btn-sm {{ 'btn-outline-danger' if ctl.enabled else 'btn-success' }}">{{ 'Pause trading' if ctl.enabled else 'Resume trading' }}</button></form></div></div>
+<div class="row g-3 mb-3">
+{% for label,val in [('Open positions',stats.open),('Realised P&L today','Rs '+('%.2f'|format(stats.realized))),('Scans today',stats.scans),('Stocks checked today',stats.evaluated),('Signals today',stats.signals),('Buys / sells today',stats.buys~' / '~stats.sells)] %}
+<div class="col-6 col-md-2"><div class="card h-100"><div class="card-body"><div class="text-muted small">{{ label }}</div><div class="display-6">{{ val }}</div></div></div></div>{% endfor %}</div>
+<div class="row g-3"><div class="col-lg-7"><div class="card mb-3"><div class="card-header">Open paper positions</div><div class="table-responsive"><table class="table table-sm mb-0">
+<tr><th>Symbol</th><th>Qty</th><th>Buy</th><th>Now</th><th>P&amp;L</th><th>Stop</th><th>Target 1</th></tr>
+{% for p in positions %}<tr><td><a href="/symbol/{{ p.symbol }}">{{ p.symbol }}</a></td><td>{{ p.quantity }}</td><td>{{ p.buy_price|inr }}</td><td>{{ p.price|inr }}</td>
+<td class="{{ 'text-success' if p.pnl and p.pnl>0 else 'text-danger' if p.pnl else '' }}">{{ p.pnl|inr if p.pnl is not none else '-' }}{% if p.pnl_pct is not none %} ({{ '%+.1f'|format(p.pnl_pct) }}%){% endif %}</td><td>{{ p.stop_loss|inr }}</td><td>{{ p.target1|inr }}</td></tr>
+{% else %}<tr><td colspan="7" class="text-muted p-3">No open positions.</td></tr>{% endfor %}</table></div></div>
+<div class="card"><div class="card-header">Recent scans <a class="float-end small" href="/scans">all</a></div><div class="table-responsive"><table class="table table-sm mb-0">
+<tr><th>When</th><th>Mode</th><th>Checked</th><th>Watch</th><th>Signals</th><th>Bought</th><th>Status</th></tr>
+{% for r in runs %}<tr><td><a href="/scans/{{ r.scan_id }}">{{ r.started }}</a></td><td>{{ r.mode }}</td><td>{{ r.evaluated }}</td><td>{{ r.watch }}</td><td>{{ r.signals }}</td><td>{{ r.buys }}</td><td>{{ r.status }}{{ ': '+r.note if r.note }}</td></tr>
+{% else %}<tr><td colspan="7" class="text-muted p-3">No scans yet. Press "Scan now" to try one.</td></tr>{% endfor %}</table></div></div></div>
+<div class="col-lg-5"><div class="card"><div class="card-header">Closest to a signal <a class="float-end small" href="/watchlist">all</a></div><div class="table-responsive"><table class="table table-sm mb-0">
+<tr><th>Symbol</th><th>Score</th><th>Price</th></tr>
+{% for w in watch %}<tr><td><a href="/symbol/{{ w.symbol }}">{{ w.symbol }}</a></td><td>{{ w.score }}</td><td>{{ w.price }}</td></tr>
+{% else %}<tr><td colspan="3" class="text-muted p-3">Nothing is close right now.</td></tr>{% endfor %}</table></div></div>
+<p class="small text-muted mt-2">Worker: {{ 'running' if worker.alive else 'NOT running' }}{{ ' &middot; last heartbeat '~worker.heartbeat if worker.heartbeat }}</p></div></div>{% endblock %}

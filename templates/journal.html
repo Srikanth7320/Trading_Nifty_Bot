@@ -1,0 +1,2 @@
+{% extends "base.html" %}{% block body %}<h4>Bot journal</h4><p class="text-muted">Plain-language record of what the bot did in every scan (file: <code>data/scan_journal.txt</code>). Newest at the bottom.</p>
+<pre class="journal" id="j">{{ text or 'Nothing logged yet.' }}</pre><script>var j=document.getElementById('j');j.scrollTop=j.scrollHeight;</script>{% endblock %}

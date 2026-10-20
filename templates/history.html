@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block body %}<h4>Closed paper trades</h4>
+<p>Closed: <b>{{ perf.closed_trades }}</b> &middot; win rate <b>{{ perf.win_rate }}%</b> &middot; net P&amp;L <b>Rs {{ perf.net_pnl }}</b> (after costs) &middot; avg win {{ perf.avg_win }} / avg loss {{ perf.avg_loss }}</p>
+<div class="card"><div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Sold</th><th>Symbol</th><th>Qty</th><th>Buy</th><th>Sell</th><th>P&amp;L</th><th class="reason">Reason</th></tr>
+{% for r in sold %}<tr><td>{{ r.sold_time }}</td><td>{{ r.symbol }}</td><td>{{ r.quantity }}</td><td>{{ r.buy_price }}</td><td>{{ r.sold_price }}</td><td class="{{ 'text-danger' if r.profit.startswith('-') else 'text-success' }}">{{ r.profit }}</td><td class="reason">{{ r.reason }}</td></tr>
+{% else %}<tr><td colspan="7" class="p-3 text-muted">No closed trades yet.</td></tr>{% endfor %}</table></div></div>{% endblock %}

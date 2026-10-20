@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block body %}<h4>{{ sym }}</h4><p class="text-muted">Latest evaluations of this stock (newest first).</p>
+<div class="card"><div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Scan</th><th>Time</th><th>Result</th><th>Score</th><th>Price</th><th>RSI</th><th>Vol x</th><th class="reason">Why</th></tr>
+{% for r in rows %}<tr class="dec-{{ r.decision }}"><td><a href="/scans/{{ r.scan_id }}">{{ r.scan_id }}</a></td><td>{{ r.time }}</td><td>{{ r.decision }}</td><td>{{ r.score }}</td><td>{{ r.price }}</td><td>{{ r.rsi }}</td><td>{{ r.volume_ratio }}</td><td class="reason">{{ r.reason }}</td></tr>
+{% else %}<tr><td colspan="8" class="p-3 text-muted">Not evaluated yet - the universe is scanned in rotating batches.</td></tr>{% endfor %}</table></div></div>{% endblock %}
