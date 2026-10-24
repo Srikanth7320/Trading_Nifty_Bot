@@ -7,7 +7,10 @@ from datetime import timedelta
 from flask import Flask, abort, flash, jsonify, redirect, render_template, request, session, url_for
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+import analysis
 import config
+import outlook
+import pnl
 import portfolio
 import reports
 import store
@@ -29,6 +32,10 @@ def csrf():
 
 app.jinja_env.globals["csrf"] = csrf
 app.jinja_env.filters["inr"] = lambda v: "-" if v in (None, "") else f"{float(v):,.2f}"
+app.jinja_env.filters["pct"] = lambda v: "-" if v in (None, "") else f"{float(v):+.2f}%"
+app.jinja_env.filters["tone"] = lambda v: "" if v in (None, "") else ("text-success" if float(v) > 0 else "text-danger" if float(v) < 0 else "")
+app.jinja_env.filters["nice"] = lambda v: str(v or "").replace("_", " ").title()
+app.jinja_env.filters["hhmm"] = lambda v: str(v or "")[:16].replace("T", " ")
 
 
 @app.before_request
@@ -86,21 +93,66 @@ def logout():
 
 @app.route("/")
 def dashboard():
+    rows = pnl.position_view()
     return render_template("dashboard.html", market=config.market_status(), ctl=store.control(), worker=reports.worker_state(),
                            explain=reports.explain_state(), stats=reports.today_stats(), last=reports.last_scan(),
-                           positions=reports.position_rows(), watch=reports.watchlist()[:10], runs=reports.runs(6),
-                           warn=config.holiday_calendar_warning(), cfg=config)
+                           positions=rows, acct=pnl.account(rows), closed=pnl.closed_positions(6), watch=reports.watchlist()[:10],
+                           runs=reports.runs(6), warn=config.holiday_calendar_warning(), cfg=config)
 
 
 @app.route("/positions")
 def positions():
-    return render_template("positions.html", positions=reports.position_rows(), cooling=portfolio.cooling_symbols())
+    rows = pnl.position_view()
+    return render_template("positions.html", positions=rows, acct=pnl.account(rows), cooling=portfolio.cooling_symbols(), cfg=config)
 
 
 @app.route("/history")
 def history():
-    return render_template("history.html", sold=store.read_csv("sold_stocks.csv").iloc[::-1].head(300).to_dict(orient="records"),
-                           perf=portfolio.performance())
+    closed = pnl.closed_positions(300)
+    for c in closed:
+        c["review"] = pnl.review_closed(c)
+    return render_template("history.html", closed=closed, perf=portfolio.performance(), acct=pnl.account())
+
+
+@app.route("/performance")
+def performance():
+    return render_template("performance.html", days=pnl.daily_table(), acct=pnl.account(), perf=portfolio.performance())
+
+
+@app.route("/signals")
+def signals():
+    df = store.read_csv("signal_log.csv")
+    sym = (request.args.get("symbol") or "").upper()[:20]
+    ev = (request.args.get("event") or "")[:30]
+    if sym:
+        df = df[df["symbol"] == sym]
+    if ev:
+        df = df[df["event"] == ev]
+    return render_template("signals.html", rows=df.tail(400).iloc[::-1].to_dict(orient="records"), sym=sym, ev=ev)
+
+
+@app.route("/outlook")
+def outlook_page():
+    return render_template("outlook.html", o=outlook.load(), cfg=config)
+
+
+@app.route("/outlook/refresh", methods=["POST"])
+def outlook_refresh():
+    store.request_task("outlook")
+    flash("Outlook refresh requested - the worker builds it within ~10 seconds (it can take a minute). Reload this page afterwards.", "info")
+    return redirect("/outlook")
+
+
+@app.route("/analyze")
+def analyze_page():
+    """Read-only stock analysis. GET only: it can never place, change or close a position."""
+    q = (request.args.get("q") or "").strip()
+    res, hit = None, None
+    if q:
+        hit = analysis.resolve(q)
+        if hit["status"] == "ok":
+            res = analysis.analyze(hit["symbol"], hit.get("name", ""))
+    return render_template("analyze.html", q=q, hit=hit, r=res, cfg=config)
 
 
 @app.route("/scans")
@@ -136,6 +188,11 @@ def journal():
 @app.route("/help")
 def help_page():
     return render_template("help.html", cfg=config)
+
+
+@app.route("/api/pnl")
+def api_pnl():
+    return jsonify(account=pnl.account(), daily=pnl.daily_table()[:60])
 
 
 @app.route("/api/status")

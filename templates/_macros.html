@@ -1,0 +1,30 @@
+{% macro strat(s) %}<span class="badge {{ 'bg-warning text-dark' if s=='INTRADAY' else 'bg-primary' }}">{{ 'Intraday' if s=='INTRADAY' else 'Short-Term' }}</span>{% endmacro %}
+{% macro card(label,val,cls='',sub='') %}<div class="col-6 col-md-3 col-xl"><div class="card h-100"><div class="card-body py-2"><div class="text-muted small">{{ label }}</div><div class="display-6 {{ cls }}">{{ val }}</div>{% if sub %}<div class="small text-muted">{{ sub }}</div>{% endif %}</div></div></div>{% endmacro %}
+{% macro summary(a) %}
+<div class="row g-2 mb-2">
+{{ card('Available balance','Rs '~(a.cash|inr),'','of Rs '~(a.capital|inr)~' capital') }}
+{{ card('Invested (open)','Rs '~(a.invested|inr)) }}
+{{ card('Market value (open)','Rs '~(a.market_value|inr)) }}
+{{ card('Unrealized P&L','Rs '~(a.unrealized|inr),a.unrealized|tone,'open positions, not locked in') }}
+{{ card('Realized P&L','Rs '~(a.realized|inr),a.realized|tone,'closed trades, after costs') }}
+</div><div class="row g-2 mb-3">
+{{ card('Combined P&L','Rs '~(a.combined|inr),a.combined|tone,'realized + unrealized') }}
+{{ card('Active positions',a.open_positions~' / '~a.max_positions) }}
+{{ card('Capacity left',a.slots_free~' slot'~('' if a.slots_free==1 else 's')) }}
+{{ card('Completed trades',a.closed_trades,'', (a.partial_exits~' partial exit(s)') if a.partial_exits else '') }}
+{{ card('Equity','Rs '~(a.equity|inr),'','capital + combined P&L') }}
+</div>
+<p class="small text-muted">Prices as of {{ a.newest_quote|hhmm or 'n/a' }}{% if a.oldest_quote and a.oldest_quote!=a.newest_quote %} (oldest {{ a.oldest_quote|hhmm }}){% endif %}.
+Unrealized P&L is net of estimated round-trip costs. {% if a.prices_missing %}<b class="text-danger">No price yet for: {{ a.prices_missing|join(', ') }} (shown at cost).</b>{% endif %}</p>
+{% endmacro %}
+{% macro postable(positions) %}
+<div class="card mb-3"><div class="table-responsive"><table class="table table-sm mb-0">
+<tr><th>Symbol</th><th>Strategy</th><th>Bought</th><th>Qty</th><th>Avg buy</th><th>Invested</th><th>Price</th><th>Value</th><th>Unreal. P&amp;L</th><th>%</th><th>Target</th><th>Stop</th><th>Signal</th><th class="reason">Status / latest assessment</th></tr>
+{% for p in positions %}<tr><td><a href="/analyze?q={{ p.symbol }}">{{ p.symbol }}</a><div class="small text-muted">{{ p.company }}</div></td><td>{{ strat(p.strategy) }}{% if p.strategy_legacy %}<div class="small text-muted">legacy</div>{% endif %}</td>
+<td>{{ p.buy_time }}</td><td>{{ p.quantity }}{% if p.quantity!=p.original_quantity %}/{{ p.original_quantity }}{% endif %}</td><td>{{ p.buy_price|inr }}</td><td>{{ p.invested|inr }}{% if p.over_cap %}<div class="small text-warning">above per-stock cap</div>{% endif %}</td>
+<td>{{ p.price|inr }}<div class="small text-muted">{{ p.quote_time|hhmm }}</div></td><td>{{ p.market_value|inr }}</td>
+<td class="{{ p.pnl|tone }}">{{ p.pnl|inr }}</td><td class="{{ p.pnl_pct|tone }}">{{ p.pnl_pct|pct }}</td>
+<td>T1 {{ p.target1|inr }}<div class="small text-muted">T2 {{ p.target2|inr }}</div></td><td>{{ p.stop_loss|inr }}</td>
+<td class="st-{{ p.signal_state }}">{{ p.signal_state|nice }}</td><td class="reason">{{ 'Thesis valid' if p.thesis_valid else 'Thesis weakened' }}{% if p.warn_score %} (warning pts {{ p.warn_score }}){% endif %}<div class="small text-muted">{{ p.last_note }}</div></td></tr>
+{% else %}<tr><td colspan="14" class="p-3 text-muted">No open positions.</td></tr>{% endfor %}</table></div></div>
+{% endmacro %}

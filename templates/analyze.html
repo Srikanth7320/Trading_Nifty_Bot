@@ -1,0 +1,45 @@
+{% extends "base.html" %}{% import "_macros.html" as m %}{% block body %}
+<h4>Stock search &amp; analysis</h4>
+<form class="row g-2 mb-3" method="get"><div class="col-md-6"><input class="form-control" name="q" value="{{ q }}" placeholder="NSE symbol or company name, e.g. TCS or Infosys" maxlength="40" autofocus></div><div class="col-auto"><button class="btn btn-primary">Analyze</button></div></form>
+<p class="small text-muted">Analysis only - viewing a stock never places, changes or closes a paper trade.</p>
+{% if hit %}{% if hit.status=='invalid' or hit.status=='not_found' %}<div class="alert alert-warning">{{ hit.message }}</div>
+{% elif hit.status=='choose' %}<div class="card mb-3"><div class="card-header">Did you mean:</div><div class="list-group list-group-flush">{% for x in hit.matches %}<a class="list-group-item" href="/analyze?q={{ x.symbol }}"><b>{{ x.symbol }}</b> - {{ x.name }}</a>{% endfor %}</div></div>{% endif %}{% endif %}
+{% if r %}{% if r.error %}<div class="alert alert-danger">{{ r.error }}</div>{% else %}{% set s=r.summary %}{% set o=r.overview %}
+<div class="card border-primary mb-3"><div class="card-header bg-primary text-white">{{ r.symbol }} - {{ r.company }} &middot; {{ r.exchange }}</div><div class="card-body">
+<div class="row"><div class="col-md-4"><div class="display-6">Rs {{ o.price|inr }}</div><div class="{{ o.change_pct|tone }}">{{ o.change|inr }} ({{ o.change_pct|pct }}) vs previous close {{ o.prev_close|inr }}</div><div class="small text-muted">Price as of {{ o.as_of[:19] }} ({{ o.provider }}). {{ o.market }}.</div></div>
+<div class="col-md-8"><p class="fs-5 mb-1"><b>{{ s.overall }}</b></p>
+<table class="table table-sm mb-2"><tr><th>Intraday</th><td>{{ s.intraday }}</td><th>Short-Term (1-4 wk)</th><td>{{ s.short_term }}</td></tr>
+<tr><th>Entry range</th><td>{% if s.entry_range %}Rs {{ s.entry_range[0] }} - {{ s.entry_range[1] }}{% else %}-{% endif %}</td><th>Target / Stop</th><td>{% if s.target %}Rs {{ s.target }} / Rs {{ s.stop }}{% else %}-{% endif %}</td></tr>
+<tr><th>Confidence</th><td>{{ s.confidence }}</td><th>Data freshness</th><td class="small">{{ s.data_note }}</td></tr></table>
+{% if s.none %}<div class="alert alert-secondary py-1">{{ s.none }}</div>{% endif %}
+<b>Key reasons:</b> {{ s.reasons|join('; ') or '-' }}<br><b>Major risks:</b> {{ s.risks|join('; ') or 'none flagged by the data available' }}</div></div></div></div>
+{% if r.holding %}{% set h=r.holding %}<div class="card mb-3 border-info"><div class="card-header">You hold this stock (paper) &middot; {{ m.strat(h.strategy) }}</div><div class="card-body small">
+Qty <b>{{ h.qty }}</b> @ avg Rs {{ h.avg_price|inr }} &middot; invested Rs {{ h.invested|inr }} &middot; value Rs {{ h.market_value|inr }} &middot; unrealized <b class="{{ h.pnl|tone }}">Rs {{ h.pnl|inr }} ({{ h.pnl_pct|pct }})</b> &middot; stop {{ h.stop|inr }} &middot; T1 {{ h.target1|inr }} / T2 {{ h.target2|inr }}<br>
+<b>Original buy rationale:</b> {{ h.strategy_reason or h.original_reason }}<br><b>Invalidation conditions:</b> {{ h.invalidation or 'n/a (legacy position)' }}<br>
+<b>Status now:</b> <span class="st-{{ h.live_state }}">{{ h.live_state|nice }}</span> - original thesis {{ 'still valid' if h.thesis_valid else 'WEAKENED' }}{% if h.live_warnings %}<ul class="mb-0">{% for w in h.live_warnings %}<li>{{ w }}</li>{% endfor %}</ul>{% endif %}
+<br><b>Latest 15-minute scanner assessment</b> ({{ h.last_assessed }}): <span class="st-{{ h.stored_state }}">{{ h.stored_state|nice }}</span> - {{ h.stored_note }}</div></div>{% endif %}
+{% if r.last_closed %}{% set c=r.last_closed %}<div class="card mb-3"><div class="card-header">Most recent completed trade in this stock</div><div class="card-body small">{{ m.strat(c.strategy) }} bought {{ c.buy_time }} @ {{ c.buy_price }}, sold {{ c.sold_time }} @ {{ c.sold_price }} ({{ c.qty }} shares) &middot; realized <b class="{{ c.pnl|tone }}">Rs {{ c.pnl|inr }} ({{ c.pnl_pct|pct }})</b> &middot; {{ c.exit_class }}: {{ c.reason }}</div></div>{% endif %}
+<h5>Trading strategy assessment</h5><div class="row g-3 mb-3">{% for st in r.strategies %}<div class="col-lg-6"><div class="card h-100"><div class="card-header">{{ m.strat(st.strategy) }} &middot; <b>{{ st.signal }}</b></div><div class="card-body small">
+<b>Meets entry criteria:</b> {{ 'Yes' if st.eligible else 'No' }}<br><b>Entry:</b> {% if st.entry_trigger %}wait for a move above Rs {{ st.entry_trigger }} (breakout trigger){% else %}Rs {{ st.entry_range[0] }} - {{ st.entry_range[1] }}{% endif %}<br>
+<b>Target:</b> Rs {{ st.target1 }} (1:{{ st.rr1 }}) / Rs {{ st.target2 }} (1:{{ st.rr2 }}) &middot; <b>Stop:</b> Rs {{ st.stop }} &middot; <b>Hold:</b> {{ st.hold }}<br>
+<b>Supporting evidence:</b><ul class="mb-1">{% for e in st.evidence %}<li>{{ e }}</li>{% else %}<li>none</li>{% endfor %}</ul>
+{% if st.missing %}<b>Not met / blockers:</b><ul class="mb-1">{% for e in st.missing %}<li>{{ e }}</li>{% endfor %}</ul>{% endif %}
+<b>Assessment is invalid if:</b><ul class="mb-0">{% for e in st.invalidation %}<li>{{ e }}</li>{% endfor %}</ul></div></div></div>{% else %}<div class="col"><div class="alert alert-secondary">No trade levels (volatility data unavailable).</div></div>{% endfor %}</div>
+<div class="row g-3 mb-3"><div class="col-lg-6"><div class="card h-100"><div class="card-header">Technical analysis</div><div class="card-body small">{% set t=r.technical %}
+Trend <b>{{ t.trend }}</b> &middot; momentum {{ t.momentum }} &middot; {{ t.breakout_state }}<br>Price {{ o.price }} &middot; EMA9 {{ t.ema9|round(2) }} &middot; EMA20 {{ t.ema20|round(2) }} &middot; SMA50 {{ t.sma50|round(2) if t.sma50 else '-' }} &middot; SMA150 {{ t.sma150|round(2) }}<br>
+RSI {{ t.rsi|round(1) }} &middot; MACD hist {{ t.macd_hist|round(3) }} &middot; ATR {{ t.atr|round(2) }} ({{ t.atr_pct|round(1) }}%)<br>
+Volume: last session {{ t.last_volume_ratio|round(2) }}x the 20-day average ({{ '{:,.0f}'.format(t.avg_volume_20) }}); turnover Rs {{ o.turnover_cr }} cr/day; liquidity <b>{{ o.liquidity }}</b>{% if o.spread_pct is not none %}; spread {{ o.spread_pct }}%{% endif %}<br>
+20-day range {{ t.prior_20d_low|round(2) }} - {{ t.prior_20d_high|round(2) }} &middot; 52-week {{ o.low_52w }} - {{ o.high_52w }}<br>
+<b>Support:</b> {% for x in t.support %}{{ x.price }} ({{ x.kind }}) {% else %}-{% endfor %}<br><b>Resistance:</b> {% for x in t.resistance %}{{ x.price }} ({{ x.kind }}) {% else %}-{% endfor %}<br>
+<b>Candlesticks (last session):</b> {% for p in t.patterns %}<span class="{{ 'text-success' if p.bias>0 else 'text-danger' if p.bias<0 else '' }}">{{ p.name }}</span> - {{ p.text }}; {% else %}no notable pattern{% endfor %}<br>
+<b>Bullish:</b> {{ r.bullish_signals|join('; ') or '-' }}<br><b>Bearish:</b> {{ r.bearish_signals|join('; ') or '-' }}</div></div></div>
+<div class="col-lg-6"><div class="card h-100"><div class="card-header">The bot's own rules (score {{ r.rules.score }}/100 - {{ r.rules.decision }})</div><div class="table-responsive"><table class="table table-sm mb-0">{% for c in r.rules.checks %}<tr><td>{{ c.label }}</td><td>{{ c.points }}/{{ c.max }}</td><td class="small text-muted">{{ c.detail }}</td></tr>{% endfor %}</table></div>
+{% if r.rules.filter_fails or r.rules.blockers %}<div class="card-body small text-danger">{% for x in r.rules.filter_fails + r.rules.blockers %}&bull; {{ x }}<br>{% endfor %}</div>{% endif %}</div></div></div>
+<div class="row g-3 mb-3"><div class="col-lg-6"><div class="card h-100"><div class="card-header">Fundamentals (supporting context only)</div><div class="card-body small">{% if r.fundamentals %}{% for f in r.fundamentals %}{{ f.label }}: <b>{{ f.value }}</b><br>{% endfor %}{% else %}Not available from the data source.{% endif %}<div class="text-muted mt-1">Sector: {{ o.sector }} &middot; Industry: {{ o.industry }}</div></div></div></div>
+<div class="col-lg-6"><div class="card h-100"><div class="card-header">News, events &amp; market context</div><div class="card-body small">News verdict: <b>{{ r.context.news.verdict }}</b> - {{ r.context.news.note }}<br>{% for t in r.context.news.titles %}&bull; {{ t }}<br>{% endfor %}
+{% if r.context.events %}<b>Upcoming/recorded events:</b> {{ r.context.events|join('; ') }}<br>{% endif %}Surveillance/external check: {{ r.context.external_check }}<br>
+{% if r.context.market and r.context.market.available %}Nifty 50: {{ r.context.market.trend }}, {{ r.context.market.day_change_pct|pct }} ({{ r.context.market.as_of }}){% else %}Index data unavailable.{% endif %}
+{% if r.context.sector_move %}<br>Sector index ({{ r.context.sector_index }}, approximate mapping): {{ r.context.sector_move.change_pct|pct }}{% endif %}</div></div></div></div>
+{% if r.limits %}<div class="alert alert-secondary small"><b>Data limitations:</b><ul class="mb-0">{% for l in r.limits %}<li>{{ l }}</li>{% endfor %}</ul></div>{% endif %}
+<p class="small text-muted">Generated {{ r.generated }}. Based on the bot's configured rules and the data above; paper-trading analysis, not investment advice.</p>
+{% endif %}{% endif %}{% endblock %}

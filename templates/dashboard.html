@@ -1,24 +1,22 @@
-{% extends "base.html" %}{% block body %}
+{% extends "base.html" %}{% import "_macros.html" as m %}{% block body %}
 {% if warn %}<div class="alert alert-warning">{{ warn }}</div>{% endif %}
 <div class="alert {{ 'alert-danger' if not worker.alive else 'alert-info' }} d-flex justify-content-between flex-wrap gap-2">
 <div><strong>{{ market[1] }}</strong> &middot; {{ explain }}</div>
 <div class="d-flex gap-2">
 <form method="post" action="/control"><input type="hidden" name="csrf" value="{{ csrf() }}"><input type="hidden" name="action" value="scan"><button class="btn btn-sm btn-primary">Scan now{{ '' if market[0]=='OPEN' else ' (analysis only)' }}</button></form>
 <form method="post" action="/control"><input type="hidden" name="csrf" value="{{ csrf() }}"><input type="hidden" name="action" value="{{ 'pause' if ctl.enabled else 'resume' }}"><button class="btn btn-sm {{ 'btn-outline-danger' if ctl.enabled else 'btn-success' }}">{{ 'Pause trading' if ctl.enabled else 'Resume trading' }}</button></form></div></div>
-<div class="row g-3 mb-3">
-{% for label,val in [('Open positions',stats.open),('Realised P&L today','Rs '+('%.2f'|format(stats.realized))),('Scans today',stats.scans),('Stocks checked today',stats.evaluated),('Signals today',stats.signals),('Buys / sells today',stats.buys~' / '~stats.sells)] %}
-<div class="col-6 col-md-2"><div class="card h-100"><div class="card-body"><div class="text-muted small">{{ label }}</div><div class="display-6">{{ val }}</div></div></div></div>{% endfor %}</div>
-<div class="row g-3"><div class="col-lg-7"><div class="card mb-3"><div class="card-header">Open paper positions</div><div class="table-responsive"><table class="table table-sm mb-0">
-<tr><th>Symbol</th><th>Qty</th><th>Buy</th><th>Now</th><th>P&amp;L</th><th>Stop</th><th>Target 1</th></tr>
-{% for p in positions %}<tr><td><a href="/symbol/{{ p.symbol }}">{{ p.symbol }}</a></td><td>{{ p.quantity }}</td><td>{{ p.buy_price|inr }}</td><td>{{ p.price|inr }}</td>
-<td class="{{ 'text-success' if p.pnl and p.pnl>0 else 'text-danger' if p.pnl else '' }}">{{ p.pnl|inr if p.pnl is not none else '-' }}{% if p.pnl_pct is not none %} ({{ '%+.1f'|format(p.pnl_pct) }}%){% endif %}</td><td>{{ p.stop_loss|inr }}</td><td>{{ p.target1|inr }}</td></tr>
-{% else %}<tr><td colspan="7" class="text-muted p-3">No open positions.</td></tr>{% endfor %}</table></div></div>
-<div class="card"><div class="card-header">Recent scans <a class="float-end small" href="/scans">all</a></div><div class="table-responsive"><table class="table table-sm mb-0">
-<tr><th>When</th><th>Mode</th><th>Checked</th><th>Watch</th><th>Signals</th><th>Bought</th><th>Status</th></tr>
-{% for r in runs %}<tr><td><a href="/scans/{{ r.scan_id }}">{{ r.started }}</a></td><td>{{ r.mode }}</td><td>{{ r.evaluated }}</td><td>{{ r.watch }}</td><td>{{ r.signals }}</td><td>{{ r.buys }}</td><td>{{ r.status }}{{ ': '+r.note if r.note }}</td></tr>
-{% else %}<tr><td colspan="7" class="text-muted p-3">No scans yet. Press "Scan now" to try one.</td></tr>{% endfor %}</table></div></div></div>
-<div class="col-lg-5"><div class="card"><div class="card-header">Closest to a signal <a class="float-end small" href="/watchlist">all</a></div><div class="table-responsive"><table class="table table-sm mb-0">
-<tr><th>Symbol</th><th>Score</th><th>Price</th></tr>
-{% for w in watch %}<tr><td><a href="/symbol/{{ w.symbol }}">{{ w.symbol }}</a></td><td>{{ w.score }}</td><td>{{ w.price }}</td></tr>
-{% else %}<tr><td colspan="3" class="text-muted p-3">Nothing is close right now.</td></tr>{% endfor %}</table></div></div>
+{{ m.summary(acct) }}
+<div class="row g-3 mb-3">{% for label,val in [('Realised P&L today','Rs '+('%.2f'|format(stats.realized))),('Scans today',stats.scans),('Stocks checked today',stats.evaluated),('Signals today',stats.signals),('Buys / sells today',stats.buys~' / '~stats.sells),('Exit signals today',stats.exit_signals)] %}
+<div class="col-6 col-md-2"><div class="card h-100"><div class="card-body py-2"><div class="text-muted small">{{ label }}</div><div class="fs-5">{{ val }}</div></div></div></div>{% endfor %}</div>
+<h5>Open positions <a class="small" href="/positions">details</a></h5>{{ m.postable(positions) }}
+<h5>Recently sold <a class="small" href="/history">all closed</a></h5>
+<div class="card mb-3"><div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Sold</th><th>Symbol</th><th>Strategy</th><th>Qty</th><th>Buy</th><th>Sell</th><th>Realized P&amp;L</th><th>%</th><th class="reason">Reason</th></tr>
+{% for c in closed %}<tr><td>{{ c.sold_time }}</td><td>{{ c.symbol }}</td><td>{{ m.strat(c.strategy) }}</td><td>{{ c.qty }}</td><td>{{ c.buy_price }}</td><td>{{ c.sold_price }}</td><td class="{{ c.pnl|tone }}">{{ c.pnl|inr }}</td><td class="{{ c.pnl_pct|tone }}">{{ c.pnl_pct|pct }}</td><td class="reason">{{ c.reason }}</td></tr>
+{% else %}<tr><td colspan="9" class="p-3 text-muted">No sold positions yet.</td></tr>{% endfor %}</table></div></div>
+<div class="row g-3"><div class="col-lg-7"><div class="card"><div class="card-header">Recent scans <a class="float-end small" href="/scans">all</a></div><div class="table-responsive"><table class="table table-sm mb-0">
+<tr><th>When</th><th>Mode</th><th>Checked</th><th>Watch</th><th>Signals</th><th>Bought</th><th>Positions</th><th>Status</th></tr>
+{% for r in runs %}<tr><td><a href="/scans/{{ r.scan_id }}">{{ r.started }}</a></td><td>{{ r.mode }}</td><td>{{ r.evaluated }}</td><td>{{ r.watch }}</td><td>{{ r.signals }}</td><td>{{ r.buys }}</td><td>{{ r.positions_checked or '-' }}{% if r.warnings and r.warnings!='0' %} / {{ r.warnings }}w{% endif %}</td><td>{{ r.status }}{{ ': '+r.note if r.note }}</td></tr>
+{% else %}<tr><td colspan="8" class="text-muted p-3">No scans yet.</td></tr>{% endfor %}</table></div></div></div>
+<div class="col-lg-5"><div class="card"><div class="card-header">Closest to a signal <a class="float-end small" href="/watchlist">all</a></div><div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Symbol</th><th>Score</th><th>Price</th></tr>
+{% for w in watch %}<tr><td><a href="/analyze?q={{ w.symbol }}">{{ w.symbol }}</a></td><td>{{ w.score }}</td><td>{{ w.price }}</td></tr>{% else %}<tr><td colspan="3" class="text-muted p-3">Nothing is close right now.</td></tr>{% endfor %}</table></div></div>
 <p class="small text-muted mt-2">Worker: {{ 'running' if worker.alive else 'NOT running' }}{{ ' &middot; last heartbeat '~worker.heartbeat if worker.heartbeat }}</p></div></div>{% endblock %}

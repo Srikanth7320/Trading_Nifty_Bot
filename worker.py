@@ -5,6 +5,8 @@ import time
 from datetime import timedelta
 
 import config
+import outlook
+import pnl
 import portfolio
 import providers
 import reports
@@ -53,10 +55,26 @@ def morning_check(state):
 def end_of_day(state):
     if config.is_trading_day(config.now_ist().date()):
         scanner.manage_positions(mode="ANALYSIS", notify=False)  # refresh closing prices only
+        try:
+            pnl.snapshot()   # end-of-day P&L row (realized + unrealized) for the performance history
+        except Exception as exc:
+            store.append_text("scan_journal.txt", f"!! EOD snapshot failed: {type(exc).__name__}: {str(exc)[:160]}")
         txt = reports.daily_summary_text()
         store.append_text("scan_journal.txt", f"---- {config.now_ist():%Y-%m-%d} END OF DAY ----")
         if config.TELEGRAM_SCAN_SUMMARY != "off":
             tg.send(txt)
+
+
+def run_outlook(kind):
+    """Generate + persist the next-session outlook and send a short Telegram note. Failures never stop the worker."""
+    try:
+        o = outlook.generate()
+        store.append_text("scan_journal.txt", f"---- {config.now_ist():%Y-%m-%d %H:%M} {kind} outlook for {o['for_session']}: market {o['market']['direction']} "
+                          f"({o['market']['confidence']} confidence); attention: {', '.join(o['attention']) or 'none'}")
+        if tg.enabled():
+            tg.send(reports.outlook_text())
+    except Exception as exc:
+        store.append_text("scan_journal.txt", f"!! outlook failed: {type(exc).__name__}: {str(exc)[:200]}")
 
 
 def main():
@@ -92,6 +110,13 @@ def main():
                 nxt = (config.now_ist() + timedelta(seconds=max(0, config.SCAN_INTERVAL_MIN * 60 - (time.time() - state["last_scan"])))).strftime("%H:%M")
             elif hhmm >= "15:45" and status == "CLOSED" and once(day, "eod"):
                 end_of_day(state)
+            if hhmm >= config.OUTLOOK_EVENING.strftime("%H:%M") and config.is_trading_day(now.date()) and status == "CLOSED" and once(day, "outlook_evening"):
+                run_outlook("evening")
+            elif config.OUTLOOK_MORNING.strftime("%H:%M") <= hhmm < "09:15" and config.is_trading_day(now.date()) and once(day, "outlook_morning"):
+                run_outlook("morning")
+            if store.pop_task("outlook"):
+                beat("outlook")
+                run_outlook("manual")
             if store.pop_scan_request():
                 beat("manual scan")
                 scanner.run_scan("manual")

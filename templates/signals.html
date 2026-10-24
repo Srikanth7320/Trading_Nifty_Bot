@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block body %}<h4>Signal log</h4>
+<form class="row g-2 mb-3" method="get"><div class="col-auto"><input class="form-control form-control-sm" name="symbol" placeholder="Symbol" value="{{ sym }}"></div>
+<div class="col-auto"><select class="form-select form-select-sm" name="event"><option value="">All events</option>{% for e in ['NEW_BUY_OPPORTUNITY','CONTINUE_HOLDING','HOLD_WITH_WARNING','EXIT_RECOMMENDED','STOP_LOSS_TRIGGERED','TARGET_ACHIEVED','POSITION_CLOSED','PARTIAL_EXIT'] %}<option value="{{ e }}" {{ 'selected' if e==ev }}>{{ e|nice }}</option>{% endfor %}</select></div><div class="col-auto"><button class="btn btn-sm btn-primary">Filter</button></div></form>
+<p class="text-muted small">Every new-buy opportunity, hold, warning, exit recommendation, stop/target and closed position with the reason (file: data/signal_log.csv).</p>
+<div class="card"><div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Time</th><th>Symbol</th><th>Event</th><th>Strategy</th><th>Price</th><th>P&amp;L %</th><th>Thesis</th><th class="reason">Reason</th></tr>
+{% for r in rows %}<tr><td>{{ r.time }}</td><td><a href="/analyze?q={{ r.symbol }}">{{ r.symbol }}</a></td><td class="st-{{ r.event }}">{{ r.event|nice }}</td><td>{{ r.strategy|nice }}</td><td>{{ r.price }}</td><td>{{ r.pnl_pct }}</td><td>{{ r.thesis_valid }}</td><td class="reason">{{ r.detail }}</td></tr>
+{% else %}<tr><td colspan="8" class="p-3 text-muted">No entries.</td></tr>{% endfor %}</table></div></div>{% endblock %}

@@ -1,956 +1,443 @@
 {
- "MANAKCOAT": {
-  "score": 64,
-  "price": 129.03,
-  "reason": "Score 64/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 129.03 vs 20-day high 138.89); Strength (39% of 52-week range); MACD positive and strengthening (histogram -0.214 (prev -0.431))",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 55.3,
-  "prior_20d_high": 138.89
+ "INDHOTEL": {
+  "score": 80,
+  "price": 774.15,
+  "reason": "Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 774.15 vs 20-day high 794.65); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:00",
+  "rsi": 65.6,
+  "prior_20d_high": 794.65
  },
- "MANBA": {
-  "score": 63,
-  "price": 143.83,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 143.83 vs 20-day high 151.00); Volume confirmation (0.52x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram 0.130 (prev 0.141))",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 59.9,
-  "prior_20d_high": 151.0
+ "INFY": {
+  "score": 66,
+  "price": 1163.8,
+  "reason": "Score 66/100 - no breakout above the 20-day high yet; weakest: Strength (25% of 52-week range); Breakout above the prior 20-day high (price 1163.80 vs 20-day high 1174.50); Trend (price 1163.80, EMA20 1080.92, SMA50 1085.84)",
+  "date": "2026-10-23",
+  "time": "14:00",
+  "rsi": 63.8,
+  "prior_20d_high": 1174.5
  },
- "MANOMAY": {
-  "score": 78,
-  "price": 248.53,
-  "reason": "Score 78/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 248.53 vs 20-day high 251.00); Volume confirmation (1.21x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 60.9,
-  "prior_20d_high": 251.0
+ "KROSS": {
+  "score": 80,
+  "price": 303.0,
+  "reason": "Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 303.00 vs 20-day high 326.40); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:00",
+  "rsi": 65.2,
+  "prior_20d_high": 326.4
  },
- "MARKOLINES": {
+ "LTTS": {
   "score": 58,
-  "price": 176.99,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 176.99 vs 20-day high 182.25); Volume confirmation (0.64x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 58.7,
-  "prior_20d_high": 182.25
+  "price": 3909.5,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 3909.50 vs 20-day high 4143.00); RSI in the 55-68 sweet spot (RSI 72.1); Strength (52% of 52-week range)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 72.1,
+  "prior_20d_high": 4143.0
+ },
+ "MASTEK": {
+  "score": 55,
+  "price": 1788.2,
+  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1788.20 vs 20-day high 1888.00); Volume confirmation (0.99x - today so far vs 20-day avg (pace-adjusted, 80% of day)); Strength (44% of 52-week range)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 66.4,
+  "prior_20d_high": 1888.0
  },
  "MAWANASUG": {
   "score": 58,
-  "price": 168.0,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.3x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 168.00 vs 20-day high 189.50); Volume confirmation (0.26x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 63.6,
+  "price": 160.62,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 160.62 vs 20-day high 189.50); Volume confirmation (0.15x - today so far vs 20-day avg (pace-adjusted, 80% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 62.3,
   "prior_20d_high": 189.5
  },
- "MUFIN": {
-  "score": 80,
-  "price": 138.93,
-  "reason": "Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 138.93 vs 20-day high 143.50); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 64.1,
-  "prior_20d_high": 143.5
- },
- "MVGJL": {
-  "score": 75,
-  "price": 236.8,
-  "reason": "Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 236.80 vs 20-day high 244.00); RSI in the 55-68 sweet spot (RSI 70.9); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 70.9,
-  "prior_20d_high": 244.0
+ "MPHASIS": {
+  "score": 66,
+  "price": 2492.4,
+  "reason": "Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2492.40 vs 20-day high 2601.40); Strength (50% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 61.7,
+  "prior_20d_high": 2601.4
  },
  "NAZARA": {
-  "score": 61,
-  "price": 408.25,
-  "reason": "Score 61/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 408.25 vs 20-day high 419.90); Volume confirmation (0.61x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 62.0,
+  "score": 60,
+  "price": 397.5,
+  "reason": "Score 60/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 397.50 vs 20-day high 419.90); MACD positive and strengthening (histogram -0.345 (prev 1.084)); Momentum (EMA9 397.42 vs EMA20 390.29)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 51.3,
   "prior_20d_high": 419.9
  },
- "NELCAST": {
-  "score": 56,
-  "price": 129.54,
-  "reason": "Score 56/100 - no breakout above the 20-day high yet; volume only 0.3x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 129.54 vs 20-day high 150.84); Volume confirmation (0.32x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Strength (50% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 58.1,
-  "prior_20d_high": 150.84
- },
- "NITINSPIN": {
-  "score": 75,
-  "price": 636.0,
-  "reason": "Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 636.00 vs 20-day high 667.00); Volume confirmation (1.21x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 58.6,
-  "prior_20d_high": 667.0
- },
- "NYKAA": {
-  "score": 61,
-  "price": 337.4,
-  "reason": "Score 61/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 337.40 vs 20-day high 348.40); Volume confirmation (0.67x - today so far vs 20-day avg (pace-adjusted, 12% of day)); RSI in the 55-68 sweet spot (RSI 50.7)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 50.7,
-  "prior_20d_high": 348.4
+ "NUVOCO": {
+  "score": 70,
+  "price": 334.45,
+  "reason": "Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 334.45 vs 20-day high 353.50); Strength (37% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 55.5,
+  "prior_20d_high": 353.5
  },
  "OAL": {
-  "score": 55,
-  "price": 620.15,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.8x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 620.15 vs 20-day high 639.00); Volume confirmation (0.82x - today so far vs 20-day avg (pace-adjusted, 12% of day)); RSI in the 55-68 sweet spot (RSI 74.5)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 74.5,
+  "score": 58,
+  "price": 574.15,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 574.15 vs 20-day high 639.00); Volume confirmation (0.64x - today so far vs 20-day avg (pace-adjusted, 80% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 62.9,
   "prior_20d_high": 639.0
  },
- "ONEPOINT": {
-  "score": 56,
-  "price": 80.73,
-  "reason": "Score 56/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); RSI 83 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 80.73 vs 20-day high 87.60); Volume confirmation (0.46x - today so far vs 20-day avg (pace-adjusted, 12% of day)); RSI in the 55-68 sweet spot (RSI 83.4)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 83.4,
-  "prior_20d_high": 87.6
- },
- "ONWARDTEC": {
-  "score": 70,
-  "price": 458.2,
-  "reason": "Score 70/100 - no breakout above the 20-day high yet; RSI 90 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 458.20 vs 20-day high 495.65); RSI in the 55-68 sweet spot (RSI 89.7); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 89.7,
-  "prior_20d_high": 495.65
+ "OMNI": {
+  "score": 77,
+  "price": 636.85,
+  "reason": "Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 636.85 vs 20-day high 704.40); Tight consolidation before the move (recent daily ranges narrower than before); Strength (78% of 52-week range)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 65.7,
+  "prior_20d_high": 704.4
  },
  "ORIENTHOT": {
-  "score": 75,
-  "price": 148.17,
-  "reason": "Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 148.17 vs 20-day high 153.92); Volume confirmation (1.28x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 62.1,
-  "prior_20d_high": 153.92
- },
- "PARACABLES": {
-  "score": 70,
-  "price": 65.29,
-  "reason": "Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 65.29 vs 20-day high 67.30); Trend (price 65.29, EMA20 59.07, SMA50 61.86); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 66.4,
-  "prior_20d_high": 67.3
+  "score": 80,
+  "price": 151.58,
+  "reason": "Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 151.58 vs 20-day high 156.00); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 66.9,
+  "prior_20d_high": 156.0
  },
  "PASHUPATI": {
-  "score": 71,
-  "price": 93.85,
-  "reason": "Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 93.85 vs 20-day high 111.26); Trend (price 93.85, EMA20 78.32, SMA50 81.00); Strength (52% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 63.9,
+  "score": 72,
+  "price": 104.15,
+  "reason": "Score 72/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 104.15 vs 20-day high 111.26); RSI in the 55-68 sweet spot (RSI 71.4); Volume confirmation (1.25x - today so far vs 20-day avg (pace-adjusted, 80% of day))",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 71.4,
   "prior_20d_high": 111.26
  },
  "PCJEWELLER": {
-  "score": 85,
-  "price": 18.72,
-  "reason": "Score 85/100 - RSI 78 overheated (limit 75); weakest: RSI in the 55-68 sweet spot (RSI 77.6); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 77.6,
-  "prior_20d_high": 18.65
- },
- "PETRONET": {
-  "score": 81,
-  "price": 298.25,
-  "reason": "Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 298.25 vs 20-day high 299.60); Strength (69% of 52-week range); MACD positive and strengthening (histogram 0.375 (prev 0.417))",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 55.0,
-  "prior_20d_high": 299.6
+  "score": 67,
+  "price": 17.45,
+  "reason": "Score 67/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 17.45 vs 20-day high 20.10); RSI in the 55-68 sweet spot (RSI 74.3); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 74.3,
+  "prior_20d_high": 20.1
  },
  "PNB": {
-  "score": 80,
-  "price": 124.08,
-  "reason": "Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 124.08 vs 20-day high 125.22); Strength (70% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 63.1,
+  "score": 62,
+  "price": 119.93,
+  "reason": "Score 62/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 119.93 vs 20-day high 125.22); Volume confirmation (1.07x - today so far vs 20-day avg (pace-adjusted, 80% of day)); Strength (58% of 52-week range)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 64.0,
   "prior_20d_high": 125.22
  },
  "PNGSREVA": {
   "score": 58,
-  "price": 660.65,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.3x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 660.65 vs 20-day high 738.00); Volume confirmation (0.26x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "09:45",
-  "rsi": 66.0,
+  "price": 640.75,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 640.75 vs 20-day high 738.00); Volume confirmation (0.22x - today so far vs 20-day avg (pace-adjusted, 80% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:15",
+  "rsi": 60.3,
   "prior_20d_high": 738.0
  },
  "PREMEXPLN": {
-  "score": 81,
-  "price": 693.45,
-  "reason": "Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 693.45 vs 20-day high 694.55); Strength (70% of 52-week range); MACD positive and strengthening (histogram 0.499 (prev 0.523))",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 67.3,
-  "prior_20d_high": 694.55
- },
- "PRINCEPIPE": {
-  "score": 66,
-  "price": 275.0,
-  "reason": "Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 275.00 vs 20-day high 284.50); Trend (price 275.00, EMA20 266.06, SMA50 272.93); Strength (54% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 57.8,
-  "prior_20d_high": 284.5
+  "score": 74,
+  "price": 685.7,
+  "reason": "Score 74/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 685.70 vs 20-day high 695.00); Strength (68% of 52-week range); MACD positive and strengthening (histogram 0.256 (prev 0.390))",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 66.6,
+  "prior_20d_high": 695.0
  },
  "PVRINOX": {
   "score": 66,
-  "price": 1403.8,
-  "reason": "Score 66/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1403.80 vs 20-day high 1432.00); Volume confirmation (0.65x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram 10.001 (prev 11.010))",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 64.0,
-  "prior_20d_high": 1432.0
- },
- "RATNAVEER": {
-  "score": 59,
-  "price": 343.1,
-  "reason": "Score 59/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 343.10 vs 20-day high 358.80); Volume confirmation (0.89x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram -1.912 (prev -2.815))",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 63.4,
-  "prior_20d_high": 358.8
- },
- "SAMBHV": {
-  "score": 55,
-  "price": 164.92,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 164.92 vs 20-day high 175.50); Volume confirmation (0.68x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram -0.307 (prev -0.131))",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 61.9,
-  "prior_20d_high": 175.5
- },
- "SANATHAN": {
-  "score": 73,
-  "price": 525.0,
-  "reason": "Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 525.00 vs 20-day high 594.15); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 2.595 (prev 3.011))",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 64.1,
-  "prior_20d_high": 594.15
+  "price": 1388.4,
+  "reason": "Score 66/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1388.40 vs 20-day high 1458.00); Volume confirmation (0.47x - today so far vs 20-day avg (pace-adjusted, 84% of day)); MACD positive and strengthening (histogram 8.520 (prev 9.530))",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 65.8,
+  "prior_20d_high": 1458.0
  },
  "SAREGAMA": {
-  "score": 65,
-  "price": 505.55,
-  "reason": "Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 505.55 vs 20-day high 518.65); Trend (price 505.55, EMA20 499.23, SMA50 501.73); RSI in the 55-68 sweet spot (RSI 54.9)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 54.9,
+  "score": 58,
+  "price": 490.4,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 490.40, EMA20 500.29, SMA50 501.55); Breakout above the prior 20-day high (price 490.40 vs 20-day high 518.65); Strength (69% of 52-week range)",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 55.0,
   "prior_20d_high": 518.65
  },
  "SBC": {
-  "score": 56,
-  "price": 63.85,
-  "reason": "Score 56/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); RSI 82 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 63.85 vs 20-day high 66.35); Volume confirmation (0.64x - today so far vs 20-day avg (pace-adjusted, 12% of day)); RSI in the 55-68 sweet spot (RSI 81.7)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 81.7,
+  "score": 60,
+  "price": 61.1,
+  "reason": "Score 60/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 61.10 vs 20-day high 66.35); Volume confirmation (0.51x - today so far vs 20-day avg (pace-adjusted, 84% of day)); MACD positive and strengthening (histogram -0.389 (prev -0.170))",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 67.8,
   "prior_20d_high": 66.35
  },
- "SHANTIGOLD": {
-  "score": 55,
-  "price": 406.1,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); RSI 79 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 406.10 vs 20-day high 437.60); Volume confirmation (0.92x - today so far vs 20-day avg (pace-adjusted, 12% of day)); RSI in the 55-68 sweet spot (RSI 79.4)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 79.4,
-  "prior_20d_high": 437.6
+ "SGMART": {
+  "score": 56,
+  "price": 772.0,
+  "reason": "Score 56/100 - no breakout above the 20-day high yet; RSI 48 too weak (need 50+); weakest: Breakout above the prior 20-day high (price 772.00 vs 20-day high 842.00); RSI in the 55-68 sweet spot (RSI 48.4); Trend (price 772.00, EMA20 759.76, SMA50 766.95)",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 48.4,
+  "prior_20d_high": 842.0
  },
- "SHREEJISPG": {
-  "score": 71,
-  "price": 807.4,
-  "reason": "Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 807.40 vs 20-day high 847.40); RSI in the 55-68 sweet spot (RSI 69.1); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 69.1,
-  "prior_20d_high": 847.4
- },
- "SHYAMMETL": {
-  "score": 70,
-  "price": 1205.8,
-  "reason": "Score 70/100 - no breakout above the 20-day high yet; RSI 77 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1205.80 vs 20-day high 1240.50); RSI in the 55-68 sweet spot (RSI 77.1); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 77.1,
-  "prior_20d_high": 1240.5
- },
- "SIMPLEXINF": {
-  "score": 72,
-  "price": 272.45,
-  "reason": "Score 72/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 272.45 vs 20-day high 294.65); RSI in the 55-68 sweet spot (RSI 69.4); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 69.4,
-  "prior_20d_high": 294.65
+ "SHRINGARMS": {
+  "score": 58,
+  "price": 288.38,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 288.38 vs 20-day high 335.48); Volume confirmation (0.13x - today so far vs 20-day avg (pace-adjusted, 84% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 66.4,
+  "prior_20d_high": 335.48
  },
  "SINGERIND": {
-  "score": 67,
-  "price": 90.01,
-  "reason": "Score 67/100 - no breakout above the 20-day high yet; RSI 77 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 90.01 vs 20-day high 96.44); RSI in the 55-68 sweet spot (RSI 77.5); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 77.5,
+  "score": 61,
+  "price": 86.0,
+  "reason": "Score 61/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 86.00 vs 20-day high 96.44); Volume confirmation (0.94x - today so far vs 20-day avg (pace-adjusted, 84% of day)); RSI in the 55-68 sweet spot (RSI 71.6)",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 71.6,
   "prior_20d_high": 96.44
  },
- "SIRCA": {
-  "score": 63,
-  "price": 428.5,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 428.50 vs 20-day high 441.40); Strength (28% of 52-week range); Trend (price 428.50, EMA20 417.37, SMA50 425.21)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 63.4,
-  "prior_20d_high": 441.4
- },
  "SKYGOLD": {
-  "score": 66,
-  "price": 1057.45,
-  "reason": "Score 66/100 - no breakout above the 20-day high yet; RSI 75 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1057.45 vs 20-day high 1081.40); RSI in the 55-68 sweet spot (RSI 75.3); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 75.3,
-  "prior_20d_high": 1081.4
+  "score": 55,
+  "price": 1058.25,
+  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); RSI 76 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1058.25 vs 20-day high 1083.95); Volume confirmation (1.11x - today so far vs 20-day avg (pace-adjusted, 84% of day)); RSI in the 55-68 sweet spot (RSI 76.0)",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 76.0,
+  "prior_20d_high": 1083.95
  },
- "SPORTKING": {
+ "SOUTHBANK": {
   "score": 56,
-  "price": 211.97,
-  "reason": "Score 56/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 211.97 vs 20-day high 231.66); Trend (price 211.97, EMA20 211.06, SMA50 212.53); RSI in the 55-68 sweet spot (RSI 54.9)",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 54.9,
-  "prior_20d_high": 231.66
- },
- "SSWL": {
-  "score": 64,
-  "price": 407.35,
-  "reason": "Score 64/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 407.35 vs 20-day high 434.00); Volume confirmation (1.05x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram -2.094 (prev -1.814))",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 60.5,
-  "prior_20d_high": 434.0
- },
- "STOVEKRAFT": {
-  "score": 76,
-  "price": 847.9,
-  "reason": "Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 847.90 vs 20-day high 884.55); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 3.984 (prev 4.078))",
-  "date": "2026-10-21",
-  "time": "10:00",
-  "rsi": 57.6,
-  "prior_20d_high": 884.55
- },
- "SUNTV": {
-  "score": 58,
-  "price": 634.8,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 634.80 vs 20-day high 673.95); Volume confirmation (0.18x - today so far vs 20-day avg (pace-adjusted, 16% of day)); RSI in the 55-68 sweet spot (RSI 69.4)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 69.4,
-  "prior_20d_high": 673.95
- },
- "SUPREMEIND": {
-  "score": 64,
-  "price": 3613.1,
-  "reason": "Score 64/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 3613.10 vs 20-day high 3653.00); Volume confirmation (0.90x - today so far vs 20-day avg (pace-adjusted, 16% of day)); Strength (41% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 58.6,
-  "prior_20d_high": 3653.0
+  "price": 52.37,
+  "reason": "Score 56/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); RSI 77 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 52.37 vs 20-day high 56.25); Volume confirmation (1.00x - today so far vs 20-day avg (pace-adjusted, 84% of day)); RSI in the 55-68 sweet spot (RSI 77.0)",
+  "date": "2026-10-23",
+  "time": "14:30",
+  "rsi": 77.0,
+  "prior_20d_high": 56.25
  },
  "TANLA": {
-  "score": 62,
-  "price": 577.85,
-  "reason": "Score 62/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 577.85 vs 20-day high 585.00); Trend (price 577.85, EMA20 520.86, SMA50 530.41); Strength (59% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 62.6,
-  "prior_20d_high": 585.0
- },
- "TARIL": {
-  "score": 61,
-  "price": 325.9,
-  "reason": "Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 325.90 vs 20-day high 360.80); Strength (37% of 52-week range); Volume confirmation (1.27x - today so far vs 20-day avg (pace-adjusted, 16% of day))",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 62.8,
-  "prior_20d_high": 360.8
- },
- "TATAELXSI": {
-  "score": 55,
-  "price": 3836.8,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; weakest: Long-term trend (150-day average 3866.58); Strength (28% of 52-week range); Breakout above the prior 20-day high (price 3836.80 vs 20-day high 3867.20)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 70.1,
-  "prior_20d_high": 3867.2
+  "score": 57,
+  "price": 561.55,
+  "reason": "Score 57/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 561.55 vs 20-day high 597.50); Volume confirmation (0.97x - today so far vs 20-day avg (pace-adjusted, 88% of day)); Strength (54% of 52-week range)",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 69.7,
+  "prior_20d_high": 597.5
  },
  "TCS": {
-  "score": 68,
-  "price": 2515.5,
-  "reason": "Score 68/100 - score below 70; weakest: RSI in the 55-68 sweet spot (RSI 73.0); Strength (39% of 52-week range); Trend (price 2515.50, EMA20 2228.80, SMA50 2243.38)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 73.0,
-  "prior_20d_high": 2497.0
+  "score": 66,
+  "price": 2534.8,
+  "reason": "Score 66/100 - score below 70; weakest: RSI in the 55-68 sweet spot (RSI 73.1); Strength (41% of 52-week range); Volume confirmation (1.26x - today so far vs 20-day avg (pace-adjusted, 88% of day))",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 73.1,
+  "prior_20d_high": 2533.3
+ },
+ "TECHM": {
+  "score": 55,
+  "price": 1794.0,
+  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); RSI 76 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1794.00 vs 20-day high 1844.10); Volume confirmation (0.88x - today so far vs 20-day avg (pace-adjusted, 88% of day)); RSI in the 55-68 sweet spot (RSI 75.9)",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 75.9,
+  "prior_20d_high": 1844.1
  },
  "TEXINFRA": {
-  "score": 65,
-  "price": 125.34,
-  "reason": "Score 65/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 125.34 vs 20-day high 130.78); Volume confirmation (0.57x - today so far vs 20-day avg (pace-adjusted, 16% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 64.5,
+  "score": 58,
+  "price": 118.63,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 118.63, EMA20 121.03, SMA50 115.96); Breakout above the prior 20-day high (price 118.63 vs 20-day high 130.78); RSI in the 55-68 sweet spot (RSI 53.3)",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 53.3,
   "prior_20d_high": 130.78
  },
- "TFCILTD": {
-  "score": 76,
-  "price": 151.82,
-  "reason": "Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 151.82 vs 20-day high 161.95); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 0.768 (prev 0.999))",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 64.9,
-  "prior_20d_high": 161.95
- },
- "THELEELA": {
-  "score": 61,
-  "price": 602.0,
-  "reason": "Score 61/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 602.00 vs 20-day high 650.40); Volume confirmation (0.98x - today so far vs 20-day avg (pace-adjusted, 16% of day)); RSI in the 55-68 sweet spot (RSI 69.0)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 69.0,
-  "prior_20d_high": 650.4
- },
  "TIPSMUSIC": {
-  "score": 75,
-  "price": 754.6,
-  "reason": "Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 754.60 vs 20-day high 785.00); RSI in the 55-68 sweet spot (RSI 69.8); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 69.8,
+  "score": 58,
+  "price": 714.35,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.4x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 714.35 vs 20-day high 785.00); Volume confirmation (0.38x - today so far vs 20-day avg (pace-adjusted, 88% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 57.8,
   "prior_20d_high": 785.0
  },
- "UNIONBANK": {
-  "score": 63,
-  "price": 182.14,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; weakest: Momentum (EMA9 173.95 vs EMA20 174.34); Breakout above the prior 20-day high (price 182.14 vs 20-day high 182.99); Trend (price 182.14, EMA20 174.34, SMA50 179.80)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 58.4,
-  "prior_20d_high": 182.99
- },
  "UNITEDPOLY": {
-  "score": 55,
-  "price": 51.39,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); RSI 78 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 51.39 vs 20-day high 54.99); Volume confirmation (0.57x - today so far vs 20-day avg (pace-adjusted, 16% of day)); RSI in the 55-68 sweet spot (RSI 77.8)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 77.8,
+  "score": 63,
+  "price": 48.69,
+  "reason": "Score 63/100 - no breakout above the 20-day high yet; volume only 0.3x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 48.69 vs 20-day high 54.99); Volume confirmation (0.25x - today so far vs 20-day avg (pace-adjusted, 88% of day)); MACD positive and strengthening (histogram 0.007 (prev 0.147))",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 64.0,
   "prior_20d_high": 54.99
  },
  "UTTAMSUGAR": {
-  "score": 62,
-  "price": 358.0,
-  "reason": "Score 62/100 - no breakout above the 20-day high yet; volume only 1.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 358.00 vs 20-day high 401.00); Volume confirmation (1.19x - today so far vs 20-day avg (pace-adjusted, 16% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 65.8,
+  "score": 58,
+  "price": 349.55,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.4x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 349.55 vs 20-day high 401.00); Volume confirmation (0.39x - today so far vs 20-day avg (pace-adjusted, 88% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 58.3,
   "prior_20d_high": 401.0
  },
- "VALIANTORG": {
-  "score": 67,
-  "price": 443.95,
-  "reason": "Score 67/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 443.95 vs 20-day high 505.00); MACD positive and strengthening (histogram -3.886 (prev -3.417)); Volume confirmation (1.22x - today so far vs 20-day avg (pace-adjusted, 16% of day))",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 62.0,
-  "prior_20d_high": 505.0
- },
- "WHEELS": {
-  "score": 59,
-  "price": 2252.9,
-  "reason": "Score 59/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 2252.90, EMA20 2265.08, SMA50 1924.74); Breakout above the prior 20-day high (price 2252.90 vs 20-day high 2515.80); MACD positive and strengthening (histogram -2.035 (prev -2.999))",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 68.3,
-  "prior_20d_high": 2515.8
- },
- "WSTCSTPAPR": {
-  "score": 58,
-  "price": 789.15,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 789.15 vs 20-day high 978.05); Volume confirmation (0.91x - today so far vs 20-day avg (pace-adjusted, 16% of day)); Strength (69% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 56.9,
-  "prior_20d_high": 978.05
- },
  "ZENSARTECH": {
-  "score": 60,
-  "price": 515.25,
-  "reason": "Score 60/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 515.25 vs 20-day high 523.70); RSI in the 55-68 sweet spot (RSI 72.9); Strength (24% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 72.9,
+  "score": 61,
+  "price": 499.95,
+  "reason": "Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 499.95 vs 20-day high 523.70); Strength (21% of 52-week range); Volume confirmation (1.30x - today so far vs 20-day avg (pace-adjusted, 88% of day))",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 65.4,
   "prior_20d_high": 523.7
  },
- "63MOONS": {
-  "score": 76,
-  "price": 920.45,
-  "reason": "Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 920.45 vs 20-day high 950.00); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 12.647 (prev 12.728))",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 63.7,
-  "prior_20d_high": 950.0
- },
  "AAREYDRUGS": {
-  "score": 55,
-  "price": 112.24,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 112.24 vs 20-day high 114.80); Volume confirmation (0.59x - today so far vs 20-day avg (pace-adjusted, 16% of day)); RSI in the 55-68 sweet spot (RSI 72.1)",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 72.1,
+  "score": 61,
+  "price": 106.75,
+  "reason": "Score 61/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 106.75 vs 20-day high 114.80); Volume confirmation (0.66x - today so far vs 20-day avg (pace-adjusted, 88% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "14:46",
+  "rsi": 63.1,
   "prior_20d_high": 114.8
  },
- "ABDL": {
-  "score": 63,
-  "price": 709.1,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; volume only 0.8x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 709.10 vs 20-day high 766.90); Volume confirmation (0.75x - today so far vs 20-day avg (pace-adjusted, 16% of day)); MACD positive and strengthening (histogram 2.017 (prev 2.557))",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 64.4,
-  "prior_20d_high": 766.9
- },
- "ADANIPORTS": {
-  "score": 55,
-  "price": 1762.7,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1762.70 vs 20-day high 1822.00); Volume confirmation (1.03x - today so far vs 20-day avg (pace-adjusted, 16% of day)); MACD positive and strengthening (histogram -3.197 (prev -4.693))",
-  "date": "2026-10-21",
-  "time": "10:15",
-  "rsi": 52.0,
-  "prior_20d_high": 1822.0
- },
- "AEROPLANE": {
-  "score": 58,
-  "price": 219.34,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 219.34 vs 20-day high 241.80); Volume confirmation (0.89x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 60.1,
-  "prior_20d_high": 241.8
- },
  "AJMERA": {
-  "score": 70,
-  "price": 124.19,
-  "reason": "Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 124.19 vs 20-day high 132.84); Strength (21% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 67.1,
+  "score": 59,
+  "price": 124.72,
+  "reason": "Score 59/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 124.72 vs 20-day high 132.84); Volume confirmation (1.00x - today so far vs 20-day avg (pace-adjusted, 92% of day)); Strength (22% of 52-week range)",
+  "date": "2026-10-23",
+  "time": "15:01",
+  "rsi": 65.5,
   "prior_20d_high": 132.84
  },
  "ALGOQUANT": {
-  "score": 71,
-  "price": 71.44,
-  "reason": "Score 71/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 71.44 vs 20-day high 75.35); Volume confirmation (1.14x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Strength (83% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 61.9,
-  "prior_20d_high": 75.35
+  "score": 69,
+  "price": 74.87,
+  "reason": "Score 69/100 - no breakout above the 20-day high yet; volume only 1.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 74.87 vs 20-day high 76.64); Volume confirmation (1.20x - today so far vs 20-day avg (pace-adjusted, 92% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "15:01",
+  "rsi": 64.5,
+  "prior_20d_high": 76.64
  },
  "ANANDRATHI": {
-  "score": 63,
-  "price": 2172.4,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2172.40 vs 20-day high 2234.70); Momentum (EMA9 2133.56 vs EMA20 2138.38); Trend (price 2172.40, EMA20 2138.38, SMA50 2167.26)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 53.9,
-  "prior_20d_high": 2234.7
+  "score": 85,
+  "price": 2235.1,
+  "reason": "Score 85/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2235.10 vs 20-day high 2241.20); Trend (price 2235.10, EMA20 2151.75, SMA50 2171.06)",
+  "date": "2026-10-23",
+  "time": "15:01",
+  "rsi": 62.1,
+  "prior_20d_high": 2241.2
  },
- "APOLLO": {
-  "score": 57,
-  "price": 404.9,
-  "reason": "Score 57/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 404.90, EMA20 407.19, SMA50 396.55); Breakout above the prior 20-day high (price 404.90 vs 20-day high 438.85); Volume confirmation (1.41x - today so far vs 20-day avg (pace-adjusted, 36% of day))",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 58.4,
-  "prior_20d_high": 438.85
- },
- "AVADHSUGAR": {
+ "ANTELOPUS": {
   "score": 56,
-  "price": 962.75,
-  "reason": "Score 56/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 962.75 vs 20-day high 1023.15); Volume confirmation (0.50x - today so far vs 20-day avg (pace-adjusted, 36% of day)); RSI in the 55-68 sweet spot (RSI 70.8)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 70.8,
-  "prior_20d_high": 1023.15
- },
- "AVTNPL": {
-  "score": 58,
-  "price": 95.18,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 95.18 vs 20-day high 108.32); Volume confirmation (0.55x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 61.9,
-  "prior_20d_high": 108.32
- },
- "BAJAJHCARE": {
-  "score": 55,
-  "price": 325.65,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 325.65, EMA20 331.30, SMA50 329.12); Breakout above the prior 20-day high (price 325.65 vs 20-day high 364.40); Strength (24% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 56.1,
-  "prior_20d_high": 364.4
+  "price": 1132.8,
+  "reason": "Score 56/100 - no breakout above the 20-day high yet; RSI 43 too weak (need 50+); weakest: Breakout above the prior 20-day high (price 1132.80 vs 20-day high 1290.90); Momentum (EMA9 1041.59 vs EMA20 1063.37); RSI in the 55-68 sweet spot (RSI 43.2)",
+  "date": "2026-10-23",
+  "time": "15:01",
+  "rsi": 43.2,
+  "prior_20d_high": 1290.9
  },
  "BHARTIARTL": {
-  "score": 63,
-  "price": 1880.9,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1880.90 vs 20-day high 1929.60); Strength (34% of 52-week range); Trend (price 1880.90, EMA20 1826.18, SMA50 1858.82)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 56.8,
+  "score": 58,
+  "price": 1882.2,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1882.20 vs 20-day high 1929.60); Strength (35% of 52-week range); Trend (price 1882.20, EMA20 1838.38, SMA50 1856.50)",
+  "date": "2026-10-23",
+  "time": "15:01",
+  "rsi": 59.2,
   "prior_20d_high": 1929.6
  },
- "BHARTIHEXA": {
-  "score": 75,
-  "price": 1663.2,
-  "reason": "Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1663.20 vs 20-day high 1665.00); Strength (51% of 52-week range); Volume confirmation (1.41x - today so far vs 20-day avg (pace-adjusted, 36% of day))",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 64.7,
-  "prior_20d_high": 1665.0
- },
- "BLUSPRING": {
-  "score": 58,
-  "price": 155.5,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.3x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 155.50 vs 20-day high 181.90); Volume confirmation (0.30x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 61.6,
-  "prior_20d_high": 181.9
- },
- "BSOFT": {
-  "score": 63,
-  "price": 317.65,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 317.65 vs 20-day high 320.95); Strength (24% of 52-week range); Trend (price 317.65, EMA20 290.34, SMA50 291.52)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 63.9,
-  "prior_20d_high": 320.95
- },
- "CANTABIL": {
-  "score": 59,
-  "price": 246.52,
-  "reason": "Score 59/100 - no breakout above the 20-day high yet; volume only 1.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 246.52 vs 20-day high 252.10); Volume confirmation (1.15x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Strength (34% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 65.1,
-  "prior_20d_high": 252.1
- },
- "CASTROLIND": {
-  "score": 56,
-  "price": 195.93,
-  "reason": "Score 56/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 195.93 vs 20-day high 203.40); Volume confirmation (0.95x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Strength (70% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 54.5,
-  "prior_20d_high": 203.4
- },
- "CEIGALL": {
-  "score": 65,
-  "price": 383.6,
-  "reason": "Score 65/100 - no breakout above the 20-day high yet; volume only 0.8x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 383.60 vs 20-day high 396.00); Volume confirmation (0.83x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 64.6,
-  "prior_20d_high": 396.0
+ "CHENNPETRO": {
+  "score": 61,
+  "price": 1484.3,
+  "reason": "Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1484.30 vs 20-day high 1628.70); MACD positive and strengthening (histogram -5.361 (prev -6.067)); Momentum (EMA9 1452.16 vs EMA20 1448.87)",
+  "date": "2026-10-23",
+  "time": "15:01",
+  "rsi": 51.1,
+  "prior_20d_high": 1628.7
  },
  "COFORGE": {
-  "score": 78,
-  "price": 1966.5,
-  "reason": "Score 78/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1966.50 vs 20-day high 1970.00); Volume confirmation (1.46x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "11:30",
-  "rsi": 59.7,
-  "prior_20d_high": 1970.0
- },
- "CUB": {
-  "score": 57,
-  "price": 227.61,
-  "reason": "Score 57/100 - no breakout above the 20-day high yet; volume only 0.4x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 227.61 vs 20-day high 237.74); Volume confirmation (0.39x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Momentum (EMA9 227.99 vs EMA20 227.14)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 53.9,
-  "prior_20d_high": 237.74
- },
- "CUPID": {
-  "score": 66,
-  "price": 337.05,
-  "reason": "Score 66/100 - no breakout above the 20-day high yet; volume only 0.4x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 337.05 vs 20-day high 368.95); Volume confirmation (0.40x - today so far vs 20-day avg (pace-adjusted, 40% of day)); MACD positive and strengthening (histogram 1.359 (prev 3.594))",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 59.4,
-  "prior_20d_high": 368.95
- },
- "CYIENT": {
-  "score": 61,
-  "price": 1167.5,
-  "reason": "Score 61/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1167.50 vs 20-day high 1224.40); Volume confirmation (0.73x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 61.4,
-  "prior_20d_high": 1224.4
+  "score": 76,
+  "price": 1898.3,
+  "reason": "Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1898.30 vs 20-day high 1986.60); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 9.977 (prev 13.849))",
+  "date": "2026-10-23",
+  "time": "15:01",
+  "rsi": 55.8,
+  "prior_20d_high": 1986.6
  },
  "DHANBANK": {
-  "score": 64,
-  "price": 34.94,
-  "reason": "Score 64/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 34.94 vs 20-day high 37.50); Volume confirmation (1.12x - today so far vs 20-day avg (pace-adjusted, 40% of day)); RSI in the 55-68 sweet spot (RSI 71.1)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 71.1,
+  "score": 61,
+  "price": 35.92,
+  "reason": "Score 61/100 - no breakout above the 20-day high yet; volume only 0.8x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 35.92 vs 20-day high 37.50); Volume confirmation (0.85x - today so far vs 20-day avg (pace-adjusted, 96% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "15:16",
+  "rsi": 63.1,
   "prior_20d_high": 37.5
  },
- "ECLERX": {
-  "score": 64,
-  "price": 1927.1,
-  "reason": "Score 64/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1927.10 vs 20-day high 2022.60); Strength (52% of 52-week range); RSI in the 55-68 sweet spot (RSI 51.9)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 51.9,
-  "prior_20d_high": 2022.6
- },
  "FEDERALBNK": {
-  "score": 55,
-  "price": 342.55,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 342.55 vs 20-day high 355.50); Volume confirmation (0.67x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Trend (price 342.55, EMA20 332.23, SMA50 340.57)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 64.4,
+  "score": 65,
+  "price": 340.5,
+  "reason": "Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 340.50 vs 20-day high 355.50); Trend (price 340.50, EMA20 334.72, SMA50 340.12); Volume confirmation (1.22x - today so far vs 20-day avg (pace-adjusted, 96% of day))",
+  "date": "2026-10-23",
+  "time": "15:16",
+  "rsi": 61.8,
   "prior_20d_high": 355.5
  },
  "FSL": {
-  "score": 56,
-  "price": 279.35,
-  "reason": "Score 56/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 279.35 vs 20-day high 300.00); Strength (46% of 52-week range); RSI in the 55-68 sweet spot (RSI 54.0)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 54.0,
+  "score": 62,
+  "price": 290.9,
+  "reason": "Score 62/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 290.90 vs 20-day high 300.00); Volume confirmation (0.96x - today so far vs 20-day avg (pace-adjusted, 96% of day)); Strength (52% of 52-week range)",
+  "date": "2026-10-23",
+  "time": "15:16",
+  "rsi": 61.7,
   "prior_20d_high": 300.0
  },
- "GABRIEL": {
-  "score": 67,
-  "price": 1414.6,
-  "reason": "Score 67/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1414.60 vs 20-day high 1557.80); Volume confirmation (0.53x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Strength (77% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 64.3,
-  "prior_20d_high": 1557.8
- },
- "GALLANTT": {
-  "score": 55,
-  "price": 581.55,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 581.55 vs 20-day high 678.85); Long-term trend (150-day average 642.00); Strength (19% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 64.1,
-  "prior_20d_high": 678.85
+ "GANDHAR": {
+  "score": 65,
+  "price": 292.7,
+  "reason": "Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 292.70 vs 20-day high 313.50); MACD positive and strengthening (histogram -1.231 (prev -1.045)); Momentum (EMA9 294.39 vs EMA20 288.30)",
+  "date": "2026-10-23",
+  "time": "15:16",
+  "rsi": 56.6,
+  "prior_20d_high": 313.5
  },
  "GCSL": {
-  "score": 55,
-  "price": 724.5,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); RSI 78 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 724.50 vs 20-day high 749.45); Volume confirmation (1.15x - today so far vs 20-day avg (pace-adjusted, 40% of day)); RSI in the 55-68 sweet spot (RSI 77.8)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 77.8,
+  "score": 60,
+  "price": 728.25,
+  "reason": "Score 60/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 728.25 vs 20-day high 749.45); MACD positive and strengthening (histogram -2.467 (prev -1.379)); RSI in the 55-68 sweet spot (RSI 68.4)",
+  "date": "2026-10-23",
+  "time": "15:16",
+  "rsi": 68.4,
   "prior_20d_high": 749.45
  },
- "GKSL": {
-  "score": 57,
-  "price": 185.7,
-  "reason": "Score 57/100 - no breakout above the 20-day high yet; volume only 0.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 185.70 vs 20-day high 209.80); Volume confirmation (0.08x - today so far vs 20-day avg (pace-adjusted, 40% of day)); MACD positive and strengthening (histogram -0.687 (prev -0.558))",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 57.2,
-  "prior_20d_high": 209.8
- },
  "GLOBAL": {
-  "score": 60,
-  "price": 139.02,
-  "reason": "Score 60/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 139.02 vs 20-day high 145.90); Volume confirmation (0.69x - today so far vs 20-day avg (pace-adjusted, 40% of day)); MACD positive and strengthening (histogram -0.659 (prev -0.403))",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 62.3,
-  "prior_20d_high": 145.9
+  "score": 55,
+  "price": 140.07,
+  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 140.07 vs 20-day high 146.50); Volume confirmation (0.67x - today so far vs 20-day avg (pace-adjusted, 96% of day)); MACD positive and strengthening (histogram -0.817 (prev -0.719))",
+  "date": "2026-10-23",
+  "time": "15:16",
+  "rsi": 63.3,
+  "prior_20d_high": 146.5
  },
  "GOODLUCK": {
-  "score": 61,
-  "price": 568.65,
-  "reason": "Score 61/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 568.65 vs 20-day high 615.00); Volume confirmation (0.58x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 66.7,
+  "score": 58,
+  "price": 546.7,
+  "reason": "Score 58/100 - no breakout above the 20-day high yet; volume only 0.4x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 546.70 vs 20-day high 615.00); Volume confirmation (0.43x - today so far vs 20-day avg (pace-adjusted, 96% of day)); Tight consolidation before the move (recent daily ranges narrower than before)",
+  "date": "2026-10-23",
+  "time": "15:16",
+  "rsi": 58.3,
   "prior_20d_high": 615.0
  },
- "HAL": {
-  "score": 59,
-  "price": 4862.0,
-  "reason": "Score 59/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 4862.00 vs 20-day high 5012.00); Volume confirmation (1.13x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Trend (price 4862.00, EMA20 4818.88, SMA50 4852.22)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 58.5,
-  "prior_20d_high": 5012.0
- },
- "HBLENGINE": {
-  "score": 59,
-  "price": 800.0,
-  "reason": "Score 59/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 800.00 vs 20-day high 842.00); Volume confirmation (1.06x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Strength (37% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 61.6,
-  "prior_20d_high": 842.0
- },
  "HCLTECH": {
-  "score": 62,
-  "price": 1403.3,
-  "reason": "Score 62/100 - volume only 1.1x average (need 1.2x); weakest: Volume confirmation (1.09x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Strength (50% of 52-week range); Trend (price 1403.30, EMA20 1282.17, SMA50 1286.81)",
-  "date": "2026-10-21",
-  "time": "11:45",
-  "rsi": 69.0,
-  "prior_20d_high": 1399.5
- },
- "HEXT": {
-  "score": 61,
-  "price": 593.0,
-  "reason": "Score 61/100 - volume only 0.5x average (need 1.2x); weakest: Volume confirmation (0.51x - today so far vs 20-day avg (pace-adjusted, 52% of day)); Strength (47% of 52-week range); RSI in the 55-68 sweet spot (RSI 68.8)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 68.8,
-  "prior_20d_high": 587.9
- },
- "HMAAGRO": {
-  "score": 55,
-  "price": 24.66,
-  "reason": "Score 55/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 24.66 vs 20-day high 26.50); Volume confirmation (0.94x - today so far vs 20-day avg (pace-adjusted, 52% of day)); Strength (37% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 58.4,
-  "prior_20d_high": 26.5
- },
- "IBULLSLTD": {
-  "score": 58,
-  "price": 31.46,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 31.46, EMA20 32.94, SMA50 29.06); Breakout above the prior 20-day high (price 31.46 vs 20-day high 38.89); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 57.9,
-  "prior_20d_high": 38.89
- },
- "ICICIBANK": {
-  "score": 57,
-  "price": 1386.2,
-  "reason": "Score 57/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1386.20 vs 20-day high 1411.80); Trend (price 1386.20, EMA20 1358.83, SMA50 1382.69); Strength (68% of 52-week range)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 54.9,
-  "prior_20d_high": 1411.8
- },
- "INDHOTEL": {
-  "score": 80,
-  "price": 750.0,
-  "reason": "Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 750.00 vs 20-day high 776.15); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 60.9,
-  "prior_20d_high": 776.15
- },
- "INFOBEAN": {
   "score": 59,
-  "price": 160.2,
-  "reason": "Score 59/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 160.20 vs 20-day high 172.40); Strength (31% of 52-week range); Trend (price 160.20, EMA20 155.21, SMA50 155.76)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 55.1,
-  "prior_20d_high": 172.4
- },
- "INFY": {
-  "score": 63,
-  "price": 1154.5,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1154.50 vs 20-day high 1167.85); Strength (23% of 52-week range); Trend (price 1154.50, EMA20 1063.33, SMA50 1086.58)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 62.5,
-  "prior_20d_high": 1167.85
- },
- "JINDALSAW": {
-  "score": 58,
-  "price": 274.75,
-  "reason": "Score 58/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 274.75, EMA20 287.60, SMA50 288.35); Breakout above the prior 20-day high (price 274.75 vs 20-day high 312.50); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 55.8,
-  "prior_20d_high": 312.5
- },
- "JUSTDIAL": {
-  "score": 68,
-  "price": 706.8,
-  "reason": "Score 68/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 706.80 vs 20-day high 802.00); Strength (57% of 52-week range); RSI in the 55-68 sweet spot (RSI 68.4)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 68.4,
-  "prior_20d_high": 802.0
- },
- "KARURVYSYA": {
-  "score": 70,
-  "price": 363.65,
-  "reason": "Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 363.65 vs 20-day high 376.25); RSI in the 55-68 sweet spot (RSI 73.2); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 73.2,
-  "prior_20d_high": 376.25
- },
- "KMEW": {
-  "score": 81,
-  "price": 3143.9,
-  "reason": "Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 3143.90 vs 20-day high 3389.40); MACD positive and strengthening (histogram 13.705 (prev 16.007))",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 63.5,
-  "prior_20d_high": 3389.4
- },
- "KOTAKBANK": {
-  "score": 63,
-  "price": 436.5,
-  "reason": "Score 63/100 - no breakout above the 20-day high yet; volume only 0.3x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 436.50 vs 20-day high 453.10); Volume confirmation (0.34x - today so far vs 20-day avg (pace-adjusted, 52% of day)); MACD positive and strengthening (histogram 1.762 (prev 2.347))",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 62.9,
-  "prior_20d_high": 453.1
- },
- "KRISHANA": {
-  "score": 64,
-  "price": 209.34,
-  "reason": "Score 64/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 209.34 vs 20-day high 215.92); Volume confirmation (0.94x - today so far vs 20-day avg (pace-adjusted, 52% of day)); RSI in the 55-68 sweet spot (RSI 69.5)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 69.5,
-  "prior_20d_high": 215.92
- },
- "KROSS": {
-  "score": 72,
-  "price": 281.65,
-  "reason": "Score 72/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 281.65 vs 20-day high 326.40); RSI in the 55-68 sweet spot (RSI 71.3); Tight consolidation before the move (recent daily ranges narrower than before)",
-  "date": "2026-10-21",
-  "time": "12:30",
-  "rsi": 71.3,
-  "prior_20d_high": 326.4
+  "price": 1418.7,
+  "reason": "Score 59/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Volume confirmation (0.95x - today so far vs 20-day avg (pace-adjusted, 96% of day)); RSI in the 55-68 sweet spot (RSI 72.7); Breakout above the prior 20-day high (price 1418.70 vs 20-day high 1427.90)",
+  "date": "2026-10-23",
+  "time": "15:16",
+  "rsi": 72.7,
+  "prior_20d_high": 1427.9
  }
 }

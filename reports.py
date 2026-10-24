@@ -3,6 +3,7 @@ import html
 from datetime import datetime
 
 import config
+import pnl
 import portfolio
 import store
 
@@ -79,22 +80,16 @@ def watchlist():
 
 
 def position_rows():
-    cache = store.read_json("quotes_cache.json", {})
-    out = []
-    for p in portfolio.positions():
-        q = cache.get(p["symbol"], {})
-        price = q.get("price")
-        pnl = (price - p["buy_price"]) * p["quantity"] if price else None
-        out.append({**p, "price": price, "quote_time": q.get("time", ""), "pnl": pnl,
-                    "pnl_pct": ((price / p["buy_price"] - 1) * 100) if price else None})
-    return out
+    """Open positions with latest cached price, P&L, strategy and monitoring state (see pnl.position_view)."""
+    return pnl.position_view()
 
 
 def today_stats():
     rs = runs(500, today_only=True)
     s = lambda k: sum(int(_f(r[k])) for r in rs)
     return {"scans": len([r for r in rs if r["status"] != "SKIPPED"]), "evaluated": s("evaluated"), "signals": s("signals"),
-            "buys": s("buys"), "sells": s("sells"), "realized": portfolio.realized_today(), "open": len(portfolio.positions())}
+            "buys": s("buys"), "sells": s("sells"), "realized": portfolio.realized_today(), "open": len(portfolio.positions()),
+            "warnings": sum(int(_f(r.get("warnings"))) for r in rs[:1]), "exit_signals": s("exit_signals")}
 
 
 # ---------------------------------------------------------------- Telegram text
@@ -103,7 +98,7 @@ def status_text():
     ctl, w = store.control(), worker_state()
     ls = last_scan()
     lines = [f"<b>Status</b>", E(txt), f"Trading: {'ON' if ctl['enabled'] else 'PAUSED'} | Worker: {'alive' if w['alive'] else 'NOT RUNNING'}",
-             f"Open positions: {len(portfolio.positions())} | Realised today: Rs{portfolio.realized_today():,.2f}"]
+             f"Open positions: {len(portfolio.positions())}/{config.MAX_OPEN_POSITIONS} | Realised today: Rs{portfolio.realized_today():,.2f}"]
     if ls:
         lines.append(f"Last scan {E(ls.get('started', ''))}: checked {ls.get('evaluated')}, watch {ls.get('watch')}, signals {ls.get('signals')}, bought {ls.get('buys')}")
     lines.append(E(explain_state()))
@@ -114,11 +109,55 @@ def positions_text():
     rows = position_rows()
     if not rows:
         return "No open paper positions."
-    out = ["<b>Open paper positions</b>"]
+    out = [f"<b>Open paper positions ({len(rows)}/{config.MAX_OPEN_POSITIONS})</b>"]
     for r in rows:
-        pnl = f" | P&amp;L Rs{r['pnl']:,.0f} ({r['pnl_pct']:+.1f}%)" if r["pnl"] is not None else ""
-        out.append(f"{E(r['symbol'])}: {r['quantity']} @ {r['buy_price']:.2f} | stop {r['stop_loss']:.2f} | T1 {r['target1']:.2f}{pnl}")
+        pnl_s = f" | P&amp;L Rs{r['pnl']:,.0f} ({r['pnl_pct']:+.1f}%)" if r["pnl"] is not None else ""
+        out.append(f"{E(r['symbol'])} [{E(r['strategy'].replace('_', '-'))}]: {r['quantity']} @ {r['buy_price']:.2f} | stop {r['stop_loss']:.2f} | T1 {r['target1']:.2f}{pnl_s} | {E(r['signal_state'].replace('_', ' ').title())}")
     return "\n".join(out)
+
+
+def pnl_text():
+    a = pnl.account()
+    return (f"<b>Portfolio (paper)</b>\nCapital Rs{a['capital']:,.0f} | available cash Rs{a['cash']:,.0f}\n"
+            f"Invested Rs{a['invested']:,.0f} | market value Rs{a['market_value']:,.0f}\n"
+            f"Unrealised P&amp;L Rs{a['unrealized']:,.2f} | Realised P&amp;L Rs{a['realized']:,.2f}\n<b>Combined Rs{a['combined']:,.2f}</b>\n"
+            f"Positions {a['open_positions']}/{a['max_positions']} (free slots {a['slots_free']}) | completed trades {a['closed_trades']}"
+            + (f"\nPrices missing for: {E(', '.join(a['prices_missing']))}" if a['prices_missing'] else ""))
+
+
+def closed_text(n=8):
+    rows = pnl.closed_positions(n)
+    if not rows:
+        return "No sold positions yet."
+    out = ["<b>Recent sold positions</b>"]
+    for c in rows:
+        out.append(f"{E(c['symbol'])} [{E(c['strategy'].replace('_', '-'))}] {c['qty']} @ {c['buy_price']} -> {c['sold_price']} | Rs{c['pnl']:,.2f} ({c['pnl_pct']:+.1f}%) | {E(c['exit_class'])} | {c['sold_time'][:16]}")
+    return "\n".join(out)
+
+
+def outlook_text():
+    import outlook
+    o = outlook.load()
+    if not o:
+        return "No outlook has been generated yet. Open the Outlook page and press Refresh, or wait for the 16:00 / 08:30 run."
+    m = o["market"]
+    lines = [f"<b>Outlook for {E(o['for_session'])}</b> (generated {E(o['generated'])})",
+             f"Market: <b>{E(m['direction'])}</b> (confidence {E(m['confidence'])}, {E(m['data_points'])} inputs)"]
+    if m.get("events"):
+        lines.append("Events in the news: " + E(", ".join(m["events"])))
+    for r in o["stocks"]:
+        if r["kind"] == "POSITION" or r.get("action") == "Monitor Closely":
+            lines.append(f"{E(r['symbol'])} [{E(r['kind'].title())}]: {E(r.get('direction', '?'))} | {E(r.get('gap_risk', ''))} | <b>{E(r.get('action', ''))}</b> ({E(r.get('confidence', ''))})")
+    lines.append("<i>Forecast only - opening prices are unknown until 09:15 IST.</i>")
+    return "\n".join(lines)[:3900]
+
+
+def analysis_text(sym):
+    import analysis
+    r = analysis.resolve(sym)
+    if r["status"] != "ok":
+        return E(r.get("message") or "Several matches: " + ", ".join(m["symbol"] for m in r.get("matches", [])))
+    return analysis.text_summary(analysis.analyze(r["symbol"], r["name"]))
 
 
 def watchlist_text():
@@ -155,8 +194,10 @@ def why_text(sym):
 def daily_summary_text():
     t = today_stats()
     wl = watchlist()[:5]
+    a = pnl.account()
     lines = [f"📅 <b>End-of-day summary - {portfolio.today_str()}</b>", f"Scans: {t['scans']} | stocks checked: {t['evaluated']}",
-             f"Signals: {t['signals']} | buys: {t['buys']} | sells: {t['sells']} | realised P&amp;L Rs{t['realized']:,.2f}", positions_text()]
+             f"Signals: {t['signals']} | buys: {t['buys']} | sells: {t['sells']} | realised today Rs{t['realized']:,.2f}",
+             f"Open unrealised Rs{a['unrealized']:,.2f} | cumulative realised Rs{a['realized']:,.2f} | <b>combined Rs{a['combined']:,.2f}</b>", positions_text()]
     if t["signals"] == 0:
         lines.append("No signal today - the bot only trades clean breakouts, and waiting is a valid decision.")
     if wl:

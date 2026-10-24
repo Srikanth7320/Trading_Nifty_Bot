@@ -74,6 +74,36 @@ def _headlines(symbol):
     return uniq[:10]
 
 
+def headlines_for(query, n=10):
+    """Generic Google News RSS headlines for any query (market-level topics, events)."""
+    out = []
+    try:
+        r = requests.get(f"https://news.google.com/rss/search?q={quote_plus(query)}&hl=en-IN&gl=IN&ceid=IN:en", timeout=config.HTTP_TIMEOUT)
+        if r.ok:
+            out = [i.findtext("title", "") for i in ET.fromstring(r.content).iter("item")]
+    except Exception:
+        pass
+    seen, uniq = set(), []
+    for t in out:
+        k = re.sub(r"\W+", " ", t.lower()).strip()
+        if k and k not in seen:
+            seen.add(k)
+            uniq.append(t)
+    return uniq[:n]
+
+
+POSITIVE_WORDS = ("surge", "rally", "record high", "beats", "upgrade", "gains", "jumps", "soars", "strong results", "order win",
+                  "bullish", "buyback", "dividend", "profit rises", "outperform")
+
+
+def keyword_sentiment(titles):
+    """(score -1..+1, negative hits, positive hits) from headline keywords - a crude, transparent sentiment proxy."""
+    neg = [t for t in titles if any(w in t.lower() for w in NEGATIVE_WORDS + ("falls", "slump", "tumble", "selloff", "sell-off", "weak", "loss"))]
+    pos = [t for t in titles if any(w in t.lower() for w in POSITIVE_WORDS)]
+    n = max(1, len(titles))
+    return max(-1.0, min(1.0, (len(pos) - len(neg)) / n * 2)), neg, pos
+
+
 def _gemini(symbol, titles):
     if not config.GEMINI_API_KEY:
         return None

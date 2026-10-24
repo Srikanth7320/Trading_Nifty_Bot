@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% block body %}
+<div class="d-flex justify-content-between align-items-center mb-2"><h4 class="mb-0">Next-session outlook</h4>
+<form method="post" action="/outlook/refresh"><input type="hidden" name="csrf" value="{{ csrf() }}"><button class="btn btn-sm btn-primary">Refresh now</button></form></div>
+{% if not o %}<div class="alert alert-info">No outlook yet. It is built automatically at {{ cfg.OUTLOOK_EVENING.strftime('%H:%M') }} (after close) and {{ cfg.OUTLOOK_MORNING.strftime('%H:%M') }} (pre-open) on trading days, or press Refresh.</div>
+{% else %}{% set m = o.market %}
+<div class="alert alert-secondary">Generated <b>{{ o.generated }}</b> for the session of <b>{{ o.for_session }}</b>. This is a <b>forecast, not a fact</b>: DATA lines are confirmed readings with their own timestamps; ESTIMATE lines are inferences.</div>
+<div class="card mb-3"><div class="card-header">Market: <b class="{{ 'text-success' if m.direction=='Bullish' else 'text-danger' if m.direction=='Bearish' else '' }}">{{ m.direction }}</b> &middot; confidence {{ m.confidence }} &middot; {{ m.data_points }} inputs available (score {{ m.score }})</div>
+<div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Input</th><th>Reading</th><th>Type</th><th>As of</th><th>Weight</th></tr>
+{% for e in m.evidence %}<tr><td>{{ e.label }}{% if e.note %}<div class="small text-muted">{{ e.note }}</div>{% endif %}</td><td class="{{ 'text-muted' if e.value=='unavailable' }}">{{ e.value }}</td><td>{{ e.kind }}</td><td>{{ e.as_of }}</td><td>{{ '%+g'|format(e.points) }}</td></tr>{% endfor %}</table></div></div>
+<div class="row g-3 mb-3"><div class="col-md-6"><div class="card h-100"><div class="card-header">Sectors (last close vs previous)</div><div class="card-body py-2">{% for s in m.sectors %}<span class="me-3 {{ (s.change_pct|tone) if s.change_pct is not none else 'text-muted' }}">{{ s.name }} {{ s.change_pct|pct }}</span>{% endfor %}</div></div></div>
+<div class="col-md-6"><div class="card h-100"><div class="card-header">Events &amp; headlines</div><div class="card-body py-2 small">{% if m.events %}<b>Events mentioned:</b> {{ m.events|join(', ') }}<br>{% endif %}{% for h in m.headlines %}&bull; {{ h }}<br>{% endfor %}{% if not m.headlines %}No headlines available.{% endif %}</div></div></div></div>
+{% if o.attention %}<div class="alert alert-warning"><b>Needs attention before the open:</b> {{ o.attention|join(', ') }}</div>{% endif %}
+<h5>Positions &amp; candidates</h5>
+<div class="card mb-3"><div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Stock</th><th>Type</th><th>Direction</th><th>Gap risk</th><th>Levels</th><th>Action</th><th>Thesis</th><th>Confidence</th><th class="reason">Evidence</th></tr>
+{% for r in o.stocks %}<tr><td><a href="/analyze?q={{ r.symbol }}">{{ r.symbol }}</a><div class="small text-muted">{{ r.company }}</div></td><td>{{ r.kind|nice }}</td>
+<td class="{{ 'text-success' if r.direction=='Bullish' else 'text-danger' if r.direction=='Bearish' else '' }}">{{ r.direction }}</td><td>{{ r.gap_risk }}<div class="small text-muted">{{ r.gap_range }}</div></td>
+<td class="small">{% if r.support %}S: {{ r.support|map(attribute='price')|join(' / ') }}<br>{% endif %}{% if r.resistance %}R: {{ r.resistance|map(attribute='price')|join(' / ') }}{% endif %}</td>
+<td><b class="{{ 'text-danger' if r.action=='Exit Recommended' else 'text-warning' if r.action in ('Monitor Closely','Avoid New Entry') else 'text-success' }}">{{ r.action }}</b></td>
+<td>{{ '-' if r.thesis_valid is none else ('valid' if r.thesis_valid else 'weakened') }}</td><td>{{ r.confidence }}</td><td class="reason small">{% for e in r.evidence %}{{ e }}<br>{% endfor %}{% if r.events %}<b>Events:</b> {{ r.events|join(', ') }}{% endif %}</td></tr>
+{% else %}<tr><td colspan="9" class="p-3 text-muted">No open positions or watchlist candidates.</td></tr>{% endfor %}</table></div></div>
+<div class="card"><div class="card-header">Limitations</div><ul class="small mb-0 py-2">{% for l in m.limitations %}<li>{{ l }}</li>{% endfor %}</ul></div>{% endif %}{% endblock %}

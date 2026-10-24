@@ -6,7 +6,10 @@ from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
 
 import config
+import market
+import monitor
 import news
+import pnl
 import portfolio
 import providers
 import store
@@ -32,9 +35,7 @@ def load_universe():
 
 
 def _completed(hist, q):
-    sd = q["session_date"]
-    keep = [d < sd for d in hist.index.date]
-    return hist[keep]
+    return strategy.completed(hist, q["session_date"])
 
 
 def _held_sessions(buy_time):
@@ -66,11 +67,38 @@ def _prepare(sym):
 
 
 # ---------------------------------------------------------------- position management
-def manage_positions(mode="TRADING", notify=True):
-    """Apply stop/target/trailing rules. Safe to call from the scan and from the worker's 5-minute loop."""
-    result = {"sells": 0, "lines": []}
+def _log_signal(scan_id, rows):
+    if rows:
+        store.append_rows("signal_log.csv", rows)
+        store.trim_csv("signal_log.csv", 30000)
+
+
+def _backfill(pos, hc):
+    """Legacy positions have no breakout level / initial risk: derive them once from history before the buy date."""
+    upd = {}
+    try:
+        if not pos["entry_level"]:
+            bd = pd.Timestamp(pos["buy_time"]).date()
+            prior = hc[[d < bd for d in hc.index.date]]
+            if len(prior) >= 20:
+                upd["entry_level"] = round(float(prior["High"].iloc[-20:].max()), 2)
+        if not pos["initial_risk"]:
+            upd["initial_risk"] = round(strategy.initial_risk_of(pos), 4)
+    except Exception:
+        pass
+    return upd
+
+
+def manage_positions(mode="TRADING", notify=True, soft=False, scan_id=""):
+    """Evaluate every open position.
+
+    Hard rules (stop, targets, square-off, trend-break, time exit) run on every call. With soft=True (each 15-minute scan)
+    the thesis monitor also runs: warnings, hysteresis counters and exit recommendations. Sells only happen in TRADING mode."""
+    result = {"sells": 0, "lines": [], "checked": 0, "warnings": 0, "exit_signals": 0}
     with _POS_LOCK:
         cache = store.read_json("quotes_cache.json", {})
+        mkt = market.context() if (soft and config.MARKET_FILTER_ENABLED) else None
+        now, logs = config.now_ist(), []
         for pos in portfolio.positions():
             sym = pos["symbol"]
             try:
@@ -80,28 +108,64 @@ def manage_positions(mode="TRADING", notify=True):
                 continue
             price = q["price"]
             cache[sym] = {"price": price, "time": q["time"], "provider": q["provider"]}
-            if mode != "TRADING":
-                continue
-            m = strategy.manage(pos, price, _completed(hist, q), _held_sessions(pos["buy_time"]))
-            if m["action"] in ("EXIT", "PARTIAL"):
-                pnl = portfolio.sell(sym, price, m["qty"], m["reason"])
-                if pnl is not None:
+            hc = _completed(hist, q)
+            result["checked"] += 1
+            upd = _backfill(pos, hc)
+            if upd:
+                portfolio.update_position(sym, **upd)
+                pos = {**pos, **upd}
+            held = _held_sessions(pos["buy_time"])
+            m = strategy.manage(pos, price, hc, held, now)
+            a = monitor.assess(pos, price, hc, m, q, mkt, held, count_scan=soft)
+            tag = pos["strategy"].replace("_", "-")
+            pnl_pct = (price / pos["buy_price"] - 1) * 100
+            prior_state = pos["signal_state"]
+            sell_reason, sell_qty, kind = None, 0, None
+            if mode == "TRADING" and m["action"] in ("EXIT", "PARTIAL"):
+                sell_reason, sell_qty, kind = m["reason"], m["qty"], m["action"]
+            elif (mode == "TRADING" and soft and a["state"] == monitor.EXIT_REC and config.AUTO_EXIT_ON_RECOMMENDATION
+                  and a["exit_reason"]):
+                sell_reason, sell_qty, kind = a["exit_reason"], pos["quantity"], "EXIT"
+            if a["state"] == monitor.WARN:
+                result["warnings"] += 1
+            if a["state"] in (monitor.EXIT_REC, monitor.STOP):
+                result["exit_signals"] += 1
+            if soft or sell_reason or a["state"] != prior_state:
+                logs.append({"time": now.strftime("%Y-%m-%d %H:%M:%S"), "scan_id": scan_id, "symbol": sym, "event": a["state"],
+                             "strategy": pos["strategy"], "price": round(price, 2), "pnl_pct": round(pnl_pct, 2),
+                             "thesis_valid": str(a["thesis_valid"]).lower(), "detail": a["note"][:300]})
+            if sell_reason:
+                pnl_val = portfolio.sell(sym, price, sell_qty, sell_reason)
+                if pnl_val is not None:
                     result["sells"] += 1
-                    result["lines"].append(f"{sym}: {m['action']} {m['qty']} @ {price:.2f} ({m['reason']}) P&L Rs{pnl:,.2f}")
+                    result["lines"].append(f"{sym} [{tag}]: {monitor.STATE_LABEL[a['state']].upper()} - {kind} {sell_qty} @ {price:.2f} "
+                                           f"({sell_reason}) P&L Rs{pnl_val:,.2f}")
                     if notify:
-                        tg.send(tg.msg_exit(sym, m["action"], price, m["qty"], pnl, m["reason"]))
-                    if m["action"] == "PARTIAL":
-                        portfolio.update_position(sym, stop_loss=round(m["new_stop"], 2), target1_hit=True, peak_price=round(m["peak"], 2))
-            else:
-                changed = (m["new_stop"] > pos["stop_loss"] + 0.005 or m["peak"] > pos["peak_price"] + 0.005
-                           or m["t1_hit"] != pos["target1_hit"])
-                if changed:
-                    portfolio.update_position(sym, stop_loss=round(m["new_stop"], 2), peak_price=round(m["peak"], 2),
-                                              target1_hit=m["t1_hit"])
-                    if m["new_stop"] > pos["stop_loss"] + 0.005:
-                        result["lines"].append(f"{sym}: stop raised to Rs{m['new_stop']:.2f} ({m['reason'] or 'trailing'})")
-                result["lines"].append(f"{sym}: hold @ {price:.2f} (stop {m['new_stop']:.2f})")
+                        tg.send(tg.msg_exit(sym, kind, price, sell_qty, pnl_val, sell_reason, tag))
+                    if kind == "PARTIAL":
+                        portfolio.update_position(sym, stop_loss=round(m["new_stop"], 2), target1_hit=True, peak_price=round(m["peak"], 2),
+                                                  signal_state=monitor.HOLD, last_assessed=now.strftime("%Y-%m-%d %H:%M:%S"),
+                                                  last_note="Target 1 hit: half sold, stop at break-even")
+                continue
+            changed = (m["new_stop"] > pos["stop_loss"] + 0.005 or m["peak"] > pos["peak_price"] + 0.005 or m["t1_hit"] != pos["target1_hit"])
+            fields = {"signal_state": a["state"], "warn_score": a["score"], "last_assessed": now.strftime("%Y-%m-%d %H:%M:%S"),
+                      "last_note": a["note"][:200], "thesis_valid": str(a["thesis_valid"]).lower()}
+            if soft:
+                fields["exit_confirm"] = a["exit_confirm"]
+            if changed:
+                fields.update(stop_loss=round(m["new_stop"], 2), peak_price=round(m["peak"], 2), target1_hit=m["t1_hit"])
+                if m["new_stop"] > pos["stop_loss"] + 0.005:
+                    result["lines"].append(f"{sym} [{tag}]: stop raised to Rs{m['new_stop']:.2f} ({m['reason'] or 'trailing'})")
+            portfolio.update_position(sym, **fields)
+            result["lines"].append(f"{sym} [{tag}]: {monitor.STATE_LABEL[a['state']].upper()} @ {price:.2f} ({pnl_pct:+.1f}%, stop {m['new_stop']:.2f}) - {a['note'][:160]}")
+            if notify and soft and a["state"] in (monitor.WARN, monitor.EXIT_REC) and a["state"] != prior_state:
+                tg.send(tg.msg_position_alert(sym, tag, a["state"], price, pnl_pct, a["note"], mode == "TRADING" and config.AUTO_EXIT_ON_RECOMMENDATION))
         store.write_json("quotes_cache.json", cache)
+        _log_signal(scan_id, logs)
+    try:
+        pnl.snapshot()
+    except Exception:
+        pass
     return result
 
 
@@ -123,7 +187,8 @@ def _run(trigger):
     mode = "TRADING" if (status == "OPEN" and enabled) else "ANALYSIS"
     run = {"scan_id": scan_id, "started": started.strftime("%Y-%m-%d %H:%M:%S"), "trigger": trigger, "mode": mode,
            "status": "OK", "universe_size": 0, "batch_start": 0, "batch_size": 0, "evaluated": 0, "no_data": 0,
-           "filtered": 0, "rejected": 0, "watch": 0, "signals": 0, "buys": 0, "sells": 0, "providers": "", "note": ""}
+           "filtered": 0, "rejected": 0, "watch": 0, "signals": 0, "buys": 0, "sells": 0, "providers": "", "note": "", "positions_checked": 0, "warnings": 0,
+           "exit_signals": 0}
     journal = [f"==== SCAN {scan_id} | {trigger} | {mode} | {started:%H:%M} IST ====", f"Market: {status_text}"]
     if mode == "ANALYSIS":
         journal.append("Analysis-only run: stocks are evaluated and logged, but NO paper trades are made. "
@@ -146,14 +211,16 @@ def _run(trigger):
 
     # 1) existing positions first
     try:
-        mres = manage_positions(mode, notify=True)
+        mres = manage_positions(mode, notify=True, soft=True, scan_id=scan_id)
     except Exception as exc:  # never let position management block the market scan
         import traceback
         store.append_text("scan_journal.txt", f"!! manage_positions failed: {type(exc).__name__}: {str(exc)[:200]}\n"
                           + traceback.format_exc()[-600:])
-        mres = {"sells": 0, "lines": [f"position check failed: {type(exc).__name__}"]}
-    run["sells"] = mres["sells"]
-    journal += ["Open positions:"] + [f"  {x}" for x in mres["lines"]] if mres["lines"] else ["Open positions: none"]
+        mres = {"sells": 0, "lines": [f"position check failed: {type(exc).__name__}"], "checked": 0, "warnings": 0, "exit_signals": 0}
+    run.update(sells=mres["sells"], positions_checked=mres.get("checked", 0), warnings=mres.get("warnings", 0),
+               exit_signals=mres.get("exit_signals", 0))
+    journal += ([f"Open positions ({mres.get('checked', 0)} checked, {mres.get('warnings', 0)} warning(s), {mres.get('exit_signals', 0)} exit signal(s)):"]
+                + [f"  {x}" for x in mres["lines"]]) if mres["lines"] else ["Open positions: none"]
 
     # 2) rotating batch of the universe
     cur = store.read_json("scan_cursor.json", {}).get("next", 0) % len(universe)
@@ -191,18 +258,21 @@ def _run(trigger):
             watch.append((sym, ev, q))
         elif ev["decision"] == "SIGNAL":
             run["signals"] += 1
-            signals.append((sym, ev, q, row))
+            signals.append((sym, ev, q, row, _completed(hist, q)))
         rows.append(row)
     run["providers"] = ", ".join(sorted(provs))
 
-    # 3) act on signals (best score first)
+    # 3) act on signals (best score first). Every signal is classified INTRADAY or SHORT_TERM before anything else happens.
     held = {p["symbol"]: p for p in portfolio.positions()}
     cooling = portfolio.cooling_symbols()
-    open_value = sum(p["buy_price"] * p["quantity"] for p in held.values())
+    cash = pnl.account()["cash"]
+    mkt = market.context() if (signals and config.MARKET_FILTER_ENABLED) else None
     signals.sort(key=lambda s: (s[1]["score"], s[1]["metrics"].get("volume_ratio", 0)), reverse=True)
-    sig_lines = []
-    for sym, ev, q, row in signals:
+    sig_lines, slog = [], []
+    for sym, ev, q, row, hc in signals:
         price = q["price"]
+        plan = strategy.build_plan(ev, hc, price, started, status == "OPEN", q, mkt)
+        tag = plan["label"]
         block = None
         if mode != "TRADING":
             block = "analysis-only run (market closed or bot paused)"
@@ -220,9 +290,15 @@ def _run(trigger):
             block = f"max trades per day ({config.MAX_TRADES_PER_DAY}) reached"
         elif portfolio.daily_loss_limit_hit():
             block = f"daily loss limit ({config.MAX_DAILY_LOSS_PCT:g}%) reached"
-        qty = strategy.position_size(price, ev["stop"], open_value=open_value) if not block else 0
-        if not block and qty < 1:
-            block = "risk/capital budget allows less than 1 share"
+        elif plan["blocks"]:
+            block = plan["blocks"][0]
+        alloc = {"qty": 0, "value": 0.0, "limit": "", "why": ""}
+        if not block:
+            alloc = strategy.allocate(price, plan["stop"], ev["score"], cash, len(held), avg_turnover=ev["metrics"].get("avg_turnover_20"),
+                                      extended=plan["extended"])
+            if alloc["qty"] < 1:
+                block = "capital allocation: " + alloc["why"]
+        qty = alloc["qty"]
         nws = ""
         if not block:
             veto, ext = news.external_veto(sym)
@@ -234,21 +310,28 @@ def _run(trigger):
                 if nr["verdict"] == "NEGATIVE" or (config.REQUIRE_NEWS_OK and nr["verdict"] not in ("POSITIVE", "NEUTRAL")):
                     block = "news check: " + nr["note"]
         if block:
-            row["reason"] = f"SIGNAL but not traded: {block}. {ev['headline']}"
-            sig_lines.append(f"  {sym}: score {ev['score']} - NOT traded ({block})")
+            row["reason"] = f"SIGNAL [{tag}] but not traded: {block}. {ev['headline']}"
+            sig_lines.append(f"  {sym} [{tag}]: score {ev['score']} - NOT traded ({block})")
+            slog.append({"time": started.strftime("%Y-%m-%d %H:%M:%S"), "scan_id": scan_id, "symbol": sym, "event": monitor.NEW_BUY,
+                         "strategy": plan["strategy"], "price": round(price, 2), "pnl_pct": "", "thesis_valid": "",
+                         "detail": f"not traded: {block}"[:300]})
             if mode == "TRADING":
-                tg.send(tg.msg_signal(sym, ev, price, 0, ev["stop"], False, block))
+                tg.send(tg.msg_signal(sym, ev, price, 0, plan["stop"], False, block, plan))
             continue
-        if portfolio.add_position(sym, price, qty, ev["stop"], ev["target1"], ev["target2"], ev["metrics"]["atr"], ev["score"],
-                                  f"score {ev['score']}; {ev['headline']}; {nws}"[:300]):
+        why = f"[{tag}] score {ev['score']}; {ev['headline']}; {nws}"
+        if portfolio.add_position(sym, price, qty, plan["stop"], plan["target1"], plan["target2"], ev["metrics"]["atr"], ev["score"], why, plan):
             run["buys"] += 1
             held[sym] = {"symbol": sym}
-            open_value += price * qty
+            cash -= qty * price * (1 + config.COST_PCT_PER_SIDE / 100)
             row["decision"] = "BOUGHT"
-            row["reason"] = f"BOUGHT {qty} @ {price:.2f}, stop {ev['stop']:.2f}. {ev['headline']}"
-            sig_lines.append(f"  {sym}: score {ev['score']} - BOUGHT {qty} @ {price:.2f} (stop {ev['stop']:.2f}, "
-                             f"T1 {ev['target1']:.2f}, T2 {ev['target2']:.2f}) {nws}")
-            tg.send(tg.msg_signal(sym, ev, price, qty, ev["stop"], True, ""))
+            row["reason"] = f"BOUGHT {qty} @ {price:.2f} [{tag}], stop {plan['stop']:.2f}. {ev['headline']}"
+            sig_lines.append(f"  {sym} [{tag}]: score {ev['score']} - BOUGHT {qty} @ {price:.2f} = Rs{qty * price:,.0f} (limit: {alloc['limit']}) "
+                             f"stop {plan['stop']:.2f}, T1 {plan['target1']:.2f}, T2 {plan['target2']:.2f}, hold: {plan['expected_hold']} {nws}")
+            slog.append({"time": started.strftime("%Y-%m-%d %H:%M:%S"), "scan_id": scan_id, "symbol": sym, "event": monitor.NEW_BUY,
+                         "strategy": plan["strategy"], "price": round(price, 2), "pnl_pct": "", "thesis_valid": "true",
+                         "detail": f"BOUGHT {qty}: {plan['why']}"[:300]})
+            tg.send(tg.msg_signal(sym, ev, price, qty, plan["stop"], True, "", plan, alloc))
+    _log_signal(scan_id, slog)
 
     # 4) watchlist file for dashboard/Telegram
     wl = store.read_json("watchlist.json", {})

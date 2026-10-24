@@ -95,6 +95,34 @@ def _upstox_history(symbol):
     return df.dropna(subset=["Datetime", "Open", "High", "Low", "Close"]).set_index("Datetime").sort_index()
 
 
+def _depth_extras(q, price):
+    """Optional liquidity / circuit information carried by a full Upstox quote (all keys may be absent)."""
+    extra = {}
+    try:
+        depth = q.get("depth") or {}
+        bid = float((depth.get("buy") or [{}])[0].get("price") or 0)
+        ask = float((depth.get("sell") or [{}])[0].get("price") or 0)
+        if bid > 0 and ask > 0 and ask >= bid:
+            extra.update(bid=bid, ask=ask, spread_pct=round((ask - bid) / ((ask + bid) / 2) * 100, 3))
+    except (TypeError, ValueError, IndexError, AttributeError):
+        pass
+    try:
+        up, lo = float(q.get("upper_circuit_limit") or 0), float(q.get("lower_circuit_limit") or 0)
+        if up > 0:
+            extra["upper_circuit"] = up
+            extra["at_upper_circuit"] = price >= up * 0.9995
+        if lo > 0:
+            extra["lower_circuit"] = lo
+            extra["at_lower_circuit"] = price <= lo * 1.0005
+        ohlc = q.get("ohlc") or {}
+        for k in ("open", "high", "low"):
+            if ohlc.get(k):
+                extra["day_" + k] = float(ohlc[k])
+    except (TypeError, ValueError, AttributeError):
+        pass
+    return extra
+
+
 def _upstox_quote(symbol):
     key = _instrument_key(symbol)
     data = _upstox_get("https://api.upstox.com/v2/market-quote/quotes", {"instrument_key": key}).get("data", {})
@@ -124,9 +152,11 @@ def _upstox_quote(symbol):
         if age > config.UPSTOX_MAX_QUOTE_AGE_MIN or age < -2:
             raise ProviderError(f"Upstox quote is stale ({age:.0f} min old)")
     vol = q.get("volume")
-    return {"price": price, "day_volume": float(vol) if vol else None, "time": stamp.isoformat(timespec="seconds"),
-            "session_date": stamp.date() if ts_src == "exchange" else config.now_ist().date(),
-            "provider": "Upstox", "ts_source": ts_src}
+    out = {"price": price, "day_volume": float(vol) if vol else None, "time": stamp.isoformat(timespec="seconds"),
+           "session_date": stamp.date() if ts_src == "exchange" else config.now_ist().date(),
+           "provider": "Upstox", "ts_source": ts_src}
+    out.update(_depth_extras(q, price))
+    return out
 
 
 # ---------------------------------------------------------------- Yahoo fallback

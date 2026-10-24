@@ -1,1 +1,4 @@
 symbol,buy_price,sold_price,quantity,profit,sold_time,reason
+DCMSRIND,52.44,47.22,238,-1266.08,2026-10-22 13:18:35,Stop-loss hit
+PLATIND,244.45,229.68,7,-106.71,2026-10-23 10:10:37,Stop-loss hit
+SOUTHBANK,55.58,52.66,352,-1065.94,2026-10-23 10:40:51,Stop-loss hit

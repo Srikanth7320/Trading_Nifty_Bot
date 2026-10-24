@@ -50,3 +50,9 @@ Target 1 = 2R (sell half, stop to break-even, then trail), Target 2 = 3.5R, tren
 
 ## Tests
 `python -m unittest tests.test_bot` (synthetic data; no network needed).
+
+
+## Enhancement round (capital allocation, P&L, strategies, monitoring, outlook, analysis)
+See `CHANGES.md` for the full list of modified files, logic, settings and tests. Existing `data/` files are migrated in place
+(new columns are added; no rows are deleted). Copy the code over the old files, keep `data/` and `.env`, update `.env` from
+`.env.example` (notably `MAX_OPEN_POSITIONS=15`, `MAX_POSITION_PCT_OF_CAPITAL=10`, `MIN_STOCK_PRICE=5`) and restart both services.

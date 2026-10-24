@@ -223,3 +223,858 @@ Closest to a signal (watchlist):
 !! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
 !! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
 !! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '52.74' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+==== Worker started 2026-10-22 10:33 IST ====
+==== SCAN 20261022-103310 | scheduled | TRADING | 10:33 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.62 (stop 52.74)
+  TECHM: hold @ 1825.50 (stop 1732.37)
+  WIPRO: hold @ 192.12 (stop 181.45)
+  DCMSRIND: hold @ 54.14 (stop 48.24)
+Universe 2348 symbols; this scan covers positions 1253-1652 (wraps around).
+Result: checked 192 | no data 0 | filtered 209 | rejected 169 | watch 20 | signals 2 | bought 2 | sold 0
+Signals:
+  ORIENTHOT: score 91 - BOUGHT 141 @ 154.35 (stop 147.28, T1 168.48, T2 179.08) news NEUTRAL: AI: NEUTRAL
+
+**Reason:** The headlines primarily consist of routine share price updates, general market coverage, basic fundamental analysis, and details regarding a merger scheme with IHCL, with no evide
+  PLATIND: score 76 - BOUGHT 7 @ 244.45 (stop 231.17, T1 271.01, T2 290.93) news POSITIVE: AI: POSITIVE Multiple headlines highlight positive news, including a new deal with CAREGEN, price gains, an innovation phase launch, and a bullish price target, with no serious adverse events reported.
+Closest to a signal (watchlist):
+  PCJEWELLER: score 85 - Score 85/100 - RSI 79 overheated (limit 75); weakest: RSI in the 55-68 sweet spot (RSI 78.6); Tight consolidation before the move (recent daily ranges narrower than before)
+  PVRINOX: score 77 - Score 77/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Volume confirmation (1.04x - today so far vs 20-day avg (pace-adjusted, 21% of day)); Breakout above the prior 20-day high (price 1419.20 vs 20-day high 1432.00); MACD positive and strengthening (histogram 10.001 (prev 11.010))
+  MVGJL: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 225.24 vs 20-day high 249.40); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 0.416 (prev 0.859))
+  PNB: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 122.30 vs 20-day high 125.22); Strength (65% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  NITINSPIN: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 627.10 vs 20-day high 667.00); RSI in the 55-68 sweet spot (RSI 50.5); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-103759 | manual | TRADING | 10:37 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.93 (stop 52.74)
+  TECHM: hold @ 1820.70 (stop 1732.37)
+  WIPRO: hold @ 191.52 (stop 181.45)
+  DCMSRIND: hold @ 54.15 (stop 48.24)
+  ORIENTHOT: hold @ 154.42 (stop 147.28)
+  PLATIND: hold @ 242.86 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 1653-2052 (wraps around).
+Result: checked 166 | no data 0 | filtered 236 | rejected 149 | watch 15 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  SINGERIND: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 91.64 vs 20-day high 96.44); Tight consolidation before the move (recent daily ranges narrower than before)
+  SOUTHBANK: score 77 - Score 77/100 - no breakout above the 20-day high yet; RSI 76 overheated (limit 75); weakest: RSI in the 55-68 sweet spot (RSI 75.5); Breakout above the prior 20-day high (price 55.95 vs 20-day high 56.25); Tight consolidation before the move (recent daily ranges narrower than before)
+  STOVEKRAFT: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 847.75 vs 20-day high 884.55); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 3.541 (prev 3.984))
+  SHREEJISPG: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 797.40 vs 20-day high 847.40); RSI in the 55-68 sweet spot (RSI 69.1); Tight consolidation before the move (recent daily ranges narrower than before)
+  SAREGAMA: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 513.20 vs 20-day high 518.65); Trend (price 513.20, EMA20 500.29, SMA50 501.55); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-104810 | scheduled | TRADING | 10:48 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.78 (stop 52.74)
+  TECHM: hold @ 1814.60 (stop 1732.37)
+  WIPRO: hold @ 191.24 (stop 181.45)
+  DCMSRIND: hold @ 53.80 (stop 48.24)
+  ORIENTHOT: hold @ 155.38 (stop 147.28)
+  PLATIND: hold @ 241.02 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 2053-2452 (wraps around).
+Result: checked 179 | no data 0 | filtered 221 | rejected 164 | watch 14 | signals 1 | bought 0 | sold 0
+Signals:
+  TANLA: score 77 - NOT traded (risk/capital budget allows less than 1 share)
+Closest to a signal (watchlist):
+  ALGOQUANT: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 74.00 vs 20-day high 76.50); Tight consolidation before the move (recent daily ranges narrower than before)
+  TIPSMUSIC: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 732.65 vs 20-day high 785.00); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 12.018 (prev 12.328))
+  WSTCSTPAPR: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 821.85 vs 20-day high 978.05); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 6.036 (prev 9.141))
+  TECHM: score 70 - Score 70/100 - no breakout above the 20-day high yet; RSI 77 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1814.60 vs 20-day high 1834.70); RSI in the 55-68 sweet spot (RSI 76.8); Tight consolidation before the move (recent daily ranges narrower than before)
+  THELEELA: score 68 - Score 68/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 601.10 vs 20-day high 650.40); RSI in the 55-68 sweet spot (RSI 53.6); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-110311 | scheduled | TRADING | 11:03 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.70 (stop 52.74)
+  TECHM: hold @ 1810.10 (stop 1732.37)
+  WIPRO: hold @ 191.25 (stop 181.45)
+  DCMSRIND: hold @ 52.38 (stop 48.24)
+  ORIENTHOT: hold @ 155.75 (stop 147.28)
+  PLATIND: hold @ 240.48 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 105-504 (wraps around).
+Result: checked 187 | no data 0 | filtered 216 | rejected 168 | watch 16 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  COFORGE: score 88 - Score 88/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1952.10 vs 20-day high 1970.00); MACD positive and strengthening (histogram 13.849 (prev 14.314))
+  CEIGALL: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 383.60 vs 20-day high 396.00); Volume confirmation (1.44x - today so far vs 20-day avg (pace-adjusted, 29% of day)); MACD positive and strengthening (histogram 0.312 (prev 0.363))
+  BBOX: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 916.70 vs 20-day high 952.00); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 2.880 (prev 4.793))
+  CASTROLIND: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 196.30 vs 20-day high 203.40); MACD positive and strengthening (histogram -0.452 (prev -0.489)); RSI in the 55-68 sweet spot (RSI 54.5)
+  CANTABIL: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 246.21 vs 20-day high 252.10); Strength (33% of 52-week range); Volume confirmation (1.42x - today so far vs 20-day avg (pace-adjusted, 29% of day))
+==== SCAN 20261022-111812 | scheduled | TRADING | 11:18 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.59 (stop 52.74)
+  TECHM: hold @ 1812.10 (stop 1732.37)
+  WIPRO: hold @ 191.39 (stop 181.45)
+  DCMSRIND: hold @ 51.70 (stop 48.24)
+  ORIENTHOT: hold @ 154.71 (stop 147.28)
+  PLATIND: hold @ 240.63 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 505-904 (wraps around).
+Result: checked 181 | no data 0 | filtered 221 | rejected 162 | watch 17 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  DRREDDY: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Strength (46% of 52-week range); Breakout above the prior 20-day high (price 1244.40 vs 20-day high 1252.80); Volume confirmation (1.36x - today so far vs 20-day avg (pace-adjusted, 33% of day))
+  DHAMPURSUG: score 69 - Score 69/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 186.06 vs 20-day high 219.70); Strength (69% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  HAL: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 4881.30 vs 20-day high 5012.00); Trend (price 4881.30, EMA20 4822.26, SMA50 4851.10); RSI in the 55-68 sweet spot (RSI 52.3)
+  ICICIBANK: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1395.40 vs 20-day high 1411.80); Trend (price 1395.40, EMA20 1361.32, SMA50 1381.97); Tight consolidation before the move (recent daily ranges narrower than before)
+  HBLENGINE: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 807.90 vs 20-day high 842.00); Strength (38% of 52-week range); Volume confirmation (1.37x - today so far vs 20-day avg (pace-adjusted, 33% of day))
+==== SCAN 20261022-113317 | scheduled | TRADING | 11:33 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.49 (stop 52.74)
+  TECHM: hold @ 1809.10 (stop 1732.37)
+  WIPRO: hold @ 190.13 (stop 181.45)
+  DCMSRIND: hold @ 52.07 (stop 48.24)
+  ORIENTHOT: hold @ 154.39 (stop 147.28)
+  PLATIND: hold @ 241.27 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 905-1304 (wraps around).
+Result: checked 198 | no data 0 | filtered 203 | rejected 180 | watch 16 | signals 1 | bought 0 | sold 0
+Signals:
+  INDHOTEL: score 91 - NOT traded (risk/capital budget allows less than 1 share)
+Closest to a signal (watchlist):
+  KRISHANA: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 201.11 vs 20-day high 216.00); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 2.128 (prev 2.420))
+  KROSS: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 290.80 vs 20-day high 326.40); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 1.764 (prev 1.916))
+  LTTS: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 3935.00 vs 20-day high 4143.00); RSI in the 55-68 sweet spot (RSI 74.8); Strength (54% of 52-week range)
+  MANBA: score 63 - Score 63/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 138.10, EMA20 140.38, SMA50 134.84); Breakout above the prior 20-day high (price 138.10 vs 20-day high 151.00); MACD positive and strengthening (histogram 0.107 (prev 0.130))
+  MASTEK: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1854.60 vs 20-day high 1888.00); Strength (50% of 52-week range); RSI in the 55-68 sweet spot (RSI 68.3)
+==== SCAN 20261022-114822 | scheduled | TRADING | 11:48 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.30 (stop 52.74)
+  TECHM: hold @ 1803.00 (stop 1732.37)
+  WIPRO: hold @ 189.77 (stop 181.45)
+  DCMSRIND: hold @ 51.94 (stop 48.24)
+  ORIENTHOT: hold @ 153.43 (stop 147.28)
+  PLATIND: hold @ 241.36 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 1305-1704 (wraps around).
+Result: checked 189 | no data 0 | filtered 212 | rejected 174 | watch 12 | signals 2 | bought 0 | sold 0
+Signals:
+  PVRINOX: score 91 - NOT traded (risk/capital budget allows less than 1 share)
+  PLATIND: score 76 - NOT traded (already holding it)
+Closest to a signal (watchlist):
+  ORIENTHOT: score 83 - Score 83/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 153.53 vs 20-day high 153.92); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 0.700 (prev 0.763))
+  PNB: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 120.99 vs 20-day high 125.22); Strength (61% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  NITINSPIN: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 627.25 vs 20-day high 667.00); RSI in the 55-68 sweet spot (RSI 50.5); Tight consolidation before the move (recent daily ranges narrower than before)
+  PASHUPATI: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 98.66 vs 20-day high 111.26); Trend (price 98.66, EMA20 79.83, SMA50 81.20); Strength (61% of 52-week range)
+  ONWARDTEC: score 70 - Score 70/100 - no breakout above the 20-day high yet; RSI 80 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 458.95 vs 20-day high 495.65); RSI in the 55-68 sweet spot (RSI 80.2); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-120323 | scheduled | TRADING | 12:03 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.47 (stop 52.74)
+  TECHM: hold @ 1789.20 (stop 1732.37)
+  WIPRO: hold @ 189.18 (stop 181.45)
+  DCMSRIND: hold @ 51.77 (stop 48.24)
+  ORIENTHOT: hold @ 153.73 (stop 147.28)
+  PLATIND: hold @ 240.71 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 1705-2104 (wraps around).
+Result: checked 166 | no data 0 | filtered 236 | rejected 151 | watch 13 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  SINGERIND: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 90.83 vs 20-day high 96.44); Tight consolidation before the move (recent daily ranges narrower than before)
+  STOVEKRAFT: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 843.50 vs 20-day high 884.55); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 3.541 (prev 3.984))
+  SHREEJISPG: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 794.80 vs 20-day high 847.40); RSI in the 55-68 sweet spot (RSI 69.1); Tight consolidation before the move (recent daily ranges narrower than before)
+  SAREGAMA: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 510.45 vs 20-day high 518.65); Trend (price 510.45, EMA20 500.29, SMA50 501.55); Tight consolidation before the move (recent daily ranges narrower than before)
+  SOUTHBANK: score 70 - Score 70/100 - no breakout above the 20-day high yet; RSI 76 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 55.47 vs 20-day high 56.25); RSI in the 55-68 sweet spot (RSI 75.5); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-121824 | scheduled | TRADING | 12:18 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.47 (stop 52.74)
+  TECHM: hold @ 1792.80 (stop 1732.37)
+  WIPRO: hold @ 189.14 (stop 181.45)
+  DCMSRIND: hold @ 51.33 (stop 48.24)
+  ORIENTHOT: hold @ 152.70 (stop 147.28)
+  PLATIND: hold @ 240.33 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 2105-2504 (wraps around).
+Result: checked 171 | no data 0 | filtered 231 | rejected 157 | watch 12 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ALGOQUANT: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 74.11 vs 20-day high 76.50); Tight consolidation before the move (recent daily ranges narrower than before)
+  WSTCSTPAPR: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 834.30 vs 20-day high 978.05); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 6.036 (prev 9.141))
+  THELEELA: score 68 - Score 68/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 595.80 vs 20-day high 650.40); RSI in the 55-68 sweet spot (RSI 53.6); Tight consolidation before the move (recent daily ranges narrower than before)
+  UNIONBANK: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 181.25 vs 20-day high 186.00); Trend (price 181.25, EMA20 175.07, SMA50 179.77); Strength (65% of 52-week range)
+  ANANDRATHI: score 63 - Score 63/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 2189.20 vs 20-day high 2220.10); Volume confirmation (0.50x - today so far vs 20-day avg (pace-adjusted, 49% of day)); Trend (price 2189.20, EMA20 2144.25, SMA50 2169.23)
+==== SCAN 20261022-123326 | scheduled | TRADING | 12:33 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.67 (stop 52.74)
+  TECHM: hold @ 1794.60 (stop 1732.37)
+  WIPRO: hold @ 189.74 (stop 181.45)
+  DCMSRIND: hold @ 51.35 (stop 48.24)
+  ORIENTHOT: hold @ 152.63 (stop 147.28)
+  PLATIND: hold @ 240.33 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 157-556 (wraps around).
+Result: checked 185 | no data 0 | filtered 216 | rejected 172 | watch 12 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  COFORGE: score 81 - Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1920.10 vs 20-day high 1970.00); MACD positive and strengthening (histogram 13.849 (prev 14.314))
+  CASTROLIND: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 197.58 vs 20-day high 203.40); MACD positive and strengthening (histogram -0.452 (prev -0.489)); RSI in the 55-68 sweet spot (RSI 54.5)
+  DHANBANK: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 37.00 vs 20-day high 37.50); Volume confirmation (1.33x - today so far vs 20-day avg (pace-adjusted, 53% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  BBOX: score 64 - Score 64/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 898.00 vs 20-day high 952.00); Strength (69% of 52-week range); Volume confirmation (1.36x - today so far vs 20-day avg (pace-adjusted, 53% of day))
+  BHARTIARTL: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1903.40 vs 20-day high 1929.60); Strength (40% of 52-week range); Trend (price 1903.40, EMA20 1832.42, SMA50 1857.46)
+==== SCAN 20261022-124828 | scheduled | TRADING | 12:48 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.45 (stop 52.74)
+  TECHM: hold @ 1792.40 (stop 1732.37)
+  WIPRO: hold @ 189.42 (stop 181.45)
+  DCMSRIND: hold @ 48.52 (stop 48.24)
+  ORIENTHOT: hold @ 153.47 (stop 147.28)
+  PLATIND: hold @ 240.88 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 557-956 (wraps around).
+Result: checked 188 | no data 0 | filtered 214 | rejected 173 | watch 12 | signals 1 | bought 0 | sold 0
+Signals:
+  INDHOTEL: score 91 - NOT traded (risk/capital budget allows less than 1 share)
+Closest to a signal (watchlist):
+  HAL: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 4852.60 vs 20-day high 5012.00); Trend (price 4852.60, EMA20 4822.26, SMA50 4851.10); RSI in the 55-68 sweet spot (RSI 52.3)
+  DRREDDY: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1223.00 vs 20-day high 1252.80); Long-term trend (150-day average 1241.34); Strength (39% of 52-week range)
+  ECLERX: score 64 - Score 64/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1915.90 vs 20-day high 2022.60); Strength (51% of 52-week range); RSI in the 55-68 sweet spot (RSI 52.8)
+  ICICIBANK: score 61 - Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1394.40 vs 20-day high 1411.80); Trend (price 1394.40, EMA20 1361.32, SMA50 1381.97); Volume confirmation (1.44x - today so far vs 20-day avg (pace-adjusted, 57% of day))
+  HBLENGINE: score 59 - Score 59/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 784.65 vs 20-day high 842.00); Volume confirmation (1.10x - today so far vs 20-day avg (pace-adjusted, 57% of day)); Strength (34% of 52-week range)
+==== SCAN 20261022-130332 | scheduled | TRADING | 13:03 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.76 (stop 52.74)
+  TECHM: hold @ 1797.90 (stop 1732.37)
+  WIPRO: hold @ 189.59 (stop 181.45)
+  DCMSRIND: hold @ 48.91 (stop 48.24)
+  ORIENTHOT: hold @ 153.22 (stop 147.28)
+  PLATIND: hold @ 241.53 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 957-1356 (wraps around).
+Result: checked 189 | no data 0 | filtered 212 | rejected 175 | watch 13 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  KROSS: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 286.00 vs 20-day high 326.40); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 1.764 (prev 1.916))
+  KRISHANA: score 65 - Score 65/100 - no breakout above the 20-day high yet; volume only 1.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 202.78 vs 20-day high 216.00); Volume confirmation (1.15x - today so far vs 20-day avg (pace-adjusted, 61% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  LTTS: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 3962.00 vs 20-day high 4143.00); RSI in the 55-68 sweet spot (RSI 74.8); Strength (55% of 52-week range)
+  MANBA: score 63 - Score 63/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 138.38, EMA20 140.38, SMA50 134.84); Breakout above the prior 20-day high (price 138.38 vs 20-day high 151.00); MACD positive and strengthening (histogram 0.107 (prev 0.130))
+  MANOMAY: score 62 - Score 62/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 242.26 vs 20-day high 251.00); Volume confirmation (0.97x - today so far vs 20-day avg (pace-adjusted, 61% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-131835 | scheduled | TRADING | 13:18 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.78 (stop 52.74)
+  TECHM: hold @ 1799.80 (stop 1732.37)
+  WIPRO: hold @ 189.71 (stop 181.45)
+  DCMSRIND: EXIT 238 @ 47.22 (Stop-loss hit) P&L Rs-1,266.08
+  ORIENTHOT: hold @ 153.91 (stop 147.28)
+  PLATIND: hold @ 241.30 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 1357-1756 (wraps around).
+Result: checked 192 | no data 0 | filtered 209 | rejected 177 | watch 13 | signals 1 | bought 0 | sold 1
+Signals:
+  PLATIND: score 76 - NOT traded (already holding it)
+Closest to a signal (watchlist):
+  ORIENTHOT: score 83 - Score 83/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 153.91 vs 20-day high 153.92); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 0.700 (prev 0.763))
+  PVRINOX: score 83 - Score 83/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1422.20 vs 20-day high 1432.00); Volume confirmation (1.33x - today so far vs 20-day avg (pace-adjusted, 65% of day)); MACD positive and strengthening (histogram 10.001 (prev 11.010))
+  PASHUPATI: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 99.00 vs 20-day high 111.26); Trend (price 99.00, EMA20 79.83, SMA50 81.20); Strength (62% of 52-week range)
+  ONWARDTEC: score 70 - Score 70/100 - no breakout above the 20-day high yet; RSI 80 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 457.75 vs 20-day high 495.65); RSI in the 55-68 sweet spot (RSI 80.2); Tight consolidation before the move (recent daily ranges narrower than before)
+  PCJEWELLER: score 70 - Score 70/100 - no breakout above the 20-day high yet; RSI 79 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 18.03 vs 20-day high 19.13); RSI in the 55-68 sweet spot (RSI 78.6); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-133339 | scheduled | TRADING | 13:33 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.62 (stop 52.74)
+  TECHM: hold @ 1799.10 (stop 1732.37)
+  WIPRO: hold @ 189.50 (stop 181.45)
+  ORIENTHOT: hold @ 153.49 (stop 147.28)
+  PLATIND: hold @ 241.04 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 1757-2156 (wraps around).
+Result: checked 169 | no data 0 | filtered 233 | rejected 155 | watch 12 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  SINGERIND: score 75 - Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 92.29 vs 20-day high 96.44); Volume confirmation (1.37x - today so far vs 20-day avg (pace-adjusted, 69% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  SHREEJISPG: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 791.40 vs 20-day high 847.40); RSI in the 55-68 sweet spot (RSI 69.1); Tight consolidation before the move (recent daily ranges narrower than before)
+  STOVEKRAFT: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 847.45 vs 20-day high 884.55); Volume confirmation (1.23x - today so far vs 20-day avg (pace-adjusted, 69% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  THELEELA: score 68 - Score 68/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 595.60 vs 20-day high 650.40); RSI in the 55-68 sweet spot (RSI 53.6); Tight consolidation before the move (recent daily ranges narrower than before)
+  SAREGAMA: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 506.00 vs 20-day high 518.65); Trend (price 506.00, EMA20 500.29, SMA50 501.55); Volume confirmation (1.42x - today so far vs 20-day avg (pace-adjusted, 69% of day))
+==== SCAN 20261022-134841 | scheduled | TRADING | 13:48 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.69 (stop 52.74)
+  TECHM: hold @ 1797.00 (stop 1732.37)
+  WIPRO: hold @ 189.52 (stop 181.45)
+  ORIENTHOT: hold @ 153.30 (stop 147.28)
+  PLATIND: hold @ 240.90 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 2157-2556 (wraps around).
+Result: checked 170 | no data 0 | filtered 232 | rejected 157 | watch 11 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ANANDRATHI: score 78 - Score 78/100 - volume only 0.6x average (need 1.2x); weakest: Volume confirmation (0.60x - today so far vs 20-day avg (pace-adjusted, 73% of day)); Trend (price 2225.10, EMA20 2144.25, SMA50 2169.23)
+  ALGOQUANT: score 75 - Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 74.31 vs 20-day high 76.50); Volume confirmation (1.40x - today so far vs 20-day avg (pace-adjusted, 73% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  WSTCSTPAPR: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 826.95 vs 20-day high 978.05); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 6.036 (prev 9.141))
+  UNIONBANK: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 181.56 vs 20-day high 186.00); Trend (price 181.56, EMA20 175.07, SMA50 179.77); Strength (66% of 52-week range)
+  UNITEDPOLY: score 63 - Score 63/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 49.47 vs 20-day high 54.99); Volume confirmation (0.50x - today so far vs 20-day avg (pace-adjusted, 73% of day)); MACD positive and strengthening (histogram 0.007 (prev 0.147))
+==== SCAN 20261022-140343 | scheduled | TRADING | 14:03 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.65 (stop 52.74)
+  TECHM: hold @ 1793.60 (stop 1732.37)
+  WIPRO: hold @ 189.44 (stop 181.45)
+  ORIENTHOT: hold @ 154.20 (stop 147.28)
+  PLATIND: hold @ 240.71 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 209-608 (wraps around).
+Result: checked 181 | no data 0 | filtered 220 | rejected 166 | watch 14 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  COFORGE: score 81 - Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1908.10 vs 20-day high 1970.00); MACD positive and strengthening (histogram 13.849 (prev 14.314))
+  DHANBANK: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 37.06 vs 20-day high 37.50); Volume confirmation (1.30x - today so far vs 20-day avg (pace-adjusted, 77% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  CEIGALL: score 70 - Score 70/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 382.75 vs 20-day high 396.00); Volume confirmation (0.94x - today so far vs 20-day avg (pace-adjusted, 77% of day)); MACD positive and strengthening (histogram 0.312 (prev 0.363))
+  BHARTIARTL: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1908.90 vs 20-day high 1929.60); Strength (41% of 52-week range); Trend (price 1908.90, EMA20 1832.42, SMA50 1857.46)
+  CASTROLIND: score 60 - Score 60/100 - no breakout above the 20-day high yet; volume only 1.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 196.79 vs 20-day high 203.40); Volume confirmation (1.16x - today so far vs 20-day avg (pace-adjusted, 77% of day)); MACD positive and strengthening (histogram -0.452 (prev -0.489))
+==== SCAN 20261022-141845 | scheduled | TRADING | 14:18 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.51 (stop 52.74)
+  TECHM: hold @ 1794.90 (stop 1732.37)
+  WIPRO: hold @ 189.83 (stop 181.45)
+  ORIENTHOT: hold @ 154.48 (stop 147.28)
+  PLATIND: hold @ 241.93 (stop 231.17)
+Universe 2348 symbols; this scan covers positions 609-1008 (wraps around).
+Result: checked 198 | no data 0 | filtered 204 | rejected 186 | watch 9 | signals 1 | bought 1 | sold 0
+Signals:
+  INDHOTEL: score 91 - BOUGHT 15 @ 786.90 (stop 757.92, T1 844.86, T2 888.34) news NEUTRAL: AI: NEUTRAL
+
+The headlines consist entirely of routine market coverage, including price tracking, standard Q1 results reporting, general analyst forecasts, and an upcoming ex-dividend notice, with no majo
+Closest to a signal (watchlist):
+  GOODLUCK: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.3x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 570.30 vs 20-day high 615.00); Volume confirmation (0.30x - today so far vs 20-day avg (pace-adjusted, 81% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  HAL: score 61 - Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 4851.30 vs 20-day high 5012.00); Trend (price 4851.30, EMA20 4822.26, SMA50 4851.10); RSI in the 55-68 sweet spot (RSI 52.3)
+  ICICIBANK: score 61 - Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1393.70 vs 20-day high 1411.80); Trend (price 1393.70, EMA20 1361.32, SMA50 1381.97); Volume confirmation (1.35x - today so far vs 20-day avg (pace-adjusted, 81% of day))
+  FEDERALBNK: score 58 - Score 58/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 348.40 vs 20-day high 355.50); Volume confirmation (0.89x - today so far vs 20-day avg (pace-adjusted, 81% of day)); Trend (price 348.40, EMA20 333.35, SMA50 340.33)
+  IGIL: score 57 - Score 57/100 - RSI 50 too weak (need 50+); weakest: Momentum (EMA9 319.50 vs EMA20 319.82); RSI in the 55-68 sweet spot (RSI 49.9); Trend (price 353.20, EMA20 319.82, SMA50 327.81)
+==== SCAN 20261022-143349 | scheduled | TRADING | 14:33 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.46 (stop 52.74)
+  TECHM: hold @ 1794.10 (stop 1732.37)
+  WIPRO: hold @ 189.92 (stop 181.45)
+  ORIENTHOT: hold @ 154.62 (stop 147.28)
+  PLATIND: hold @ 241.30 (stop 231.17)
+  INDHOTEL: hold @ 786.65 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 1009-1408 (wraps around).
+Result: checked 182 | no data 0 | filtered 219 | rejected 173 | watch 8 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  KROSS: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 292.45 vs 20-day high 326.40); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 1.764 (prev 1.916))
+  KRISHANA: score 65 - Score 65/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 200.40 vs 20-day high 216.00); Volume confirmation (0.96x - today so far vs 20-day avg (pace-adjusted, 85% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  LTTS: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 3949.80 vs 20-day high 4143.00); RSI in the 55-68 sweet spot (RSI 74.8); Strength (55% of 52-week range)
+  MANBA: score 63 - Score 63/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 138.47, EMA20 140.38, SMA50 134.84); Breakout above the prior 20-day high (price 138.47 vs 20-day high 151.00); MACD positive and strengthening (histogram 0.107 (prev 0.130))
+  MANOMAY: score 62 - Score 62/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 240.97 vs 20-day high 251.00); Volume confirmation (0.96x - today so far vs 20-day avg (pace-adjusted, 85% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-144852 | scheduled | TRADING | 14:48 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.70 (stop 52.74)
+  TECHM: hold @ 1796.70 (stop 1732.37)
+  WIPRO: hold @ 189.68 (stop 181.45)
+  ORIENTHOT: hold @ 154.61 (stop 147.28)
+  PLATIND: hold @ 242.78 (stop 231.17)
+  INDHOTEL: hold @ 788.00 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 1409-1808 (wraps around).
+Result: checked 190 | no data 0 | filtered 211 | rejected 174 | watch 13 | signals 2 | bought 0 | sold 0
+Signals:
+  ORIENTHOT: score 91 - NOT traded (outside entry window 10:00-14:30)
+  PLATIND: score 76 - NOT traded (outside entry window 10:00-14:30)
+Closest to a signal (watchlist):
+  PVRINOX: score 77 - Score 77/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Volume confirmation (1.13x - today so far vs 20-day avg (pace-adjusted, 89% of day)); Breakout above the prior 20-day high (price 1423.30 vs 20-day high 1432.00); MACD positive and strengthening (histogram 10.001 (prev 11.010))
+  PASHUPATI: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 99.03 vs 20-day high 111.26); Trend (price 99.03, EMA20 79.83, SMA50 81.20); Strength (62% of 52-week range)
+  PCJEWELLER: score 70 - Score 70/100 - no breakout above the 20-day high yet; RSI 79 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 18.36 vs 20-day high 19.13); RSI in the 55-68 sweet spot (RSI 78.6); Tight consolidation before the move (recent daily ranges narrower than before)
+  PNB: score 68 - Score 68/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 121.96 vs 20-day high 125.22); Strength (64% of 52-week range); Volume confirmation (1.36x - today so far vs 20-day avg (pace-adjusted, 89% of day))
+  PARACABLES: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 60.31 vs 20-day high 67.88); Trend (price 60.31, EMA20 59.60, SMA50 61.78); Strength (68% of 52-week range)
+==== SCAN 20261022-150356 | scheduled | TRADING | 15:03 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.69 (stop 52.74)
+  TECHM: hold @ 1796.00 (stop 1732.37)
+  WIPRO: hold @ 189.99 (stop 181.45)
+  ORIENTHOT: hold @ 154.94 (stop 147.28)
+  PLATIND: hold @ 241.37 (stop 231.17)
+  INDHOTEL: hold @ 787.85 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 1809-2208 (wraps around).
+Result: checked 175 | no data 0 | filtered 226 | rejected 159 | watch 15 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  SINGERIND: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 93.48 vs 20-day high 96.44); Tight consolidation before the move (recent daily ranges narrower than before)
+  SHREEJISPG: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 790.15 vs 20-day high 847.40); RSI in the 55-68 sweet spot (RSI 69.1); Volume confirmation (1.43x - today so far vs 20-day avg (pace-adjusted, 93% of day))
+  SOUTHBANK: score 66 - Score 66/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); RSI 76 overheated (limit 75); weakest: Volume confirmation (1.07x - today so far vs 20-day avg (pace-adjusted, 93% of day)); RSI in the 55-68 sweet spot (RSI 75.5); Breakout above the prior 20-day high (price 55.69 vs 20-day high 56.25)
+  UNIONBANK: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 181.80 vs 20-day high 186.00); Trend (price 181.80, EMA20 175.07, SMA50 179.77); Strength (66% of 52-week range)
+  STOVEKRAFT: score 65 - Score 65/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 844.90 vs 20-day high 884.55); Volume confirmation (1.04x - today so far vs 20-day avg (pace-adjusted, 93% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261022-151859 | scheduled | TRADING | 15:18 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.74 (stop 52.74)
+  TECHM: hold @ 1800.00 (stop 1732.37)
+  WIPRO: hold @ 189.51 (stop 181.45)
+  ORIENTHOT: hold @ 154.05 (stop 147.28)
+  PLATIND: hold @ 243.17 (stop 231.17)
+  INDHOTEL: hold @ 784.50 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 2209-2608 (wraps around).
+Result: checked 170 | no data 0 | filtered 232 | rejected 161 | watch 7 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ANANDRATHI: score 78 - Score 78/100 - volume only 0.9x average (need 1.2x); weakest: Volume confirmation (0.86x - today so far vs 20-day avg (pace-adjusted, 97% of day)); Trend (price 2223.20, EMA20 2144.25, SMA50 2169.23)
+  ALGOQUANT: score 75 - Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 74.35 vs 20-day high 76.50); Volume confirmation (1.22x - today so far vs 20-day avg (pace-adjusted, 97% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  WSTCSTPAPR: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 820.00 vs 20-day high 978.05); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 6.036 (prev 9.141))
+  WIPRO: score 60 - Score 60/100 - no breakout above the 20-day high yet; weakest: RSI in the 55-68 sweet spot (RSI 72.9); Strength (28% of 52-week range); Breakout above the prior 20-day high (price 189.51 vs 20-day high 189.75)
+  63MOONS: score 58 - Score 58/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 866.35 vs 20-day high 950.00); Volume confirmation (0.57x - today so far vs 20-day avg (pace-adjusted, 97% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+---- 2026-10-22 END OF DAY ----
+==== Worker started 2026-10-22 22:12 IST ====
+---- 2026-10-23 08:00 morning check: Market opens at 09:15 IST; Market data: OK
+==== SCAN 20261023-091502 | scheduled | TRADING | 09:15 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 54.85 (stop 52.74)
+  TECHM: hold @ 1844.90 (stop 1732.37)
+  WIPRO: hold @ 195.40 (stop 181.45)
+  ORIENTHOT: hold @ 154.50 (stop 147.28)
+  PLATIND: hold @ 240.30 (stop 231.17)
+  INDHOTEL: hold @ 783.90 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 261-660 (wraps around).
+Result: checked 177 | no data 1 | filtered 223 | rejected 169 | watch 7 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  CASTROLIND: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 197.00 vs 20-day high 203.40); Volume confirmation (0.01x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram -0.379 (prev -0.459))
+  COFORGE: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1963.90 vs 20-day high 1986.60); Volume confirmation (0.09x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  DHANBANK: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 36.95 vs 20-day high 37.50); Volume confirmation (0.03x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  CYIENT: score 60 - Score 60/100 - volume only 0.8x average (need 1.2x); weakest: Volume confirmation (0.83x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram -1.554 (prev 1.751)); Momentum (EMA9 1160.48 vs EMA20 1135.52)
+  BSOFT: score 58 - Score 58/100 - no breakout above the 20-day high yet; volume only 0.1x average (need 1.2x); weakest: Volume confirmation (0.11x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Strength (27% of 52-week range); Breakout above the prior 20-day high (price 323.95 vs 20-day high 325.50)
+==== SCAN 20261023-093003 | scheduled | TRADING | 09:30 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 54.09 (stop 52.74)
+  TECHM: hold @ 1820.10 (stop 1732.37)
+  WIPRO: hold @ 193.57 (stop 181.45)
+  ORIENTHOT: hold @ 154.89 (stop 147.28)
+  PLATIND: hold @ 237.00 (stop 231.17)
+  INDHOTEL: hold @ 788.00 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 661-1060 (wraps around).
+Result: checked 206 | no data 0 | filtered 196 | rejected 195 | watch 6 | signals 3 | bought 0 | sold 0
+Signals:
+  IGIL: score 80 - NOT traded (outside entry window 10:00-14:30)
+  HCLTECH: score 78 - NOT traded (outside entry window 10:00-14:30)
+  INFY: score 74 - NOT traded (outside entry window 10:00-14:30)
+Closest to a signal (watchlist):
+  INDHOTEL: score 87 - Score 87/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 787.90 vs 20-day high 794.65); Tight consolidation before the move (recent daily ranges narrower than before)
+  FSL: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 294.05 vs 20-day high 300.00); Strength (54% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  ICICIBANK: score 62 - Score 62/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Volume confirmation (0.74x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Breakout above the prior 20-day high (price 1398.40 vs 20-day high 1411.80); Trend (price 1398.40, EMA20 1364.86, SMA50 1381.31)
+  GANDHAR: score 60 - Score 60/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 297.75 vs 20-day high 313.50); MACD positive and strengthening (histogram -1.231 (prev -1.045)); Momentum (EMA9 294.39 vs EMA20 288.30)
+  GOODLUCK: score 58 - Score 58/100 - no breakout above the 20-day high yet; volume only 0.4x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 549.35 vs 20-day high 615.00); Volume confirmation (0.39x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261023-094506 | scheduled | TRADING | 09:45 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 53.94 (stop 52.74)
+  TECHM: hold @ 1818.80 (stop 1732.37)
+  WIPRO: hold @ 193.48 (stop 181.45)
+  ORIENTHOT: hold @ 153.46 (stop 147.28)
+  PLATIND: hold @ 233.42 (stop 231.17)
+  INDHOTEL: hold @ 781.55 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 1061-1460 (wraps around).
+Result: checked 174 | no data 0 | filtered 227 | rejected 165 | watch 8 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  KROSS: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 295.70 vs 20-day high 326.40); Tight consolidation before the move (recent daily ranges narrower than before); Strength (83% of 52-week range)
+  MPHASIS: score 69 - Score 69/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2518.00 vs 20-day high 2601.40); Strength (52% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  LTTS: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 3928.90 vs 20-day high 4143.00); RSI in the 55-68 sweet spot (RSI 72.1); Strength (54% of 52-week range)
+  MASTEK: score 61 - Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1814.30 vs 20-day high 1888.00); Strength (46% of 52-week range); Volume confirmation (1.32x - today so far vs 20-day avg (pace-adjusted, 12% of day))
+  KARURVYSYA: score 58 - Score 58/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 343.20 vs 20-day high 390.80); Volume confirmation (0.70x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261023-100009 | scheduled | TRADING | 10:00 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 53.32 (stop 52.74)
+  TECHM: hold @ 1815.00 (stop 1732.37)
+  WIPRO: hold @ 192.38 (stop 181.45)
+  ORIENTHOT: hold @ 152.23 (stop 147.28)
+  PLATIND: hold @ 232.50 (stop 231.17)
+  INDHOTEL: hold @ 777.80 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 1461-1860 (wraps around).
+Result: checked 192 | no data 0 | filtered 209 | rejected 177 | watch 14 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  PREMEXPLN: score 81 - Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 690.00 vs 20-day high 695.00); Strength (69% of 52-week range); MACD positive and strengthening (histogram 0.256 (prev 0.390))
+  ORIENTHOT: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 152.23 vs 20-day high 156.00); Tight consolidation before the move (recent daily ranges narrower than before)
+  OMNI: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 648.50 vs 20-day high 704.40); Tight consolidation before the move (recent daily ranges narrower than before); Strength (80% of 52-week range)
+  PASHUPATI: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 103.77 vs 20-day high 111.26); RSI in the 55-68 sweet spot (RSI 71.4); Strength (71% of 52-week range)
+  SBC: score 75 - Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 61.07 vs 20-day high 66.35); MACD positive and strengthening (histogram -0.389 (prev -0.170))
+==== SCAN 20261023-101513 | scheduled | TRADING | 10:15 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 52.84 (stop 52.74)
+  TECHM: hold @ 1804.10 (stop 1732.37)
+  WIPRO: hold @ 192.01 (stop 181.45)
+  ORIENTHOT: hold @ 151.76 (stop 147.28)
+  INDHOTEL: hold @ 775.80 (stop 757.92)
+Universe 2348 symbols; this scan covers positions 1861-2260 (wraps around).
+Result: checked 166 | no data 0 | filtered 235 | rejected 152 | watch 12 | signals 1 | bought 1 | sold 0
+Signals:
+  TCS: score 71 - BOUGHT 85 @ 2575.10 (stop 2457.95, T1 2809.40, T2 2985.12) news NEUTRAL: AI: NEUTRAL. While some headlines report positive Q2 results and a rally, others note the fading of deal pops, flat trading, broader market declines due to rising crude prices, and AI eroding demand from 
+Closest to a signal (watchlist):
+  TEXINFRA: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 124.01 vs 20-day high 130.78); RSI in the 55-68 sweet spot (RSI 53.3); MACD positive and strengthening (histogram 0.151 (prev 0.406))
+  SOUTHBANK: score 70 - Score 70/100 - no breakout above the 20-day high yet; RSI 77 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 52.84 vs 20-day high 56.25); RSI in the 55-68 sweet spot (RSI 77.0); Tight consolidation before the move (recent daily ranges narrower than before)
+  TECHM: score 70 - Score 70/100 - no breakout above the 20-day high yet; RSI 76 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1804.60 vs 20-day high 1844.10); RSI in the 55-68 sweet spot (RSI 75.9); Tight consolidation before the move (recent daily ranges narrower than before)
+  TANLA: score 68 - Score 68/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 565.50 vs 20-day high 597.50); Strength (55% of 52-week range); RSI in the 55-68 sweet spot (RSI 69.7)
+  SKYGOLD: score 66 - Score 66/100 - no breakout above the 20-day high yet; RSI 76 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1010.35 vs 20-day high 1083.95); RSI in the 55-68 sweet spot (RSI 76.0); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261023-103016 | scheduled | TRADING | 10:30 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 52.91 (stop 52.74)
+  TECHM: hold @ 1803.00 (stop 1732.37)
+  WIPRO: hold @ 192.33 (stop 181.45)
+  ORIENTHOT: hold @ 151.68 (stop 147.28)
+  INDHOTEL: hold @ 776.80 (stop 757.92)
+  TCS: hold @ 2563.00 (stop 2457.95)
+Universe 2348 symbols; this scan covers positions 2261-2660 (wraps around).
+Result: checked 175 | no data 0 | filtered 228 | rejected 166 | watch 6 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ANANDRATHI: score 85 - Score 85/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2236.50 vs 20-day high 2241.20); Trend (price 2236.50, EMA20 2151.75, SMA50 2171.06)
+  ALGOQUANT: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 74.35 vs 20-day high 76.64); Tight consolidation before the move (recent daily ranges narrower than before)
+  WIPRO: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: RSI in the 55-68 sweet spot (RSI 73.7); Strength (31% of 52-week range); Breakout above the prior 20-day high (price 192.33 vs 20-day high 192.88)
+  ZENSARTECH: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 505.25 vs 20-day high 523.70); Strength (22% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  63MOONS: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 860.50 vs 20-day high 950.00); RSI in the 55-68 sweet spot (RSI 53.4); Volume confirmation (1.49x - today so far vs 20-day avg (pace-adjusted, 20% of day))
+==== SCAN 20261023-104517 | scheduled | TRADING | 10:45 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1799.30 (stop 1732.37)
+  WIPRO: hold @ 191.77 (stop 181.45)
+  ORIENTHOT: hold @ 151.71 (stop 147.28)
+  INDHOTEL: hold @ 775.45 (stop 757.92)
+  TCS: hold @ 2555.80 (stop 2457.95)
+Universe 2348 symbols; this scan covers positions 313-712 (wraps around).
+Result: checked 179 | no data 0 | filtered 221 | rejected 170 | watch 8 | signals 1 | bought 1 | sold 0
+Signals:
+  CYIENT: score 75 - BOUGHT 131 @ 1249.00 (stop 1172.82, T1 1401.36, T2 1515.62) news NEUTRAL: AI: NEUTRAL
+
+**Reason:** Cyient is set to announce its Q2 results today, and while its subsidiary Cyient DLM experienced a sharp price drop, there is no news of fraud, probes, defaults, or direct major do
+Closest to a signal (watchlist):
+  COFORGE: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1929.10 vs 20-day high 1986.60); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 9.977 (prev 13.849))
+  DHANBANK: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 36.00 vs 20-day high 37.50); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 0.713 (prev 0.814))
+  FSL: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 282.70 vs 20-day high 300.00); Strength (48% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  GCSL: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 727.35 vs 20-day high 749.45); MACD positive and strengthening (histogram -2.467 (prev -1.379)); RSI in the 55-68 sweet spot (RSI 68.4)
+  BHARTIARTL: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1895.80 vs 20-day high 1929.60); Strength (38% of 52-week range); Trend (price 1895.80, EMA20 1838.38, SMA50 1856.50)
+==== SCAN 20261023-110020 | scheduled | TRADING | 11:00 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1799.90 (stop 1732.37)
+  WIPRO: hold @ 191.25 (stop 181.45)
+  ORIENTHOT: hold @ 150.60 (stop 147.28)
+  INDHOTEL: hold @ 769.55 (stop 757.92)
+  TCS: hold @ 2548.30 (stop 2457.95)
+  CYIENT: hold @ 1237.80 (stop 1172.82)
+Universe 2348 symbols; this scan covers positions 713-1112 (wraps around).
+Result: checked 206 | no data 0 | filtered 197 | rejected 196 | watch 6 | signals 1 | bought 1 | sold 0
+Signals:
+  IGIL: score 80 - BOUGHT 605 @ 363.55 (stop 347.02, T1 396.60, T2 421.39) news POSITIVE: AI: POSITIVE
+
+The stock locked in a 10% upper circuit following strong Q2 results, with net profit surging 43% YoY to ₹185 crore alongside a spike in trading volumes and strong revenue growth.
+Closest to a signal (watchlist):
+  INDHOTEL: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 769.45 vs 20-day high 794.65); Tight consolidation before the move (recent daily ranges narrower than before)
+  HCLTECH: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: RSI in the 55-68 sweet spot (RSI 72.7); Breakout above the prior 20-day high (price 1426.20 vs 20-day high 1427.90); Strength (53% of 52-week range)
+  GLOBAL: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 139.54 vs 20-day high 146.50); MACD positive and strengthening (histogram -0.817 (prev -0.719)); Volume confirmation (1.36x - today so far vs 20-day avg (pace-adjusted, 28% of day))
+  INFY: score 59 - Score 59/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1155.35 vs 20-day high 1174.50); Strength (23% of 52-week range); Trend (price 1155.35, EMA20 1080.92, SMA50 1085.84)
+  ICICIBANK: score 55 - Score 55/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1388.90 vs 20-day high 1411.80); Volume confirmation (1.10x - today so far vs 20-day avg (pace-adjusted, 28% of day)); Trend (price 1388.90, EMA20 1364.86, SMA50 1381.31)
+==== SCAN 20261023-111523 | scheduled | TRADING | 11:15 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1800.60 (stop 1732.37)
+  WIPRO: hold @ 191.54 (stop 181.45)
+  ORIENTHOT: hold @ 151.08 (stop 147.28)
+  INDHOTEL: hold @ 772.15 (stop 757.92)
+  TCS: hold @ 2553.00 (stop 2457.95)
+  CYIENT: hold @ 1240.00 (stop 1172.82)
+  IGIL: hold @ 369.45 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 1113-1512 (wraps around).
+Result: checked 175 | no data 0 | filtered 225 | rejected 164 | watch 11 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  KROSS: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 302.00 vs 20-day high 326.40); Tight consolidation before the move (recent daily ranges narrower than before)
+  ORIENTHOT: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 151.08 vs 20-day high 156.00); Tight consolidation before the move (recent daily ranges narrower than before)
+  OMNI: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 636.20 vs 20-day high 704.40); Tight consolidation before the move (recent daily ranges narrower than before); Strength (78% of 52-week range)
+  NUVOCO: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 334.05 vs 20-day high 353.50); Strength (37% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  MPHASIS: score 69 - Score 69/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2507.00 vs 20-day high 2601.40); Strength (51% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261023-113025 | scheduled | TRADING | 11:30 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1798.30 (stop 1732.37)
+  WIPRO: hold @ 191.21 (stop 181.45)
+  ORIENTHOT: hold @ 151.25 (stop 147.28)
+  INDHOTEL: hold @ 772.10 (stop 757.92)
+  TCS: hold @ 2555.00 (stop 2457.95)
+  CYIENT: hold @ 1223.50 (stop 1172.82)
+  IGIL: hold @ 370.25 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 1513-1912 (wraps around).
+Result: checked 182 | no data 0 | filtered 219 | rejected 171 | watch 10 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  PREMEXPLN: score 81 - Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 689.30 vs 20-day high 695.00); Strength (69% of 52-week range); MACD positive and strengthening (histogram 0.256 (prev 0.390))
+  PASHUPATI: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 103.80 vs 20-day high 111.26); RSI in the 55-68 sweet spot (RSI 71.4); Strength (71% of 52-week range)
+  PNB: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 119.44 vs 20-day high 125.22); Strength (57% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  SAREGAMA: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 504.75 vs 20-day high 518.65); Trend (price 504.75, EMA20 500.29, SMA50 501.55); Tight consolidation before the move (recent daily ranges narrower than before)
+  PCJEWELLER: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 17.31 vs 20-day high 20.10); RSI in the 55-68 sweet spot (RSI 74.3); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261023-114528 | scheduled | TRADING | 11:45 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1794.60 (stop 1732.37)
+  WIPRO: hold @ 191.04 (stop 181.45)
+  ORIENTHOT: hold @ 150.76 (stop 147.28)
+  INDHOTEL: hold @ 769.90 (stop 757.92)
+  TCS: hold @ 2551.60 (stop 2457.95)
+  CYIENT: hold @ 1224.10 (stop 1172.82)
+  IGIL: hold @ 370.45 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 1913-2312 (wraps around).
+Result: checked 176 | no data 0 | filtered 225 | rejected 164 | watch 10 | signals 1 | bought 0 | sold 0
+Signals:
+  TCS: score 71 - NOT traded (already holding it)
+Closest to a signal (watchlist):
+  TANLA: score 68 - Score 68/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 564.90 vs 20-day high 597.50); Strength (55% of 52-week range); RSI in the 55-68 sweet spot (RSI 69.7)
+  SINGERIND: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 85.00 vs 20-day high 96.44); RSI in the 55-68 sweet spot (RSI 71.6); Volume confirmation (1.34x - today so far vs 20-day avg (pace-adjusted, 40% of day))
+  SOUTHBANK: score 67 - Score 67/100 - no breakout above the 20-day high yet; RSI 77 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 52.26 vs 20-day high 56.25); RSI in the 55-68 sweet spot (RSI 77.0); Tight consolidation before the move (recent daily ranges narrower than before)
+  WIPRO: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: RSI in the 55-68 sweet spot (RSI 73.7); Strength (29% of 52-week range); Breakout above the prior 20-day high (price 191.00 vs 20-day high 192.88)
+  SKYGOLD: score 66 - Score 66/100 - no breakout above the 20-day high yet; RSI 76 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1015.35 vs 20-day high 1083.95); RSI in the 55-68 sweet spot (RSI 76.0); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261023-120031 | scheduled | TRADING | 12:00 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1792.00 (stop 1732.37)
+  WIPRO: hold @ 190.32 (stop 181.45)
+  ORIENTHOT: hold @ 149.99 (stop 147.28)
+  INDHOTEL: hold @ 765.80 (stop 757.92)
+  TCS: hold @ 2538.70 (stop 2457.95)
+  CYIENT: hold @ 1221.90 (stop 1172.82)
+  IGIL: hold @ 369.00 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 2313-2712 (wraps around).
+Result: checked 175 | no data 0 | filtered 228 | rejected 167 | watch 5 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ANANDRATHI: score 85 - Score 85/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2225.00 vs 20-day high 2241.20); Trend (price 2225.00, EMA20 2151.75, SMA50 2171.06)
+  ALGOQUANT: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 72.86 vs 20-day high 76.64); Tight consolidation before the move (recent daily ranges narrower than before)
+  ZENSARTECH: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 498.35 vs 20-day high 523.70); Strength (20% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  BHARTIARTL: score 63 - Score 63/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1880.10 vs 20-day high 1929.60); Strength (34% of 52-week range); Trend (price 1880.10, EMA20 1838.38, SMA50 1856.50)
+  ANTELOPUS: score 56 - Score 56/100 - no breakout above the 20-day high yet; RSI 43 too weak (need 50+); weakest: Breakout above the prior 20-day high (price 1086.00 vs 20-day high 1290.90); Momentum (EMA9 1041.59 vs EMA20 1063.37); RSI in the 55-68 sweet spot (RSI 43.2)
+==== SCAN 20261023-121533 | scheduled | TRADING | 12:15 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1791.10 (stop 1732.37)
+  WIPRO: hold @ 190.34 (stop 181.45)
+  ORIENTHOT: hold @ 151.25 (stop 147.28)
+  INDHOTEL: hold @ 772.15 (stop 757.92)
+  TCS: hold @ 2541.40 (stop 2457.95)
+  CYIENT: hold @ 1217.60 (stop 1172.82)
+  IGIL: hold @ 366.30 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 365-764 (wraps around).
+Result: checked 184 | no data 0 | filtered 216 | rejected 175 | watch 9 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  COFORGE: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1901.30 vs 20-day high 1986.60); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 9.977 (prev 13.849))
+  DHANBANK: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 35.88 vs 20-day high 37.50); Volume confirmation (1.41x - today so far vs 20-day avg (pace-adjusted, 48% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  CYIENT: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: MACD positive and strengthening (histogram -1.554 (prev 1.751)); Breakout above the prior 20-day high (price 1217.60 vs 20-day high 1224.40); Momentum (EMA9 1160.48 vs EMA20 1135.52)
+  FSL: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 285.05 vs 20-day high 300.00); Strength (49% of 52-week range); Volume confirmation (1.22x - today so far vs 20-day avg (pace-adjusted, 48% of day))
+  GANDHAR: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 290.65 vs 20-day high 313.50); MACD positive and strengthening (histogram -1.231 (prev -1.045)); Momentum (EMA9 294.39 vs EMA20 288.30)
+==== SCAN 20261023-123036 | scheduled | TRADING | 12:30 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1790.20 (stop 1732.37)
+  WIPRO: hold @ 190.03 (stop 181.45)
+  ORIENTHOT: hold @ 151.12 (stop 147.28)
+  INDHOTEL: hold @ 770.80 (stop 757.92)
+  TCS: hold @ 2541.50 (stop 2457.95)
+  CYIENT: hold @ 1215.20 (stop 1172.82)
+  IGIL: hold @ 367.30 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 765-1164 (wraps around).
+Result: checked 201 | no data 0 | filtered 202 | rejected 193 | watch 4 | signals 1 | bought 0 | sold 0
+Signals:
+  IGIL: score 80 - NOT traded (already holding it)
+Closest to a signal (watchlist):
+  INDHOTEL: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 770.80 vs 20-day high 794.65); Tight consolidation before the move (recent daily ranges narrower than before)
+  KROSS: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 294.10 vs 20-day high 326.40); Tight consolidation before the move (recent daily ranges narrower than before); Strength (82% of 52-week range)
+  HCLTECH: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: RSI in the 55-68 sweet spot (RSI 72.7); Breakout above the prior 20-day high (price 1426.60 vs 20-day high 1427.90); Strength (53% of 52-week range)
+  INFY: score 59 - Score 59/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1157.50 vs 20-day high 1174.50); Strength (24% of 52-week range); Trend (price 1157.50, EMA20 1080.92, SMA50 1085.84)
+==== SCAN 20261023-124539 | scheduled | TRADING | 12:45 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1789.30 (stop 1732.37)
+  WIPRO: hold @ 188.90 (stop 181.45)
+  ORIENTHOT: hold @ 151.09 (stop 147.28)
+  INDHOTEL: hold @ 770.95 (stop 757.92)
+  TCS: hold @ 2529.00 (stop 2457.95)
+  CYIENT: hold @ 1204.90 (stop 1172.82)
+  IGIL: hold @ 366.60 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 1165-1564 (wraps around).
+Result: checked 179 | no data 0 | filtered 222 | rejected 167 | watch 11 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ORIENTHOT: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 151.09 vs 20-day high 156.00); Tight consolidation before the move (recent daily ranges narrower than before)
+  OMNI: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 637.35 vs 20-day high 704.40); Tight consolidation before the move (recent daily ranges narrower than before); Strength (78% of 52-week range)
+  PASHUPATI: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 103.84 vs 20-day high 111.26); RSI in the 55-68 sweet spot (RSI 71.4); Strength (71% of 52-week range)
+  NUVOCO: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 332.25 vs 20-day high 353.50); Strength (36% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  PCJEWELLER: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 17.19 vs 20-day high 20.10); RSI in the 55-68 sweet spot (RSI 74.3); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261023-130042 | scheduled | TRADING | 13:00 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1789.30 (stop 1732.37)
+  WIPRO: hold @ 189.23 (stop 181.45)
+  ORIENTHOT: hold @ 151.25 (stop 147.28)
+  INDHOTEL: hold @ 772.00 (stop 757.92)
+  TCS: hold @ 2536.00 (stop 2457.95)
+  CYIENT: hold @ 1212.50 (stop 1172.82)
+  IGIL: hold @ 366.30 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 1565-1964 (wraps around).
+Result: checked 179 | no data 0 | filtered 221 | rejected 169 | watch 10 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  PREMEXPLN: score 81 - Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 688.70 vs 20-day high 695.00); Strength (69% of 52-week range); MACD positive and strengthening (histogram 0.256 (prev 0.390))
+  PVRINOX: score 66 - Score 66/100 - no breakout above the 20-day high yet; volume only 0.6x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1383.90 vs 20-day high 1458.00); Volume confirmation (0.58x - today so far vs 20-day avg (pace-adjusted, 60% of day)); MACD positive and strengthening (histogram 8.520 (prev 9.530))
+  PNB: score 62 - Score 62/100 - no breakout above the 20-day high yet; volume only 1.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 119.64 vs 20-day high 125.22); Volume confirmation (1.20x - today so far vs 20-day avg (pace-adjusted, 60% of day)); Strength (58% of 52-week range)
+  SINGERIND: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 84.85 vs 20-day high 96.44); Volume confirmation (0.98x - today so far vs 20-day avg (pace-adjusted, 60% of day)); RSI in the 55-68 sweet spot (RSI 71.6)
+  SKYGOLD: score 61 - Score 61/100 - no breakout above the 20-day high yet; RSI 76 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1013.30 vs 20-day high 1083.95); RSI in the 55-68 sweet spot (RSI 76.0); Volume confirmation (1.22x - today so far vs 20-day avg (pace-adjusted, 60% of day))
+==== SCAN 20261023-131544 | scheduled | TRADING | 13:15 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1790.40 (stop 1732.37)
+  WIPRO: hold @ 189.40 (stop 181.45)
+  ORIENTHOT: hold @ 151.29 (stop 147.28)
+  INDHOTEL: hold @ 772.90 (stop 757.92)
+  TCS: hold @ 2528.60 (stop 2457.95)
+  CYIENT: hold @ 1213.30 (stop 1172.82)
+  IGIL: hold @ 366.75 (stop 347.02)
+Universe 2348 symbols; this scan covers positions 1965-2364 (wraps around).
+Result: checked 171 | no data 0 | filtered 230 | rejected 161 | watch 8 | signals 1 | bought 1 | sold 0
+Signals:
+  SSWL: score 75 - BOUGHT 318 @ 449.75 (stop 418.38, T1 512.49, T2 559.55) news POSITIVE: AI: POSITIVE The stock shows strong positive momentum, hitting a 52-week high following a 209% Q2 profit surge, supported by positive news on dividends and capital returns.
+Closest to a signal (watchlist):
+  ZENSARTECH: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 494.60 vs 20-day high 523.70); Strength (19% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  TECHM: score 59 - Score 59/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); RSI 76 overheated (limit 75); weakest: Breakout above the prior 20-day high (price 1790.40 vs 20-day high 1844.10); Volume confirmation (1.00x - today so far vs 20-day avg (pace-adjusted, 64% of day)); RSI in the 55-68 sweet spot (RSI 75.9)
+  STOVEKRAFT: score 58 - Score 58/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 798.40, EMA20 826.52, SMA50 814.58); Breakout above the prior 20-day high (price 798.40 vs 20-day high 884.55); Tight consolidation before the move (recent daily ranges narrower than before)
+  TCS: score 58 - Score 58/100 - no breakout above the 20-day high yet; weakest: RSI in the 55-68 sweet spot (RSI 73.1); Strength (40% of 52-week range); Breakout above the prior 20-day high (price 2528.60 vs 20-day high 2533.30)
+  TEXINFRA: score 58 - Score 58/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 118.75, EMA20 121.03, SMA50 115.96); Breakout above the prior 20-day high (price 118.75 vs 20-day high 130.78); RSI in the 55-68 sweet spot (RSI 53.3)
+==== SCAN 20261023-133048 | scheduled | TRADING | 13:30 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1787.40 (stop 1732.37)
+  WIPRO: hold @ 189.18 (stop 181.45)
+  ORIENTHOT: hold @ 151.56 (stop 147.28)
+  INDHOTEL: hold @ 773.00 (stop 757.92)
+  TCS: hold @ 2522.70 (stop 2457.95)
+  CYIENT: hold @ 1215.20 (stop 1172.82)
+  IGIL: hold @ 367.75 (stop 347.02)
+  SSWL: hold @ 454.90 (stop 418.38)
+Universe 2348 symbols; this scan covers positions 17-416 (wraps around).
+Result: checked 183 | no data 0 | filtered 220 | rejected 175 | watch 5 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ANANDRATHI: score 85 - Score 85/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2228.20 vs 20-day high 2241.20); Trend (price 2228.20, EMA20 2151.75, SMA50 2171.06)
+  ALGOQUANT: score 75 - Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 74.22 vs 20-day high 76.64); Volume confirmation (1.30x - today so far vs 20-day avg (pace-adjusted, 68% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  AJMERA: score 59 - Score 59/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 122.87 vs 20-day high 132.84); Volume confirmation (1.06x - today so far vs 20-day avg (pace-adjusted, 68% of day)); Strength (20% of 52-week range)
+  BHARTIARTL: score 58 - Score 58/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1876.30 vs 20-day high 1929.60); Strength (33% of 52-week range); Trend (price 1876.30, EMA20 1838.38, SMA50 1856.50)
+  ANTELOPUS: score 56 - Score 56/100 - no breakout above the 20-day high yet; RSI 43 too weak (need 50+); weakest: Breakout above the prior 20-day high (price 1149.10 vs 20-day high 1290.90); Momentum (EMA9 1041.59 vs EMA20 1063.37); RSI in the 55-68 sweet spot (RSI 43.2)
+==== SCAN 20261023-134550 | scheduled | TRADING | 13:45 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1794.80 (stop 1732.37)
+  WIPRO: hold @ 189.96 (stop 181.45)
+  ORIENTHOT: hold @ 153.00 (stop 147.28)
+  INDHOTEL: hold @ 780.00 (stop 757.92)
+  TCS: hold @ 2536.90 (stop 2457.95)
+  CYIENT: hold @ 1222.20 (stop 1172.82)
+  IGIL: hold @ 369.90 (stop 347.02)
+  SSWL: hold @ 455.15 (stop 418.38)
+Universe 2348 symbols; this scan covers positions 417-816 (wraps around).
+Result: checked 181 | no data 0 | filtered 219 | rejected 172 | watch 9 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  COFORGE: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1903.00 vs 20-day high 1986.60); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 9.977 (prev 13.849))
+  CYIENT: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: MACD positive and strengthening (histogram -1.554 (prev 1.751)); Breakout above the prior 20-day high (price 1223.00 vs 20-day high 1224.40); Momentum (EMA9 1160.48 vs EMA20 1135.52)
+  DHANBANK: score 65 - Score 65/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 35.92 vs 20-day high 37.50); Volume confirmation (1.00x - today so far vs 20-day avg (pace-adjusted, 72% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  GANDHAR: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 295.50 vs 20-day high 313.50); MACD positive and strengthening (histogram -1.231 (prev -1.045)); Momentum (EMA9 294.39 vs EMA20 288.30)
+  FSL: score 62 - Score 62/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 288.55 vs 20-day high 300.00); Volume confirmation (1.01x - today so far vs 20-day avg (pace-adjusted, 72% of day)); Strength (51% of 52-week range)
+==== SCAN 20261023-140053 | scheduled | TRADING | 14:00 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1792.10 (stop 1732.37)
+  WIPRO: hold @ 189.90 (stop 181.45)
+  ORIENTHOT: hold @ 152.08 (stop 147.28)
+  INDHOTEL: hold @ 774.50 (stop 757.92)
+  TCS: hold @ 2529.70 (stop 2457.95)
+  CYIENT: hold @ 1225.90 (stop 1172.82)
+  IGIL: hold @ 368.15 (stop 347.02)
+  SSWL: hold @ 468.75 (stop 418.38)
+Universe 2348 symbols; this scan covers positions 817-1216 (wraps around).
+Result: checked 194 | no data 0 | filtered 209 | rejected 186 | watch 4 | signals 1 | bought 0 | sold 0
+Signals:
+  IGIL: score 80 - NOT traded (already holding it)
+Closest to a signal (watchlist):
+  INDHOTEL: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 774.15 vs 20-day high 794.65); Tight consolidation before the move (recent daily ranges narrower than before)
+  KROSS: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 303.00 vs 20-day high 326.40); Tight consolidation before the move (recent daily ranges narrower than before)
+  INFY: score 66 - Score 66/100 - no breakout above the 20-day high yet; weakest: Strength (25% of 52-week range); Breakout above the prior 20-day high (price 1163.80 vs 20-day high 1174.50); Trend (price 1163.80, EMA20 1080.92, SMA50 1085.84)
+  HCLTECH: score 59 - Score 59/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Volume confirmation (1.04x - today so far vs 20-day avg (pace-adjusted, 76% of day)); RSI in the 55-68 sweet spot (RSI 72.7); Breakout above the prior 20-day high (price 1424.00 vs 20-day high 1427.90)
+==== SCAN 20261023-141556 | scheduled | TRADING | 14:15 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1794.30 (stop 1732.37)
+  WIPRO: hold @ 190.16 (stop 181.45)
+  ORIENTHOT: hold @ 151.58 (stop 147.28)
+  INDHOTEL: hold @ 773.05 (stop 757.92)
+  TCS: hold @ 2533.60 (stop 2457.95)
+  CYIENT: hold @ 1233.40 (stop 1172.82)
+  IGIL: hold @ 363.50 (stop 347.02)
+  SSWL: hold @ 468.75 (stop 418.38)
+Universe 2348 symbols; this scan covers positions 1217-1616 (wraps around).
+Result: checked 189 | no data 0 | filtered 212 | rejected 175 | watch 13 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ORIENTHOT: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 151.58 vs 20-day high 156.00); Tight consolidation before the move (recent daily ranges narrower than before)
+  OMNI: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 636.85 vs 20-day high 704.40); Tight consolidation before the move (recent daily ranges narrower than before); Strength (78% of 52-week range)
+  PASHUPATI: score 72 - Score 72/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 104.15 vs 20-day high 111.26); RSI in the 55-68 sweet spot (RSI 71.4); Volume confirmation (1.25x - today so far vs 20-day avg (pace-adjusted, 80% of day))
+  NUVOCO: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 334.45 vs 20-day high 353.50); Strength (37% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  PCJEWELLER: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 17.45 vs 20-day high 20.10); RSI in the 55-68 sweet spot (RSI 74.3); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261023-143059 | scheduled | TRADING | 14:30 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1792.70 (stop 1732.37)
+  WIPRO: hold @ 190.21 (stop 181.45)
+  ORIENTHOT: hold @ 151.29 (stop 147.28)
+  INDHOTEL: hold @ 770.60 (stop 757.92)
+  TCS: hold @ 2533.60 (stop 2457.95)
+  CYIENT: hold @ 1238.00 (stop 1172.82)
+  IGIL: hold @ 369.95 (stop 347.02)
+  SSWL: hold @ 468.75 (stop 418.38)
+Universe 2348 symbols; this scan covers positions 1617-2016 (wraps around).
+Result: checked 175 | no data 0 | filtered 226 | rejected 164 | watch 9 | signals 1 | bought 0 | sold 0
+Signals:
+  SSWL: score 75 - NOT traded (outside entry window 10:00-14:30)
+Closest to a signal (watchlist):
+  PREMEXPLN: score 74 - Score 74/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 685.70 vs 20-day high 695.00); Strength (68% of 52-week range); MACD positive and strengthening (histogram 0.256 (prev 0.390))
+  PVRINOX: score 66 - Score 66/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1388.40 vs 20-day high 1458.00); Volume confirmation (0.47x - today so far vs 20-day avg (pace-adjusted, 84% of day)); MACD positive and strengthening (histogram 8.520 (prev 9.530))
+  SINGERIND: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 86.00 vs 20-day high 96.44); Volume confirmation (0.94x - today so far vs 20-day avg (pace-adjusted, 84% of day)); RSI in the 55-68 sweet spot (RSI 71.6)
+  SBC: score 60 - Score 60/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 61.10 vs 20-day high 66.35); Volume confirmation (0.51x - today so far vs 20-day avg (pace-adjusted, 84% of day)); MACD positive and strengthening (histogram -0.389 (prev -0.170))
+  SAREGAMA: score 58 - Score 58/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 490.40, EMA20 500.29, SMA50 501.55); Breakout above the prior 20-day high (price 490.40 vs 20-day high 518.65); Strength (69% of 52-week range)
+==== SCAN 20261023-144602 | scheduled | TRADING | 14:46 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1794.00 (stop 1732.37)
+  WIPRO: hold @ 189.66 (stop 181.45)
+  ORIENTHOT: hold @ 151.13 (stop 147.28)
+  INDHOTEL: hold @ 770.20 (stop 757.92)
+  TCS: hold @ 2534.60 (stop 2457.95)
+  CYIENT: hold @ 1249.00 (stop 1172.82)
+  IGIL: hold @ 377.35 (stop 347.02)
+  SSWL: hold @ 468.75 (stop 418.38)
+Universe 2348 symbols; this scan covers positions 2017-2416 (wraps around).
+Result: checked 177 | no data 0 | filtered 223 | rejected 168 | watch 9 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  TCS: score 66 - Score 66/100 - score below 70; weakest: RSI in the 55-68 sweet spot (RSI 73.1); Strength (41% of 52-week range); Volume confirmation (1.26x - today so far vs 20-day avg (pace-adjusted, 88% of day))
+  UNITEDPOLY: score 63 - Score 63/100 - no breakout above the 20-day high yet; volume only 0.3x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 48.69 vs 20-day high 54.99); Volume confirmation (0.25x - today so far vs 20-day avg (pace-adjusted, 88% of day)); MACD positive and strengthening (histogram 0.007 (prev 0.147))
+  ZENSARTECH: score 61 - Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 499.95 vs 20-day high 523.70); Strength (21% of 52-week range); Volume confirmation (1.30x - today so far vs 20-day avg (pace-adjusted, 88% of day))
+  AAREYDRUGS: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 106.75 vs 20-day high 114.80); Volume confirmation (0.66x - today so far vs 20-day avg (pace-adjusted, 88% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  TEXINFRA: score 58 - Score 58/100 - no breakout above the 20-day high yet; price below EMA20; weakest: Trend (price 118.63, EMA20 121.03, SMA50 115.96); Breakout above the prior 20-day high (price 118.63 vs 20-day high 130.78); RSI in the 55-68 sweet spot (RSI 53.3)
+==== SCAN 20261023-150104 | scheduled | TRADING | 15:01 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1793.00 (stop 1732.37)
+  WIPRO: hold @ 189.80 (stop 181.45)
+  ORIENTHOT: hold @ 152.06 (stop 147.28)
+  INDHOTEL: hold @ 776.05 (stop 757.92)
+  TCS: hold @ 2534.70 (stop 2457.95)
+  CYIENT: hold @ 1215.00 (stop 1172.82)
+  IGIL: hold @ 375.85 (stop 347.02)
+  SSWL: hold @ 468.75 (stop 418.38)
+Universe 2348 symbols; this scan covers positions 69-468 (wraps around).
+Result: checked 179 | no data 0 | filtered 224 | rejected 169 | watch 7 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  ANANDRATHI: score 85 - Score 85/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 2235.10 vs 20-day high 2241.20); Trend (price 2235.10, EMA20 2151.75, SMA50 2171.06)
+  COFORGE: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1898.30 vs 20-day high 1986.60); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 9.977 (prev 13.849))
+  ALGOQUANT: score 69 - Score 69/100 - no breakout above the 20-day high yet; volume only 1.2x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 74.87 vs 20-day high 76.64); Volume confirmation (1.20x - today so far vs 20-day avg (pace-adjusted, 92% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  CHENNPETRO: score 61 - Score 61/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1484.30 vs 20-day high 1628.70); MACD positive and strengthening (histogram -5.361 (prev -6.067)); Momentum (EMA9 1452.16 vs EMA20 1448.87)
+  AJMERA: score 59 - Score 59/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 124.72 vs 20-day high 132.84); Volume confirmation (1.00x - today so far vs 20-day avg (pace-adjusted, 92% of day)); Strength (22% of 52-week range)
+==== SCAN 20261023-151608 | scheduled | TRADING | 15:16 IST ====
+Market: Market is open
+Open positions:
+  TECHM: hold @ 1789.40 (stop 1732.37)
+  WIPRO: hold @ 189.84 (stop 181.45)
+  ORIENTHOT: hold @ 151.56 (stop 147.28)
+  INDHOTEL: hold @ 777.00 (stop 757.92)
+  TCS: hold @ 2525.60 (stop 2457.95)
+  CYIENT: hold @ 1246.60 (stop 1172.82)
+  IGIL: hold @ 376.85 (stop 347.02)
+  SSWL: hold @ 468.75 (stop 418.38)
+Universe 2348 symbols; this scan covers positions 469-868 (wraps around).
+Result: checked 182 | no data 0 | filtered 220 | rejected 171 | watch 8 | signals 1 | bought 0 | sold 0
+Signals:
+  CYIENT: score 75 - NOT traded (outside entry window 10:00-14:30)
+Closest to a signal (watchlist):
+  FEDERALBNK: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 340.50 vs 20-day high 355.50); Trend (price 340.50, EMA20 334.72, SMA50 340.12); Volume confirmation (1.22x - today so far vs 20-day avg (pace-adjusted, 96% of day))
+  GANDHAR: score 65 - Score 65/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 292.70 vs 20-day high 313.50); MACD positive and strengthening (histogram -1.231 (prev -1.045)); Momentum (EMA9 294.39 vs EMA20 288.30)
+  FSL: score 62 - Score 62/100 - no breakout above the 20-day high yet; volume only 1.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 290.90 vs 20-day high 300.00); Volume confirmation (0.96x - today so far vs 20-day avg (pace-adjusted, 96% of day)); Strength (52% of 52-week range)
+  DHANBANK: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.8x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 35.92 vs 20-day high 37.50); Volume confirmation (0.85x - today so far vs 20-day avg (pace-adjusted, 96% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  GCSL: score 60 - Score 60/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 728.25 vs 20-day high 749.45); MACD positive and strengthening (histogram -2.467 (prev -1.379)); RSI in the 55-68 sweet spot (RSI 68.4)
+---- 2026-10-23 END OF DAY ----
+---- 2026-10-24 08:00 morning check: Weekend - market closed; Market data: OK

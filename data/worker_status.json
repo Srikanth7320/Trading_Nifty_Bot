@@ -1,6 +1,6 @@
 {
- "heartbeat": "2026-10-22T10:24:06+05:30",
- "detail": "idle - Market is open",
- "next_scan": "10:30",
- "pid": 6942
+ "heartbeat": "2026-10-24T13:11:34+05:30",
+ "detail": "idle - Weekend - market closed",
+ "next_scan": "",
+ "pid": 107942
 }

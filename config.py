@@ -61,21 +61,30 @@ COOKIE_SECURE = _b("COOKIE_SECURE", False)
 # ---- capital & risk (paper trading) -----------------------------------------
 CAPITAL = _f("TRADING_CAPITAL_INR", 100000)
 RISK_PER_TRADE_PCT = min(3.0, max(0.1, _f("MAX_RISK_PER_TRADE_PCT", 1.0)))
-MAX_POSITION_PCT = _f("MAX_POSITION_PCT_OF_CAPITAL", 25)
-MAX_OPEN_POSITIONS = _i("MAX_OPEN_POSITIONS", 8)
-MAX_BUYS_PER_SCAN = _i("MAX_BUYS_PER_SCAN", 2)
-MAX_TRADES_PER_DAY = _i("MAX_TRADES_PER_DAY", 4)
+MAX_POSITION_PCT = _f("MAX_POSITION_PCT_OF_CAPITAL", 10)   # hard cap for ONE position (was 25)
+MAX_OPEN_POSITIONS = _i("MAX_OPEN_POSITIONS", 15)           # was 8
+MAX_BUYS_PER_SCAN = _i("MAX_BUYS_PER_SCAN", 3)
+MAX_TRADES_PER_DAY = _i("MAX_TRADES_PER_DAY", 10)
+# capital allocation: each new buy gets (free cash / free slots) scaled by signal strength, never more than the cap above
+SLOT_RESERVE_FRACTION = _f("SLOT_RESERVE_FRACTION", 0.5)    # keep this share of an average slot free for every still-empty slot
+ALLOC_STRENGTH_MIN = _f("ALLOC_STRENGTH_MIN", 0.75)         # multiplier on the average slot for a barely-qualifying signal
+ALLOC_STRENGTH_MAX = _f("ALLOC_STRENGTH_MAX", 1.25)         # ... and for a top-scoring signal
+EXTENDED_ENTRY_ATR = _f("EXTENDED_ENTRY_ATR", 3.0)          # price more than this many ATR above EMA20 = "extended" (size x0.7)
 MAX_DAILY_LOSS_PCT = _f("MAX_DAILY_LOSS_PCT", 2.0)
 COOLING_HOURS = _i("COOLING_PERIOD_HOURS", 48)
 COST_PCT_PER_SIDE = _f("COST_PCT_PER_SIDE", 0.10)  # brokerage+slippage assumption
-MAX_HOLD_SESSIONS = _i("MAX_HOLD_SESSIONS", 15)
+MAX_HOLD_SESSIONS = min(20, max(5, _i("MAX_HOLD_SESSIONS", 15)))  # Short-Term max holding (sessions); 5-20 = 1-4 weeks
 
 # ---- universe & liquidity -----------------------------------------------------
-MIN_PRICE = _f("MIN_STOCK_PRICE", 50)
+MIN_PRICE = _f("MIN_STOCK_PRICE", 5)                        # was 50; lower-priced / penny stocks are eligible if they pass quality filters
+PENNY_PRICE = _f("PENNY_PRICE_BELOW", 20)                    # label only: below this a stock is tagged PENNY
 MAX_PRICE = _f("MAX_STOCK_PRICE", 5000)
 MIN_AVG_VOLUME = _f("MIN_AVG_DAILY_VOLUME", 100000)
 MIN_AVG_TURNOVER = _f("MIN_AVG_DAILY_TURNOVER_INR", 20_000_000)
 MIN_HISTORY = _i("MIN_HISTORY_SESSIONS", 130)
+MAX_SPREAD_PCT = _f("MAX_SPREAD_PCT", 1.0)                   # best-ask vs best-bid; checked when the quote carries market depth
+MAX_PARTICIPATION_PCT = _f("MAX_PARTICIPATION_PCT", 1.0)      # order value may not exceed this % of the 20-day average daily turnover
+MAX_ERRATIC_JUMPS = _i("MAX_ERRATIC_JUMPS", 3)                # >=N daily moves of +/-9.5% in the last 10 sessions = manipulation/circuit risk
 
 # ---- strategy -------------------------------------------------------------------
 MIN_SIGNAL_SCORE = _i("MIN_SIGNAL_SCORE", 70)
@@ -86,7 +95,41 @@ MAX_STOP_PCT = _f("MAX_STOP_PCT", 8.0)
 TARGET1_R = _f("TARGET1_R", 2.0)
 TARGET2_R = _f("TARGET2_R", 3.5)
 TRAIL_ATR_MULT = _f("TRAIL_ATR_MULT", 2.0)
+BREAKEVEN_AT_R = _f("BREAKEVEN_AT_R", 1.0)                  # Short-Term: move stop to break-even after +1R (0 = off)
 REQUIRE_NEWS_OK = _b("REQUIRE_NEWS_CONFIRMATION", False)  # NEGATIVE news always blocks when checked
+
+# ---- strategy classification: INTRADAY vs SHORT_TERM (no long-term) --------------------
+INTRADAY_ENABLED = _b("INTRADAY_ENABLED", True)
+INTRADAY_ENTRY_CUTOFF = _t("INTRADAY_ENTRY_CUTOFF", "13:30")
+INTRADAY_SQUARE_OFF = _t("INTRADAY_SQUARE_OFF", "15:15")
+INTRADAY_ALLOW_CARRY = _b("INTRADAY_ALLOW_CARRY", False)     # explicit exception: let an intraday position survive past square-off
+INTRADAY_MIN_VOL_RATIO = _f("INTRADAY_MIN_VOLUME_RATIO", 2.0)
+INTRADAY_MIN_TURNOVER = _f("INTRADAY_MIN_TURNOVER_INR", 50_000_000)
+INTRADAY_MIN_ATR_PCT = _f("INTRADAY_MIN_ATR_PCT", 1.5)
+INTRADAY_MAX_ATR_PCT = _f("INTRADAY_MAX_ATR_PCT", 6.0)
+INTRADAY_MIN_DAY_GAIN = _f("INTRADAY_MIN_DAY_GAIN_PCT", 1.0)
+INTRADAY_MAX_DAY_GAIN = _f("INTRADAY_MAX_DAY_GAIN_PCT", 6.0)
+INTRADAY_STOP_ATR = _f("INTRADAY_STOP_ATR_MULT", 1.0)
+INTRADAY_MAX_STOP_PCT = _f("INTRADAY_MAX_STOP_PCT", 3.0)
+INTRADAY_T1_R = _f("INTRADAY_TARGET1_R", 1.5)
+INTRADAY_T2_R = _f("INTRADAY_TARGET2_R", 2.5)
+INTRADAY_BE_R = _f("INTRADAY_BREAKEVEN_AT_R", 0.8)
+INTRADAY_TRAIL_ATR = _f("INTRADAY_TRAIL_ATR_MULT", 1.0)
+MARKET_FILTER_ENABLED = _b("MARKET_FILTER_ENABLED", True)    # block NEW entries on a clearly bearish index day / trend
+MARKET_BEARISH_DAY_PCT = _f("MARKET_BEARISH_DAY_PCT", -1.5)
+
+# ---- continuous position monitoring (every scan) ---------------------------------------------
+WARN_SCORE = _i("MONITOR_WARN_SCORE", 2)                     # warning points that turn HOLD into HOLD_WITH_WARNING
+EXIT_WARN_SCORE = _i("MONITOR_EXIT_SCORE", 4)                # points that make an exit a candidate
+EXIT_CONFIRM_SCANS = max(1, _i("MONITOR_EXIT_CONFIRM_SCANS", 2))  # consecutive assessments required (hysteresis)
+AUTO_EXIT_ON_RECOMMENDATION = _b("AUTO_EXIT_ON_RECOMMENDATION", True)  # paper-sell once an exit recommendation is confirmed
+BREAKDOWN_TOL_ATR = _f("BREAKDOWN_TOLERANCE_ATR", 0.5)       # noise buffer below the breakout level before it counts as lost
+GIVEBACK_PCT = _f("GIVEBACK_PCT", 50)                        # warn when this % of the peak open profit (>=1R) has been given back
+
+# ---- next-day outlook --------------------------------------------------------------------------
+OUTLOOK_EVENING = _t("OUTLOOK_EVENING_TIME", "16:00")
+OUTLOOK_MORNING = _t("OUTLOOK_MORNING_TIME", "08:30")
+GIFT_NIFTY_TICKER = _s("GIFT_NIFTY_TICKER")                  # optional Yahoo ticker for a Nifty futures proxy; blank = not used
 
 # ---- scheduling -------------------------------------------------------------------
 SCAN_INTERVAL_MIN = max(1, _i("SCAN_INTERVAL_MINUTES", 15))
