@@ -145,7 +145,13 @@ def _run(trigger):
         return run
 
     # 1) existing positions first
-    mres = manage_positions(mode, notify=True)
+    try:
+        mres = manage_positions(mode, notify=True)
+    except Exception as exc:  # never let position management block the market scan
+        import traceback
+        store.append_text("scan_journal.txt", f"!! manage_positions failed: {type(exc).__name__}: {str(exc)[:200]}\n"
+                          + traceback.format_exc()[-600:])
+        mres = {"sells": 0, "lines": [f"position check failed: {type(exc).__name__}"]}
     run["sells"] = mres["sells"]
     journal += ["Open positions:"] + [f"  {x}" for x in mres["lines"]] if mres["lines"] else ["Open positions: none"]
 

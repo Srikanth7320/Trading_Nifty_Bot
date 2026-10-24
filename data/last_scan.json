@@ -1,0 +1,21 @@
+{
+ "scan_id": "20261021-123027",
+ "started": "2026-10-21 12:30:27",
+ "trigger": "scheduled",
+ "mode": "TRADING",
+ "status": "OK",
+ "universe_size": 2348,
+ "batch_start": 852,
+ "batch_size": 400,
+ "evaluated": 189,
+ "no_data": 0,
+ "filtered": 212,
+ "rejected": 174,
+ "watch": 14,
+ "signals": 0,
+ "buys": 0,
+ "sells": 0,
+ "providers": "Upstox, Yahoo (fallback)",
+ "note": "",
+ "finished": "2026-10-21 12:30:34"
+}

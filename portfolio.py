@@ -51,7 +51,8 @@ def update_position(symbol, **fields):
         mask = df["symbol"] == symbol
         for k, v in fields.items():
             if k in df.columns:
-                df.loc[mask, k] = str(v).lower() if isinstance(v, bool) else v
+                df[k] = df[k].astype(object)  # pandas 3 str dtype rejects floats/bools
+                df.loc[mask, k] = str(v).lower() if isinstance(v, bool) else str(v)
         store.write_csv("active_stocks.csv", df)
 
 
@@ -75,7 +76,8 @@ def sell(symbol, price, qty, reason):
             store.write_csv("active_stocks.csv", df[~mask])
             store.append_rows("cooling_period.csv", [{"symbol": symbol, "time": _ts()}])
         else:
-            df.loc[mask, "quantity"] = held - qty
+            df["quantity"] = df["quantity"].astype(object)
+            df.loc[mask, "quantity"] = str(held - qty)
             store.write_csv("active_stocks.csv", df)
     return pnl
 

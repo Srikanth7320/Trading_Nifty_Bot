@@ -1,0 +1,22 @@
+{
+ "SOUTHBANK": {
+  "price": 55.0,
+  "time": "2026-10-21T15:29:59+05:30",
+  "provider": "Upstox"
+ },
+ "TECHM": {
+  "price": 1834.7,
+  "time": "2026-10-21T15:29:20+05:30",
+  "provider": "Upstox"
+ },
+ "WIPRO": {
+  "price": 189.17,
+  "time": "2026-10-21T15:29:20+05:30",
+  "provider": "Upstox"
+ },
+ "DCMSRIND": {
+  "price": 57.48,
+  "time": "2026-10-21T15:29:59+05:30",
+  "provider": "Upstox"
+ }
+}

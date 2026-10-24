@@ -1,0 +1,225 @@
+==== Worker started 2026-10-20 16:58 IST ====
+==== SCAN 20261020-170627 | manual | ANALYSIS | 17:06 IST ====
+Market: NSE holiday today (Dussehra) - market closed
+Analysis-only run: stocks are evaluated and logged, but NO paper trades are made. 
+Open positions: none
+Universe 2348 symbols; this scan covers positions 1-400 (wraps around).
+Result: checked 187 | no data 0 | filtered 217 | rejected 164 | watch 19 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  AAREYDRUGS: score 75 - Score 75/100 - volume only 0.8x average (need 1.2x); weakest: Volume confirmation (0.82x - full session vs 20-day avg); RSI in the 55-68 sweet spot (RSI 71.1); Tight consolidation before the move (recent daily ranges narrower than before)
+  ALGOQUANT: score 70 - Score 70/100 - no breakout above the 20-day high yet; volume only 0.7x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 73.05 vs 20-day high 76.20); Volume confirmation (0.73x - full session vs 20-day avg)
+  BAJAJHCARE: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 338.50 vs 20-day high 364.40); Strength (30% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  APOLLO: score 69 - Score 69/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 423.80 vs 20-day high 438.85); Volume confirmation (1.15x - full session vs 20-day avg); Tight consolidation before the move (recent daily ranges narrower than before)
+  CEIGALL: score 66 - Score 66/100 - no breakout above the 20-day high yet; volume only 0.9x average (need 1.2x); weakest: Volume confirmation (0.86x - full session vs 20-day avg); Breakout above the prior 20-day high (price 393.80 vs 20-day high 396.00); MACD positive and strengthening (histogram -0.078 (prev -0.625))
+---- 2026-10-21 08:00 morning check: Market opens at 09:15 IST; Market data: OK
+==== SCAN 20261021-091501 | scheduled | TRADING | 09:15 IST ====
+Market: Market is open
+Open positions: none
+Universe 2348 symbols; this scan covers positions 401-800 (wraps around).
+Result: checked 184 | no data 1 | filtered 215 | rejected 168 | watch 15 | signals 1 | bought 0 | sold 0
+Signals:
+  DCMSRIND: score 73 - NOT traded (outside entry window 10:00-14:30)
+Closest to a signal (watchlist):
+  GABRIEL: score 70 - Score 70/100 - no breakout above the 20-day high yet; volume only 0.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1486.10 vs 20-day high 1557.80); Volume confirmation (0.02x - today so far vs 20-day avg (pace-adjusted, 12% of day))
+  CUPID: score 66 - Score 66/100 - no breakout above the 20-day high yet; volume only 0.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 338.85 vs 20-day high 368.95); Volume confirmation (0.06x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram 1.359 (prev 3.594))
+  DALMIASUG: score 63 - Score 63/100 - no breakout above the 20-day high yet; volume only 0.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 463.70 vs 20-day high 503.90); Volume confirmation (0.02x - today so far vs 20-day avg (pace-adjusted, 12% of day)); MACD positive and strengthening (histogram 5.490 (prev 7.626))
+  COFORGE: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1934.10 vs 20-day high 1970.00); Volume confirmation (0.02x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  CYIENT: score 61 - Score 61/100 - no breakout above the 20-day high yet; volume only 0.0x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1166.40 vs 20-day high 1224.40); Volume confirmation (0.00x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261021-093002 | scheduled | TRADING | 09:30 IST ====
+Market: Market is open
+Open positions: none
+Universe 2348 symbols; this scan covers positions 801-1200 (wraps around).
+Result: checked 193 | no data 0 | filtered 210 | rejected 171 | watch 19 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  KARURVYSYA: score 77 - Score 77/100 - no breakout above the 20-day high yet; weakest: RSI in the 55-68 sweet spot (RSI 73.2); Breakout above the prior 20-day high (price 375.00 vs 20-day high 376.25); Tight consolidation before the move (recent daily ranges narrower than before)
+  KROSS: score 72 - Score 72/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 284.40 vs 20-day high 326.40); RSI in the 55-68 sweet spot (RSI 71.3); Tight consolidation before the move (recent daily ranges narrower than before)
+  INFY: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Strength (24% of 52-week range); Breakout above the prior 20-day high (price 1162.60 vs 20-day high 1167.85); Trend (price 1162.60, EMA20 1063.33, SMA50 1086.58)
+  JAYNECOIND: score 69 - Score 69/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 97.03 vs 20-day high 103.90); Strength (62% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  HCLTECH: score 68 - Score 68/100 - score below 70; weakest: Strength (49% of 52-week range); Trend (price 1400.10, EMA20 1282.17, SMA50 1286.81); RSI in the 55-68 sweet spot (RSI 69.0)
+==== SCAN 20261021-094502 | scheduled | TRADING | 09:45 IST ====
+Market: Market is open
+Open positions: none
+Universe 2348 symbols; this scan covers positions 1201-1600 (wraps around).
+Result: checked 182 | no data 0 | filtered 219 | rejected 159 | watch 21 | signals 1 | bought 0 | sold 0
+Signals:
+  MPHASIS: score 77 - NOT traded (outside entry window 10:00-14:30)
+Closest to a signal (watchlist):
+  PCJEWELLER: score 85 - Score 85/100 - RSI 78 overheated (limit 75); weakest: RSI in the 55-68 sweet spot (RSI 77.6); Tight consolidation before the move (recent daily ranges narrower than before)
+  PETRONET: score 81 - Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 298.25 vs 20-day high 299.60); Strength (69% of 52-week range); MACD positive and strengthening (histogram 0.375 (prev 0.417))
+  MUFIN: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 138.93 vs 20-day high 143.50); Tight consolidation before the move (recent daily ranges narrower than before)
+  PNB: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 124.08 vs 20-day high 125.22); Strength (70% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  MANOMAY: score 78 - Score 78/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 248.53 vs 20-day high 251.00); Volume confirmation (1.21x - today so far vs 20-day avg (pace-adjusted, 12% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261021-100007 | scheduled | TRADING | 10:00 IST ====
+Market: Market is open
+Open positions: none
+Universe 2348 symbols; this scan covers positions 1601-2000 (wraps around).
+Result: checked 174 | no data 0 | filtered 226 | rejected 155 | watch 18 | signals 1 | bought 1 | sold 0
+Signals:
+  SOUTHBANK: score 85 - BOUGHT 352 @ 55.58 (stop 52.74, T1 61.26, T2 65.52) news NEUTRAL: AI: NEUTRAL
+
+**Reason:** While headlines report a sharp share price drop of over 18% alongside broader market weakness, there are no explicit reports of serious adverse events like fraud, regulatory probe
+Closest to a signal (watchlist):
+  PREMEXPLN: score 81 - Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 693.45 vs 20-day high 694.55); Strength (70% of 52-week range); MACD positive and strengthening (histogram 0.499 (prev 0.523))
+  STOVEKRAFT: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 847.90 vs 20-day high 884.55); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 3.984 (prev 4.078))
+  SANATHAN: score 73 - Score 73/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 525.00 vs 20-day high 594.15); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 2.595 (prev 3.011))
+  SIMPLEXINF: score 72 - Score 72/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 272.45 vs 20-day high 294.65); RSI in the 55-68 sweet spot (RSI 69.4); Tight consolidation before the move (recent daily ranges narrower than before)
+  SHREEJISPG: score 71 - Score 71/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 807.40 vs 20-day high 847.40); RSI in the 55-68 sweet spot (RSI 69.1); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261021-101512 | scheduled | TRADING | 10:15 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.37 (stop 52.74)
+Universe 2348 symbols; this scan covers positions 2001-2400 (wraps around).
+Result: checked 172 | no data 0 | filtered 228 | rejected 149 | watch 21 | signals 2 | bought 2 | sold 0
+Signals:
+  TECHM: score 85 - BOUGHT 11 @ 1817.10 (stop 1732.37, T1 1986.56, T2 2113.65) news POSITIVE: AI: POSITIVE
+
+The overall sentiment is overwhelmingly strong due to a strong Q2 earnings performance, a significant stock price rally (up 22% in 4 days), sector-wide buying in IT stocks, and analysts rais
+  WIPRO: score 78 - BOUGHT 129 @ 189.20 (stop 181.45, T1 204.69, T2 216.31) news NEUTRAL: AI: NEUTRAL
+
+The headlines regarding Wipro are either routine coverage (daily price tracking and Q2 earnings updates without explicit material impact) or an unrelated human-interest story about a former e
+Closest to a signal (watchlist):
+  TFCILTD: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 151.82 vs 20-day high 161.95); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 0.768 (prev 0.999))
+  63MOONS: score 76 - Score 76/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 920.45 vs 20-day high 950.00); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 12.647 (prev 12.728))
+  TIPSMUSIC: score 75 - Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 754.60 vs 20-day high 785.00); RSI in the 55-68 sweet spot (RSI 69.8); Tight consolidation before the move (recent daily ranges narrower than before)
+  TCS: score 68 - Score 68/100 - score below 70; weakest: RSI in the 55-68 sweet spot (RSI 73.0); Strength (39% of 52-week range); Trend (price 2515.50, EMA20 2228.80, SMA50 2243.38)
+  VALIANTORG: score 67 - Score 67/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 443.95 vs 20-day high 505.00); MACD positive and strengthening (histogram -3.886 (prev -3.417)); Volume confirmation (1.22x - today so far vs 20-day avg (pace-adjusted, 16% of day))
+!! worker error: TypeError: Invalid value '181.45' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '181.45' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '181.45' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '181.45' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '52.74' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '52.74' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+==== SCAN 20261021-113018 | scheduled | TRADING | 11:30 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.15 (stop 52.74)
+  TECHM: hold @ 1815.80 (stop 1732.37)
+  WIPRO: hold @ 188.78 (stop 181.45)
+Universe 2348 symbols; this scan covers positions 53-452 (wraps around).
+Result: checked 186 | no data 0 | filtered 218 | rejected 166 | watch 16 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  COFORGE: score 78 - Score 78/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1966.50 vs 20-day high 1970.00); Volume confirmation (1.46x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+  BHARTIHEXA: score 75 - Score 75/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1663.20 vs 20-day high 1665.00); Strength (51% of 52-week range); Volume confirmation (1.41x - today so far vs 20-day avg (pace-adjusted, 36% of day))
+  ALGOQUANT: score 71 - Score 71/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 71.44 vs 20-day high 75.35); Volume confirmation (1.14x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Strength (83% of 52-week range)
+  AJMERA: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 124.19 vs 20-day high 132.84); Strength (21% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before)
+  CEIGALL: score 65 - Score 65/100 - no breakout above the 20-day high yet; volume only 0.8x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 383.60 vs 20-day high 396.00); Volume confirmation (0.83x - today so far vs 20-day avg (pace-adjusted, 36% of day)); Tight consolidation before the move (recent daily ranges narrower than before)
+==== SCAN 20261021-114520 | scheduled | TRADING | 11:45 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 55.03 (stop 52.74)
+  TECHM: hold @ 1815.50 (stop 1732.37)
+  WIPRO: hold @ 188.30 (stop 181.45)
+Universe 2348 symbols; this scan covers positions 453-852 (wraps around).
+Result: checked 182 | no data 0 | filtered 220 | rejected 163 | watch 16 | signals 1 | bought 1 | sold 0
+Signals:
+  DCMSRIND: score 73 - BOUGHT 238 @ 52.44 (stop 48.24, T1 60.83, T2 67.12) news NEUTRAL: AI: NEUTRAL
+The headlines show mixed signals including an upcoming ex-dividend date, a past significant price dip matching earnings, and routine earnings/trading window notices without severe adverse even
+Closest to a signal (watchlist):
+  GABRIEL: score 67 - Score 67/100 - no breakout above the 20-day high yet; volume only 0.5x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 1414.60 vs 20-day high 1557.80); Volume confirmation (0.53x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Strength (77% of 52-week range)
+  CUPID: score 66 - Score 66/100 - no breakout above the 20-day high yet; volume only 0.4x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 337.05 vs 20-day high 368.95); Volume confirmation (0.40x - today so far vs 20-day avg (pace-adjusted, 40% of day)); MACD positive and strengthening (histogram 1.359 (prev 3.594))
+  DHANBANK: score 64 - Score 64/100 - no breakout above the 20-day high yet; volume only 1.1x average (need 1.2x); weakest: Breakout above the prior 20-day high (price 34.94 vs 20-day high 37.50); Volume confirmation (1.12x - today so far vs 20-day avg (pace-adjusted, 40% of day)); RSI in the 55-68 sweet spot (RSI 71.1)
+  ECLERX: score 64 - Score 64/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 1927.10 vs 20-day high 2022.60); Strength (52% of 52-week range); RSI in the 55-68 sweet spot (RSI 51.9)
+  HCLTECH: score 62 - Score 62/100 - volume only 1.1x average (need 1.2x); weakest: Volume confirmation (1.09x - today so far vs 20-day avg (pace-adjusted, 40% of day)); Strength (50% of 52-week range); Trend (price 1403.30, EMA20 1282.17, SMA50 1286.81)
+!! worker error: TypeError: Invalid value '48.24' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '48.24' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '48.24' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '48.24' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '48.24' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '48.24' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '48.24' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '48.24' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+==== SCAN 20261021-123027 | scheduled | TRADING | 12:30 IST ====
+Market: Market is open
+Open positions:
+  SOUTHBANK: hold @ 54.70 (stop 52.74)
+  TECHM: hold @ 1810.00 (stop 1732.37)
+  WIPRO: hold @ 188.07 (stop 181.45)
+  DCMSRIND: hold @ 51.52 (stop 48.24)
+Universe 2348 symbols; this scan covers positions 853-1252 (wraps around).
+Result: checked 189 | no data 0 | filtered 212 | rejected 174 | watch 14 | signals 0 | bought 0 | sold 0
+Closest to a signal (watchlist):
+  KMEW: score 81 - Score 81/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 3143.90 vs 20-day high 3389.40); MACD positive and strengthening (histogram 13.705 (prev 16.007))
+  INDHOTEL: score 80 - Score 80/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 750.00 vs 20-day high 776.15); Tight consolidation before the move (recent daily ranges narrower than before)
+  KROSS: score 72 - Score 72/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 281.65 vs 20-day high 326.40); RSI in the 55-68 sweet spot (RSI 71.3); Tight consolidation before the move (recent daily ranges narrower than before)
+  KARURVYSYA: score 70 - Score 70/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 363.65 vs 20-day high 376.25); RSI in the 55-68 sweet spot (RSI 73.2); Tight consolidation before the move (recent daily ranges narrower than before)
+  JUSTDIAL: score 68 - Score 68/100 - no breakout above the 20-day high yet; weakest: Breakout above the prior 20-day high (price 706.80 vs 20-day high 802.00); Strength (57% of 52-week range); RSI in the 55-68 sweet spot (RSI 68.4)
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+---- 2026-10-21 END OF DAY ----
+---- 2026-10-22 08:00 morning check: Market opens at 09:15 IST; Market data: OK
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.
+!! worker error: TypeError: Invalid value '1732.37' for dtype 'str'. Value should be a string or missing value, got 'float' instead.

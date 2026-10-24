@@ -75,9 +75,9 @@ def read_csv(name):
     p = path(name)
     with locked():
         try:
-            df = pd.read_csv(p, dtype=str, keep_default_na=False)
+            df = pd.read_csv(p, dtype=str, keep_default_na=False).astype(object)
         except (FileNotFoundError, pd.errors.EmptyDataError):
-            df = pd.DataFrame(columns=cols or [])
+            df = pd.DataFrame(columns=cols or []).astype(object)
     for c in cols or []:
         if c not in df.columns:
             df[c] = ""

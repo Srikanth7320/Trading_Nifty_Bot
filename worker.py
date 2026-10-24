@@ -97,7 +97,9 @@ def main():
                 scanner.run_scan("manual")
             beat("idle - " + config.market_status(now)[1], nxt)
         except Exception as exc:  # keep the worker alive; the error is visible in the journal
-            store.append_text("scan_journal.txt", f"!! worker error: {type(exc).__name__}: {str(exc)[:200]}")
+            import traceback
+            store.append_text("scan_journal.txt", f"!! worker error: {type(exc).__name__}: {str(exc)[:200]} | "
+                              + traceback.format_exc().strip().splitlines()[-3].strip())
         stop.wait(5)
 
 
