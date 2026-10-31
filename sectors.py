@@ -1,5 +1,6 @@
 """Sector lookup with a small on-disk cache (data/sector_cache.json). Fails open: unknown sector = '' = no sector limit applied."""
 import threading
+import time
 from concurrent.futures import ThreadPoolExecutor
 
 import store
@@ -10,6 +11,8 @@ except ImportError:
     yf = None
 
 _lock = threading.Lock()
+_miss = {}          # symbol -> time of the last failed lookup; do not hammer Yahoo again for 6 hours
+MISS_TTL = 6 * 3600
 
 
 def cached(symbol):
@@ -23,13 +26,15 @@ def sector_of(symbol, timeout=6):
     if symbol in cache:
         return cache[symbol]
     sec = ""
+    if time.time() - _miss.get(symbol, 0) < MISS_TTL:
+        return ""
     if yf is not None:
         ex = ThreadPoolExecutor(max_workers=1)
         try:
             info = ex.submit(lambda: yf.Ticker(f"{symbol}.NS").info or {}).result(timeout=timeout)
             sec = str(info.get("sector") or "")
         except Exception:
-            return ""          # do not cache a failure - try again next time
+            _miss[symbol] = time.time()      # remembered in memory only; retried after MISS_TTL
         finally:
             ex.shutdown(wait=False)
     with _lock:

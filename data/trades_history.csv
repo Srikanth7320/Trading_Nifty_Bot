@@ -1,30 +1,64 @@
-time,symbol,type,price,quantity,pnl,reason
+time,symbol,type,price,quantity,pnl,reason,strategy
 2026-10-21 10:00:35,SOUTHBANK,BUY,55.58,352,0,"score 85; Score 85/100 with breakout; weakest: RSI in the 55-68 sweet spot (RSI 74.1); Tight consolidation before the move (recent daily ranges narrower than before); news NEUTRAL: AI: NEUTRAL
 
-**Reason:** While headlines report a sharp share price drop of over 18% alongside broader market weakness,"
+**Reason:** While headlines report a sharp share price drop of over 18% alongside broader market weakness,",
 2026-10-21 10:15:39,TECHM,BUY,1817.1,11,0,"score 85; Score 85/100 with breakout; weakest: RSI in the 55-68 sweet spot (RSI 73.7); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE
 
-The overall sentiment is overwhelmingly strong due to a strong Q2 earnings performance, a significant st"
+The overall sentiment is overwhelmingly strong due to a strong Q2 earnings performance, a significant st",
 2026-10-21 10:15:47,WIPRO,BUY,189.2,129,0,"score 78; Score 78/100 with breakout; weakest: Strength (28% of 52-week range); Trend (price 189.20, EMA20 168.97, SMA50 172.45); Tight consolidation before the move (recent daily ranges narrower than before); news NEUTRAL: AI: NEUTRAL
 
-The headlines regarding Wipro are either routine coverage (dail"
+The headlines regarding Wipro are either routine coverage (dail",
 2026-10-21 11:45:32,DCMSRIND,BUY,52.44,238,0,"score 73; Score 73/100 with breakout; weakest: Strength (14% of 52-week range); Trend (price 52.44, EMA20 40.86, SMA50 42.87); RSI in the 55-68 sweet spot (RSI 70.1); news NEUTRAL: AI: NEUTRAL
-The headlines show mixed signals including an upcoming ex-dividend date, a past significant price dip match"
+The headlines show mixed signals including an upcoming ex-dividend date, a past significant price dip match",
 2026-10-22 10:33:37,ORIENTHOT,BUY,154.35,141,0,"score 91; Score 91/100 with breakout; weakest: Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 0.700 (prev 0.763)); news NEUTRAL: AI: NEUTRAL
 
-**Reason:** The headlines primarily consist of routine share price updates, genera"
-2026-10-22 10:33:43,PLATIND,BUY,244.45,7,0,"score 76; Score 76/100 with breakout; weakest: Trend (price 244.45, EMA20 210.75, SMA50 215.47); Strength (53% of 52-week range); RSI in the 55-68 sweet spot (RSI 69.1); news POSITIVE: AI: POSITIVE Multiple headlines highlight positive news, including a new deal with CAREGEN, price gains, an innovat"
-2026-10-22 13:18:35,DCMSRIND,SELL,47.22,238,-1266.08,Stop-loss hit
+**Reason:** The headlines primarily consist of routine share price updates, genera",
+2026-10-22 10:33:43,PLATIND,BUY,244.45,7,0,"score 76; Score 76/100 with breakout; weakest: Trend (price 244.45, EMA20 210.75, SMA50 215.47); Strength (53% of 52-week range); RSI in the 55-68 sweet spot (RSI 69.1); news POSITIVE: AI: POSITIVE Multiple headlines highlight positive news, including a new deal with CAREGEN, price gains, an innovat",
+2026-10-22 13:18:35,DCMSRIND,SELL,47.22,238,-1266.08,Stop-loss hit,
 2026-10-22 14:18:57,INDHOTEL,BUY,786.9,15,0,"score 91; Score 91/100 with breakout; weakest: Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 4.297 (prev 4.516)); news NEUTRAL: AI: NEUTRAL
 
-The headlines consist entirely of routine market coverage, including price trackin"
-2026-10-23 10:10:37,PLATIND,SELL,229.68,7,-106.71,Stop-loss hit
-2026-10-23 10:15:38,TCS,BUY,2575.1,85,0,"score 71; Score 71/100 with breakout; weakest: RSI in the 55-68 sweet spot (RSI 73.1); Strength (44% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before); news NEUTRAL: AI: NEUTRAL. While some headlines report positive Q2 results and a rally, others note "
-2026-10-23 10:40:51,SOUTHBANK,SELL,52.66,352,-1065.94,Stop-loss hit
+The headlines consist entirely of routine market coverage, including price trackin",
+2026-10-23 10:10:37,PLATIND,SELL,229.68,7,-106.71,Stop-loss hit,
+2026-10-23 10:15:38,TCS,BUY,2575.1,85,0,"score 71; Score 71/100 with breakout; weakest: RSI in the 55-68 sweet spot (RSI 73.1); Strength (44% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before); news NEUTRAL: AI: NEUTRAL. While some headlines report positive Q2 results and a rally, others note ",
+2026-10-23 10:40:51,SOUTHBANK,SELL,52.66,352,-1065.94,Stop-loss hit,
 2026-10-23 10:45:28,CYIENT,BUY,1249.0,131,0,"score 75; Score 75/100 with breakout; weakest: MACD positive and strengthening (histogram -1.554 (prev 1.751)); Momentum (EMA9 1160.48 vs EMA20 1135.52); RSI in the 55-68 sweet spot (RSI 54.9); news NEUTRAL: AI: NEUTRAL
 
-**Reason:** Cyient is set to announce its Q2 results today, and while its subsi"
+**Reason:** Cyient is set to announce its Q2 results today, and while its subsi",
 2026-10-23 11:00:31,IGIL,BUY,363.55,605,0,"score 80; Score 80/100 with breakout; weakest: Trend (price 363.55, EMA20 322.99, SMA50 327.78); RSI in the 55-68 sweet spot (RSI 68.0); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE
 
-The stock locked in a 10% upper circuit following stro"
-2026-10-23 13:15:55,SSWL,BUY,449.75,318,0,"score 75; Score 75/100 with breakout; weakest: MACD positive and strengthening (histogram -4.631 (prev -3.634)); Momentum (EMA9 402.92 vs EMA20 396.71); RSI in the 55-68 sweet spot (RSI 50.5); news POSITIVE: AI: POSITIVE The stock shows strong positive momentum, hitting a 52-week high following a 20"
+The stock locked in a 10% upper circuit following stro",
+2026-10-23 13:15:55,SSWL,BUY,449.75,318,0,"score 75; Score 75/100 with breakout; weakest: MACD positive and strengthening (histogram -4.631 (prev -3.634)); Momentum (EMA9 402.92 vs EMA20 396.71); RSI in the 55-68 sweet spot (RSI 50.5); news POSITIVE: AI: POSITIVE The stock shows strong positive momentum, hitting a 52-week high following a 20",
+2026-10-26 13:26:40,SSWL,SELL,515.5,159,10300.78,"Target 1 reached: sold half, stop moved to break-even",SHORT_TERM
+2026-10-27 09:40:28,IGIL,SELL,398.95,302,10460.52,"Target 1 reached: sold half, stop moved to break-even",SHORT_TERM
+2026-10-27 10:15:54,ITCHOTELS,BUY,170.1,279,0,"[Intraday] score 78; Score 78/100 with breakout; weakest: Strength (37% of 52-week range); Trend (price 170.10, EMA20 158.92, SMA50 159.91); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE ICICI Direct maintains a 'Buy' rating with a projec",INTRADAY
+2026-10-27 10:31:02,LAURUSLABS,BUY,2111.0,25,0,[Intraday] score 84; Score 84/100 with breakout; weakest: MACD positive and strengthening (histogram -8.087 (prev -11.766)); Momentum (EMA9 2025.87 vs EMA20 2014.14); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE Strong earnings results s,INTRADAY
+2026-10-27 10:45:40,PVRINOX,BUY,1461.6,44,0,"[Short-Term] score 96; Score 96/100 with breakout; weakest: MACD positive and strengthening (histogram 3.569 (prev 5.533)); news POSITIVE: AI: POSITIVE The headlines highlight strong operational and corporate catalysts, including robust advance box office updates for *Drishyam 3* and a first-ever sh",SHORT_TERM
+2026-10-27 11:16:01,ACUTAAS,BUY,3490.2,15,0,"[Short-Term] score 88; Score 88/100 with breakout; weakest: Trend (price 3490.20, EMA20 3208.76, SMA50 3231.97); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE The headlines report strong financial growth (Q1 PAT up 70%, net sales up 59% Y",SHORT_TERM
+2026-10-27 11:16:10,BHARTIARTL,BUY,1972.1,25,0,"[Short-Term] score 81; Score 81/100 with breakout; weakest: Trend (price 1972.10, EMA20 1850.55, SMA50 1855.49); Strength (55% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before); news NEUTRAL: AI: NEUTRAL The provided headlines consist mostly of routine",SHORT_TERM
+2026-10-27 11:16:16,ATHERENERG,BUY,1680.6,28,0,"[Short-Term] score 78; Score 78/100 with breakout; weakest: Momentum (EMA9 1466.61 vs EMA20 1472.06); Trend (price 1680.60, EMA20 1472.06, SMA50 1515.27); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE Multiple headlines report strong oper",SHORT_TERM
+2026-10-27 14:27:35,ACUTAAS,SELL,3868.3,7,2595.19,"Target 1 reached: sold half, stop moved to break-even",SHORT_TERM
+2026-10-27 15:16:07,ITCHOTELS,SELL,166.44,279,-1115.03,Intraday square-off at 15:15,INTRADAY
+2026-10-27 15:16:08,LAURUSLABS,SELL,2135.8,25,513.83,Intraday square-off at 15:15,INTRADAY
+2026-10-27 15:27:57,IGIL,SELL,390.15,303,7831.43,Protective stop hit,SHORT_TERM
+2026-10-28 09:15:05,TCS,SELL,2426.0,85,-13098.59,Stop-loss hit,SHORT_TERM
+2026-10-28 09:20:30,CYIENT,SELL,1159.6,131,-12026.93,Stop-loss hit,SHORT_TERM
+2026-10-28 10:46:02,ACUTAAS,SELL,3704.8,8,1659.24,Protective stop hit,SHORT_TERM
+2026-10-29 10:00:34,SAREGAMA,BUY,532.75,187,0,"[Intraday] score 92; Score 92/100 with breakout; weakest: Tight consolidation before the move (recent daily ranges narrower than before); Strength (84% of 52-week range); news POSITIVE: AI: POSITIVE Recent headlines highlight strong financial performance with a 19.36% Y-o-Y increase in net sales, an",INTRADAY
+2026-10-29 10:00:44,SGMART,BUY,867.0,84,0,"[Short-Term] score 88; Score 88/100 with breakout; weakest: Trend (price 867.00, EMA20 769.65, SMA50 772.05); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE Headlines highlight positive indicators such as market cap growth of ₹4.1 billion,",SHORT_TERM
+2026-10-29 10:15:40,TANLA,BUY,625.25,159,0,[Intraday] score 90; Score 90/100 with breakout; weakest: RSI in the 55-68 sweet spot (RSI 68.8); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE Strong Q1 earnings reported (PAT up 20% and revenue up 18%) sparked sharp price rallies of up ,INTRADAY
+2026-10-29 10:30:35,BSOFT,BUY,330.75,208,0,[Short-Term] score 81; Score 81/100 with breakout; weakest: Strength (31% of 52-week range); Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 1.698 (prev 2.457)); news POSITIVE: AI: POSITIVE The news headlines highlight approv,SHORT_TERM
+2026-10-29 10:30:41,AJMERA,BUY,136.95,730,0,[Short-Term] score 80; Score 80/100 with breakout; weakest: Strength (32% of 52-week range); RSI in the 55-68 sweet spot (RSI 69.7); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE Headlines report strong financial results including a 22.61,SHORT_TERM
+2026-10-29 10:30:48,ADANIPORTS,BUY,1822.7,54,0,[Intraday] score 74; Score 74/100 with breakout; weakest: Momentum (EMA9 1749.96 vs EMA20 1751.56); MACD positive and strengthening (histogram -1.325 (prev -2.767)); RSI in the 55-68 sweet spot (RSI 51.8); news POSITIVE: AI: POSITIVE Strong operational updates showing a 16% YoY cargo volume growth i,INTRADAY
+2026-10-29 10:45:34,GESHIP,BUY,1617.8,61,0,"[Short-Term] score 91; Score 91/100 with breakout; weakest: MACD positive and strengthening (histogram -5.559 (prev -8.166)); Strength (77% of 52-week range); news POSITIVE: AI: POSITIVE The company announced a major share buyback approval of up to ₹900 crore, driving a stock price surge of nearly 4",SHORT_TERM
+2026-10-29 15:16:01,SAREGAMA,SELL,536.3,187,463.94,Intraday square-off at 15:15,INTRADAY
+2026-10-29 15:16:02,TANLA,SELL,618.9,159,-1207.47,Intraday square-off at 15:15,INTRADAY
+2026-10-29 15:16:03,ADANIPORTS,SELL,1869.9,54,2349.4,Intraday square-off at 15:15,INTRADAY
+2026-10-30 10:00:31,ALIVUS,BUY,1439.1,69,0,"[Short-Term] score 78; Score 78/100 with breakout; weakest: Momentum (EMA9 1318.83 vs EMA20 1327.68); Trend (price 1439.10, EMA20 1327.68, SMA50 1361.49); Tight consolidation before the move (recent daily ranges narrower than before); news POSITIVE: AI: POSITIVE Alivus Life Sciences reported strong ",SHORT_TERM
+2026-10-30 10:00:37,AGARWALEYE,BUY,502.6,195,0,"[Intraday] score 71; Score 71/100 with breakout; weakest: Momentum (EMA9 476.69 vs EMA20 478.93); Trend (price 502.60, EMA20 478.93, SMA50 492.86); Strength (61% of 52-week range); news NEUTRAL: AI: NEUTRAL The provided headlines consist primarily of routine market tracking links and general automat",INTRADAY
+2026-10-30 10:10:47,SSWL,SELL,505.85,159,8767.96,Protective stop hit,SHORT_TERM
+2026-10-30 10:15:33,COFORGE,BUY,2035.1,49,0,[Intraday] score 91; Score 91/100 with breakout; weakest: Tight consolidation before the move (recent daily ranges narrower than before); MACD positive and strengthening (histogram 6.671 (prev 8.725)); news POSITIVE: AI: POSITIVE Analysts and major brokerages like Jefferies and Nomura raised target ,INTRADAY
+2026-10-30 10:30:37,ETERNAL,BUY,343.35,291,0,"[Intraday] score 88; Score 88/100 with breakout; weakest: Trend (price 343.35, EMA20 323.75, SMA50 324.82); Tight consolidation before the move (recent daily ranges narrower than before); news NEUTRAL: AI: NEUTRAL None of the provided headlines contain material company-specific news, major catalysts",INTRADAY
+2026-10-30 14:00:51,AGARWALEYE,SELL,504.9,195,252.04,Protective stop hit,INTRADAY
+2026-10-30 14:01:08,RATNAVEER,BUY,359.0,278,0,"[Short-Term] score 84; Score 84/100 with breakout; weakest: MACD positive and strengthening (histogram -0.919 (prev -1.746)); Volume confirmation (1.29x - today so far vs 20-day avg (pace-adjusted, 76% of day)); Tight consolidation before the move (recent daily ranges narrower than before); news POS",SHORT_TERM
+2026-10-30 15:16:03,COFORGE,SELL,2056.0,49,823.64,Intraday square-off at 15:15,INTRADAY
+2026-10-30 15:16:04,ETERNAL,SELL,342.5,291,-446.93,Intraday square-off at 15:15,INTRADAY

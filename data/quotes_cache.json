@@ -5,13 +5,13 @@
   "provider": "Upstox"
  },
  "TECHM": {
-  "price": 1790.0,
-  "time": "2026-10-23T15:28:19+05:30",
+  "price": 1790.8,
+  "time": "2026-10-30T15:28:16+05:30",
   "provider": "Upstox"
  },
  "WIPRO": {
-  "price": 189.84,
-  "time": "2026-10-23T15:28:19+05:30",
+  "price": 198.31,
+  "time": "2026-10-30T15:28:16+05:30",
   "provider": "Upstox"
  },
  "DCMSRIND": {
@@ -20,8 +20,8 @@
   "provider": "Upstox"
  },
  "ORIENTHOT": {
-  "price": 152.0,
-  "time": "2026-10-23T15:29:59+05:30",
+  "price": 160.0,
+  "time": "2026-10-30T15:29:54+05:30",
   "provider": "Upstox"
  },
  "PLATIND": {
@@ -30,28 +30,118 @@
   "provider": "Upstox"
  },
  "INDHOTEL": {
-  "price": 781.75,
-  "time": "2026-10-23T15:28:19+05:30",
+  "price": 811.65,
+  "time": "2026-10-30T15:28:16+05:30",
   "provider": "Upstox"
  },
  "TCS": {
-  "price": 2530.0,
-  "time": "2026-10-23T15:28:19+05:30",
+  "price": 2426.0,
+  "time": "2026-10-28T09:15:05+05:30",
   "provider": "Upstox"
  },
  "CYIENT": {
-  "price": 1225.8,
-  "time": "2026-10-23T15:29:59+05:30",
+  "price": 1159.6,
+  "time": "2026-10-28T09:20:26+05:30",
   "provider": "Upstox"
  },
  "IGIL": {
-  "price": 375.4,
-  "time": "2026-10-23T15:29:59+05:30",
+  "price": 390.15,
+  "time": "2026-10-27T15:27:54+05:30",
   "provider": "Upstox"
  },
  "SSWL": {
-  "price": 468.75,
-  "time": "2026-10-23T15:29:53+05:30",
+  "price": 505.85,
+  "time": "2026-10-30T10:10:42+05:30",
+  "provider": "Upstox"
+ },
+ "ITCHOTELS": {
+  "price": 166.44,
+  "time": "2026-10-27T15:16:07+05:30",
+  "provider": "Upstox"
+ },
+ "LAURUSLABS": {
+  "price": 2135.8,
+  "time": "2026-10-27T15:14:59+05:30",
+  "provider": "Upstox"
+ },
+ "PVRINOX": {
+  "price": 1495.7,
+  "time": "2026-10-30T15:29:59+05:30",
+  "provider": "Upstox"
+ },
+ "ACUTAAS": {
+  "price": 3704.8,
+  "time": "2026-10-28T10:46:02+05:30",
+  "provider": "Upstox"
+ },
+ "BHARTIARTL": {
+  "price": 1973.7,
+  "time": "2026-10-30T15:28:16+05:30",
+  "provider": "Upstox"
+ },
+ "ATHERENERG": {
+  "price": 1756.0,
+  "time": "2026-10-30T15:28:16+05:30",
+  "provider": "Upstox"
+ },
+ "SAREGAMA": {
+  "price": 536.3,
+  "time": "2026-10-29T15:16:01+05:30",
+  "provider": "Upstox"
+ },
+ "SGMART": {
+  "price": 852.15,
+  "time": "2026-10-30T15:29:59+05:30",
+  "provider": "Upstox"
+ },
+ "TANLA": {
+  "price": 618.9,
+  "time": "2026-10-29T15:15:54+05:30",
+  "provider": "Upstox"
+ },
+ "BSOFT": {
+  "price": 322.7,
+  "time": "2026-10-30T15:29:59+05:30",
+  "provider": "Upstox"
+ },
+ "AJMERA": {
+  "price": 133.5,
+  "time": "2026-10-30T15:29:56+05:30",
+  "provider": "Upstox"
+ },
+ "ADANIPORTS": {
+  "price": 1869.9,
+  "time": "2026-10-29T15:14:59+05:30",
+  "provider": "Upstox"
+ },
+ "GESHIP": {
+  "price": 1588.0,
+  "time": "2026-10-30T15:29:51+05:30",
+  "provider": "Upstox"
+ },
+ "ALIVUS": {
+  "price": 1405.0,
+  "time": "2026-10-30T15:29:56+05:30",
+  "provider": "Upstox"
+ },
+ "AGARWALEYE": {
+  "price": 504.9,
+  "time": "2026-10-30T14:00:49+05:30",
+  "provider": "Upstox"
+ },
+ "COFORGE": {
+  "price": 2056.0,
+  "time": "2026-10-30T15:14:59+05:30",
+  "provider": "Upstox"
+ },
+ "ETERNAL": {
+  "price": 342.5,
+  "time": "2026-10-30T15:14:58+05:30",
+  "provider": "Upstox"
+ },
+ "RATNAVEER": {
+  "price": 359.0,
+  "time": "2026-10-30T15:29:59+05:30",
   "provider": "Upstox"
  }
 }

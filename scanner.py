@@ -1,5 +1,6 @@
 """One market scan = manage open positions, evaluate a batch of the NSE universe, log everything."""
 import threading
+import time
 from datetime import timedelta
 from concurrent.futures import ThreadPoolExecutor
 
@@ -224,6 +225,7 @@ def run_scan(trigger="scheduled"):
 
 
 def _run(trigger):
+    cpu0, wall0 = time.process_time(), time.time()
     started = config.now_ist()
     scan_id = started.strftime("%Y%m%d-%H%M%S")
     status, status_text = config.market_status(started)
@@ -422,6 +424,7 @@ def _run(trigger):
         journal.append("WARNING: " + run["note"])
         tg.send("⚠️ " + news.e(run["note"]))
     run["finished"] = config.now_ist().strftime("%Y-%m-%d %H:%M:%S")
+    journal.append(f"Scan took {time.time() - wall0:.0f}s wall, {time.process_time() - cpu0:.1f}s CPU (whole process).")
     _write_logs(run, rows, journal)
     store.write_json("last_scan.json", run)
     if config.TELEGRAM_SCAN_SUMMARY == "every" or trigger in ("manual", "telegram"):

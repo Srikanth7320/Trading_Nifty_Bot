@@ -35,10 +35,25 @@ LAST = {"provider": "none", "time": ""}
 
 
 # ---------------------------------------------------------------- Upstox helpers
+_local = threading.local()
+
+
+def _session():
+    """One keep-alive HTTP session per thread: a scan makes ~400 calls to the same host, and a fresh TLS handshake for each
+    one is what pinned a small VM's CPU at 100%."""
+    s = getattr(_local, "s", None)
+    if s is None:
+        s = requests.Session()
+        ad = requests.adapters.HTTPAdapter(pool_connections=2, pool_maxsize=2)
+        s.mount("https://", ad)
+        _local.s = s
+    return s
+
+
 def _upstox_get(url, params=None):
     if not config.UPSTOX_TOKEN:
         raise ProviderError("UPSTOX_ANALYTICS_TOKEN not configured")
-    r = requests.get(url, params=params, timeout=config.HTTP_TIMEOUT,
+    r = _session().get(url, params=params, timeout=config.HTTP_TIMEOUT,
                      headers={"Authorization": f"Bearer {config.UPSTOX_TOKEN}", "Accept": "application/json"})
     r.raise_for_status()
     payload = r.json()
@@ -47,35 +62,55 @@ def _upstox_get(url, params=None):
     return payload
 
 
+def _download_instruments():
+    url = "https://assets.upstox.com/market-quote/instruments/exchange/complete.json.gz"
+    r = requests.get(url, timeout=60)
+    r.raise_for_status()
+    raw = r.content
+    raw = gzip.decompress(raw) if raw[:2] == b"\x1f\x8b" else raw
+    return json.loads(raw.decode("utf-8"))
+
+
+def _equity_map(rows):
+    out = {}
+    for row in rows:
+        if isinstance(row, dict) and str(row.get("segment", "")).upper() == "NSE_EQ":
+            sym = str(row.get("trading_symbol", "")).strip().upper()
+            if sym and row.get("instrument_key"):
+                out[sym] = str(row["instrument_key"])
+    return out
+
+
 def _instrument_key(symbol):
+    """symbol -> Upstox instrument key. Uses a small cached map (data/upstox_eq_map.json, ~200 KB, refreshed daily). The huge
+    master file (64 MB, ~600 MB of RAM when parsed) is only downloaded/parsed when that map is missing or a day old."""
     with _inst_lock:
         if not _inst_map:
-            cache = config.DATA_DIR / "upstox_instruments.json"
-            rows = None
-            if cache.exists() and time.time() - cache.stat().st_mtime < 24 * 3600:
+            small = config.DATA_DIR / "upstox_eq_map.json"
+            big = config.DATA_DIR / "upstox_instruments.json"
+            m = None
+            if small.exists() and time.time() - small.stat().st_mtime < 24 * 3600:
                 try:
-                    rows = json.loads(cache.read_text(encoding="utf-8"))
+                    m = json.loads(small.read_text(encoding="utf-8")) or None
                 except ValueError:
-                    rows = None
-            if rows is None:
-                url = "https://assets.upstox.com/market-quote/instruments/exchange/complete.json.gz"
+                    m = None
+            if m is None:
                 try:
-                    r = requests.get(url, timeout=60)
-                    r.raise_for_status()
-                    raw = r.content
-                    raw = gzip.decompress(raw) if raw[:2] == b"\x1f\x8b" else raw
-                    rows = json.loads(raw.decode("utf-8"))
-                    cache.write_text(json.dumps(rows), encoding="utf-8")
+                    m = _equity_map(_download_instruments())
                 except Exception as exc:
-                    if cache.exists():
-                        rows = json.loads(cache.read_text(encoding="utf-8"))
+                    if small.exists():                      # stale small map beats no map
+                        m = json.loads(small.read_text(encoding="utf-8"))
+                    elif big.exists():                      # one-time upgrade from the old cache file
+                        m = _equity_map(json.loads(big.read_text(encoding="utf-8")))
                     else:
                         raise ProviderError(f"Upstox instrument master unavailable ({type(exc).__name__})")
-            for row in rows:
-                if isinstance(row, dict) and str(row.get("segment", "")).upper() == "NSE_EQ":
-                    sym = str(row.get("trading_symbol", "")).strip().upper()
-                    if sym and row.get("instrument_key"):
-                        _inst_map[sym] = str(row["instrument_key"])
+                if m:
+                    small.write_text(json.dumps(m), encoding="utf-8")
+                    try:
+                        big.unlink()                        # no longer needed; frees 64 MB of disk
+                    except OSError:
+                        pass
+            _inst_map.update(m or {})
         key = _inst_map.get(symbol)
     if not key:
         raise ProviderError(f"{symbol} not found in Upstox NSE_EQ instruments")

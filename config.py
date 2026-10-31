@@ -1,5 +1,6 @@
 """Central configuration, market calendar and time helpers (all times IST)."""
 import os
+import re
 from datetime import date, datetime, time as dtime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -15,27 +16,39 @@ def _s(name, default=""):
     return os.getenv(name, default).strip()
 
 
+def _v(name, default):
+    """Value for a numeric / yes-no / time setting: a trailing '  # comment' on the .env line is ignored (some dotenv versions and
+    quoting styles leave it in the value, which used to crash the bot or silently flip a true/false setting)."""
+    return re.split(r"\s+#", _s(name, str(default)), maxsplit=1)[0].strip().strip("\"'")
+
+
 def _f(name, default):
     try:
-        return float(_s(name, str(default)))
+        return float(_v(name, default))
     except ValueError:
         return float(default)
 
 
 def _i(name, default):
     try:
-        return int(float(_s(name, str(default))))
+        return int(float(_v(name, default)))
     except ValueError:
         return int(default)
 
 
 def _b(name, default):
-    return _s(name, "true" if default else "false").lower() in {"1", "true", "yes", "on"}
+    return _v(name, "true" if default else "false").lower() in {"1", "true", "yes", "on"}
 
 
 def _t(name, default):
-    h, m = _s(name, default).split(":")
-    return dtime(int(h), int(m))
+    """HH:MM setting. A malformed value falls back to the default instead of stopping the whole bot at import time."""
+    for raw in (_v(name, default), default):
+        try:
+            h, m = raw.split(":")
+            return dtime(int(h), int(m))
+        except ValueError:
+            continue
+    return dtime(0, 0)
 
 
 DATA_DIR = Path(_s("DATA_DIR", str(BASE_DIR / "data")))

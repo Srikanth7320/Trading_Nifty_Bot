@@ -1,0 +1,1264 @@
+{
+ "generated": "2026-10-30 16:00 IST",
+ "for_session": "2026-11-02",
+ "market": {
+  "direction": "Neutral",
+  "score": -1.0,
+  "confidence": "High",
+  "evidence": [
+   {
+    "label": "Nifty 50 trend & last session",
+    "value": "NEUTRAL, +0.51% (close 23053; EMA20 22846, SMA50 23255)",
+    "points": 0,
+    "kind": "DATA",
+    "as_of": "2026-10-30 00:00",
+    "note": ""
+   },
+   {
+    "label": "US overnight (S&P 500 / Nasdaq)",
+    "value": "-0.84% average",
+    "points": -1,
+    "kind": "DATA",
+    "as_of": "2026-10-29 00:00",
+    "note": ""
+   },
+   {
+    "label": "Asia (Nikkei / Hang Seng)",
+    "value": "-0.33% average",
+    "points": 0,
+    "kind": "DATA",
+    "as_of": "2026-10-30 00:00",
+    "note": ""
+   },
+   {
+    "label": "India VIX (fear gauge)",
+    "value": "15.3 (+1.2%)",
+    "points": 0,
+    "kind": "DATA",
+    "as_of": "2026-10-30 00:00",
+    "note": ""
+   },
+   {
+    "label": "US VIX",
+    "value": "18.5 (+7.6%)",
+    "points": 0,
+    "kind": "DATA",
+    "as_of": "2026-10-30 00:00",
+    "note": ""
+   },
+   {
+    "label": "Brent crude",
+    "value": "113.41 (-1.3%)",
+    "points": 0,
+    "kind": "DATA",
+    "as_of": "2026-10-30 00:00",
+    "note": "higher crude is negative for India"
+   },
+   {
+    "label": "USD/INR",
+    "value": "94.95 (-0.27%)",
+    "points": 0,
+    "kind": "DATA",
+    "as_of": "2026-10-30 00:00",
+    "note": "weaker rupee is a mild negative"
+   },
+   {
+    "label": "Index futures proxy",
+    "value": "unavailable",
+    "points": 0,
+    "kind": "DATA",
+    "as_of": "",
+    "note": ""
+   },
+   {
+    "label": "Headline sentiment (keyword scan)",
+    "value": "4 positive / 4 negative of 18 headlines",
+    "points": 0,
+    "kind": "ESTIMATE",
+    "as_of": "2026-10-30 16:00 IST",
+    "note": ""
+   }
+  ],
+  "events": [
+   "Results season",
+   "US Fed / macro"
+  ],
+  "sectors": [
+   {
+    "name": "Bank",
+    "ticker": "^NSEBANK",
+    "last": 54686.95,
+    "change_pct": -0.41,
+    "as_of": "2026-10-30 00:00"
+   },
+   {
+    "name": "IT",
+    "ticker": "^CNXIT",
+    "last": 32606.9,
+    "change_pct": 2.32,
+    "as_of": "2026-10-30 00:00"
+   },
+   {
+    "name": "Auto",
+    "ticker": "^CNXAUTO",
+    "last": 25422.7,
+    "change_pct": -0.87,
+    "as_of": "2026-10-30 00:00"
+   },
+   {
+    "name": "Pharma",
+    "ticker": "^CNXPHARMA",
+    "last": 27124.85,
+    "change_pct": 1.55,
+    "as_of": "2026-10-30 00:00"
+   },
+   {
+    "name": "FMCG",
+    "ticker": "^CNXFMCG",
+    "last": 43609.2,
+    "change_pct": -0.62,
+    "as_of": "2026-10-30 00:00"
+   },
+   {
+    "name": "Metal",
+    "ticker": "^CNXMETAL",
+    "last": 11784.9,
+    "change_pct": -0.54,
+    "as_of": "2026-10-30 00:00"
+   },
+   {
+    "name": "Energy",
+    "ticker": "^CNXENERGY",
+    "last": 34957.9,
+    "change_pct": -0.97,
+    "as_of": "2026-10-30 00:00"
+   },
+   {
+    "name": "Realty",
+    "ticker": "^CNXREALTY",
+    "last": 813.9,
+    "change_pct": -0.72,
+    "as_of": "2026-10-30 00:00"
+   },
+   {
+    "name": "Infra",
+    "ticker": "^CNXINFRA",
+    "last": 8799.0,
+    "change_pct": 0.07,
+    "as_of": "2026-10-30 00:00"
+   }
+  ],
+  "headlines": [
+   "Stock Market Today Live, October 30: Sensex settled at 74,459.53; Nifty 50 gained 116.35 pts or 0.51% - BusinessLine",
+   "Sensex falls 500 points: 3 reasons why the stock market is down today - India Today",
+   "Stock Market Today: Sensex Rises, Nifty 50 Near 23,000; Trent Zooms 6%, Sun Pharma 2%; RIL, Jio Platforms Q2 Results Eyed - NDTV Profit",
+   "Sensex, Nifty trade flat as IT gains counter crude oil concerns - India Today",
+   "Stock Market Today: Sensex And Nifty Jump Amid Buying In IT Stocks; Trent Up 6% - ETV Bharat",
+   "Stock market outlook: Crude oil prices to FPI inflows - 8 triggers that could reverse trend in Sensex, Nifty 50 - Livemint",
+   "Sensex Today Trades Flat | Nifty Below 22,950 | BSE Telecommunication Down 1.7% - Equitymaster",
+   "Stock market outlook today, 30 Oct: Sensex, Nifty prediction - DJIA, S&P, NASDAQ, GIFT Nifty, Kospi, Nikkei, Taiwan cues - TradingView"
+  ],
+  "limitations": [
+   "Opening prices are unknown until the market opens at 09:15 IST; the gap ranges below are statistical (last ~60 sessions), not forecasts of tomorrow's open.",
+   "Pre-market (09:00-09:08) quotes are not used: they exist only on the morning itself and no reliable feed is configured.",
+   "This is a probabilistic risk assessment, not a prediction or advice. Re-run it (Refresh) when new information arrives.",
+   "Unavailable right now: Index futures proxy"
+  ],
+  "data_points": "8/9",
+  "ctx": {
+   "available": true,
+   "trend": "NEUTRAL",
+   "day_change_pct": 0.51,
+   "close": 23053.1,
+   "ema20": 22845.81,
+   "sma50": 23254.75,
+   "as_of": "2026-10-30 00:00",
+   "source": "Yahoo ^NSEI"
+  }
+ },
+ "stocks": [
+  {
+   "symbol": "TECHM",
+   "company": "Tech Mahindra Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 1791.20, EMA20 1695.55) (+1)",
+    "[DATA] RSI 66 healthy (+0.5)",
+    "[ESTIMATE] 1 negative / 0 positive headlines of 6 (-1)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 11,
+    "buy": 1817.1,
+    "stop": 1732.37,
+    "t1": 1986.56,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 1791.2,
+   "as_of": "2026-10-30",
+   "direction": "Neutral",
+   "score": 0.5,
+   "gap_risk": "Elevated gap-down risk",
+   "action": "Monitor Closely",
+   "confidence": "Medium",
+   "thesis_valid": true,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 1695.55,
+     "kind": "EMA20"
+    },
+    {
+     "price": 1686.6,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 1845.0,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [],
+   "gap_range": "-0.8% to +0.9% (typical, last 60 sessions; estimate)",
+   "rsi": 66.2,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "WIPRO",
+   "company": "Wipro Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 190.10, EMA20 178.78) (+1)",
+    "[DATA] RSI 68 healthy (+0.5)",
+    "[DATA] closed near the day's high (93% of range) (+0.5)",
+    "[DATA] within 1% of resistance 191.34 (-0.5)",
+    "[DATA] position warnings: Gave back 90% of the peak open profit (peak 198.31) (-1)"
+   ],
+   "ok": true,
+   "state": "HOLD_WITH_WARNING",
+   "position": {
+    "qty": 129,
+    "buy": 189.2,
+    "stop": 189.58,
+    "t1": 204.69,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 190.1,
+   "as_of": "2026-10-29",
+   "direction": "Neutral",
+   "score": 0.5,
+   "gap_risk": "Moderate",
+   "action": "Monitor Closely",
+   "confidence": "Medium",
+   "thesis_valid": true,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 184.5,
+     "kind": "swing high"
+    },
+    {
+     "price": 183.92,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 191.34,
+     "kind": "swing high"
+    },
+    {
+     "price": 197.25,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [],
+   "gap_range": "-0.9% to +1.1% (typical, last 60 sessions; estimate)",
+   "rsi": 67.8,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "ORIENTHOT",
+   "company": "Oriental Hotels Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 160.36, EMA20 150.41) (+1)",
+    "[DATA] last-session candle: Shooting star (-0.5)",
+    "[DATA] closed near the day's low (14% of range) (-0.5)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 141,
+    "buy": 154.35,
+    "stop": 154.66,
+    "t1": 168.48,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 160.36,
+   "as_of": "2026-10-30",
+   "direction": "Neutral",
+   "score": 0.0,
+   "gap_risk": "Moderate",
+   "action": "Hold",
+   "confidence": "Medium",
+   "thesis_valid": true,
+   "events": [],
+   "support": [
+    {
+     "price": 150.41,
+     "kind": "EMA20"
+    },
+    {
+     "price": 148.8,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 162.5,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Doji",
+    "Shooting star"
+   ],
+   "gap_range": "-0.6% to +0.9% (typical, last 60 sessions; estimate)",
+   "rsi": 70.5,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "INDHOTEL",
+   "company": "The Indian Hotels Company Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 812.95, EMA20 764.14) (+1)",
+    "[DATA] RSI 70 healthy (+0.5)",
+    "[DATA] last-session candle: Shooting star (-0.5)",
+    "[ESTIMATE] 0 negative / 1 positive headlines of 6 (+0.5)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 15,
+    "buy": 786.9,
+    "stop": 788.47,
+    "t1": 844.86,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 812.95,
+   "as_of": "2026-10-30",
+   "direction": "Bullish",
+   "score": 1.5,
+   "gap_risk": "Low",
+   "action": "Hold",
+   "confidence": "Medium",
+   "thesis_valid": true,
+   "events": [],
+   "support": [
+    {
+     "price": 764.14,
+     "kind": "EMA20"
+    },
+    {
+     "price": 757.4,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 824.4,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Shooting star"
+   ],
+   "gap_range": "-0.6% to +0.7% (typical, last 60 sessions; estimate)",
+   "rsi": 70.0,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "PVRINOX",
+   "company": "PVR INOX Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 1507.70, EMA20 1383.23) (+1)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] within 1% of resistance 1521.10 (-0.5)",
+    "[ESTIMATE] 3 negative / 2 positive headlines of 6 (-1)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 44,
+    "buy": 1461.6,
+    "stop": 1385.72,
+    "t1": 1613.36,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 1507.7,
+   "as_of": "2026-10-30",
+   "direction": "Neutral",
+   "score": 0.0,
+   "gap_risk": "Elevated gap-down risk",
+   "action": "Monitor Closely",
+   "confidence": "Medium",
+   "thesis_valid": true,
+   "events": [],
+   "support": [
+    {
+     "price": 1383.23,
+     "kind": "EMA20"
+    },
+    {
+     "price": 1376.2,
+     "kind": "swing low"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 1521.1,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Gap up"
+   ],
+   "gap_range": "-0.5% to +1.4% (typical, last 60 sessions; estimate)",
+   "rsi": 70.4,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "BHARTIARTL",
+   "company": "Bharti Airtel Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 1967.90, EMA20 1888.85) (+1)",
+    "[DATA] RSI 64 healthy (+0.5)",
+    "[DATA] last-session candle: Bearish engulfing (-0.5)",
+    "[DATA] closed near the day's low (20% of range) (-0.5)",
+    "[DATA] within 1% of resistance 1981.00 (-0.5)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 25,
+    "buy": 1972.1,
+    "stop": 1899.25,
+    "t1": 2117.79,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 1967.9,
+   "as_of": "2026-10-30",
+   "direction": "Neutral",
+   "score": 0.0,
+   "gap_risk": "Moderate",
+   "action": "Hold",
+   "confidence": "Medium",
+   "thesis_valid": true,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 1966.0,
+     "kind": "swing high"
+    },
+    {
+     "price": 1956.0,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 1981.0,
+     "kind": "20-day high"
+    },
+    {
+     "price": 2005.8,
+     "kind": "swing high"
+    }
+   ],
+   "patterns": [
+    "Bearish engulfing"
+   ],
+   "gap_range": "-0.6% to +0.7% (typical, last 60 sessions; estimate)",
+   "rsi": 64.4,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "ATHERENERG",
+   "company": "Ather Energy Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 1687.50, EMA20 1537.15) (+1)",
+    "[DATA] RSI 66 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] last-session candle: Morning star (+0.5)",
+    "[DATA] within 1% of resistance 1702.00 (-0.5)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 28,
+    "buy": 1680.6,
+    "stop": 1561.8,
+    "t1": 1918.2,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 1687.5,
+   "as_of": "2026-10-30",
+   "direction": "Bullish",
+   "score": 2.0,
+   "gap_risk": "Low",
+   "action": "Hold",
+   "confidence": "High",
+   "thesis_valid": true,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 1673.5,
+     "kind": "swing high"
+    },
+    {
+     "price": 1580.0,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 1702.0,
+     "kind": "20-day high"
+    },
+    {
+     "price": 1744.0,
+     "kind": "swing high"
+    }
+   ],
+   "patterns": [
+    "Morning star"
+   ],
+   "gap_range": "-0.7% to +0.7% (typical, last 60 sessions; estimate)",
+   "rsi": 66.0,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "SGMART",
+   "company": "SG Mart Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 856.50, EMA20 788.69) (+1)",
+    "[DATA] RSI 67 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] within 1% of resistance 859.95 (-0.5)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 84,
+    "buy": 867.0,
+    "stop": 806.78,
+    "t1": 987.44,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 856.5,
+   "as_of": "2026-10-30",
+   "direction": "Bullish",
+   "score": 1.5,
+   "gap_risk": "Low",
+   "action": "Hold",
+   "confidence": "Medium",
+   "thesis_valid": true,
+   "events": [],
+   "support": [
+    {
+     "price": 847.5,
+     "kind": "swing high"
+    },
+    {
+     "price": 842.0,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 859.95,
+     "kind": "swing high"
+    },
+    {
+     "price": 860.6,
+     "kind": "swing high"
+    }
+   ],
+   "patterns": [
+    "Inside bar"
+   ],
+   "gap_range": "-0.7% to +1.0% (typical, last 60 sessions; estimate)",
+   "rsi": 66.9,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "BSOFT",
+   "company": "BIRLASOFT LIMITED",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 334.55, EMA20 306.02) (+1)",
+    "[DATA] RSI 65 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] last-session candle: Shooting star, Gap down (-0.5)",
+    "[DATA] closed near the day's low (26% of range) (-0.5)",
+    "[ESTIMATE] 0 negative / 2 positive headlines of 6 (+0.5)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 208,
+    "buy": 330.75,
+    "stop": 308.28,
+    "t1": 375.7,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 334.55,
+   "as_of": "2026-10-30",
+   "direction": "Bullish",
+   "score": 1.5,
+   "gap_risk": "Low",
+   "action": "Hold",
+   "confidence": "High",
+   "thesis_valid": true,
+   "events": [],
+   "support": [
+    {
+     "price": 331.0,
+     "kind": "swing high"
+    },
+    {
+     "price": 325.5,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 352.0,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Shooting star",
+    "Inside bar",
+    "Gap down"
+   ],
+   "gap_range": "-0.5% to +1.2% (typical, last 60 sessions; estimate)",
+   "rsi": 65.4,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "AJMERA",
+   "company": "Ajmera Realty & Infra India Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 131.87, EMA20 124.36) (+1)",
+    "[DATA] RSI 65 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] closed near the day's low (25% of range) (-0.5)",
+    "[DATA] within 1% of resistance 132.84 (-0.5)",
+    "[DATA] position warnings: Price 131.87 is back below the breakout level 135.88 (beyond the 2.90 noise buffer) (-1)",
+    "[ESTIMATE] 0 negative / 1 positive headlines of 6 (+0.5)"
+   ],
+   "ok": true,
+   "state": "HOLD_WITH_WARNING",
+   "position": {
+    "qty": 730,
+    "buy": 136.95,
+    "stop": 128.23,
+    "t1": 154.39,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 131.87,
+   "as_of": "2026-10-30",
+   "direction": "Neutral",
+   "score": 0.5,
+   "gap_risk": "Moderate",
+   "action": "Monitor Closely",
+   "confidence": "High",
+   "thesis_valid": true,
+   "events": [],
+   "support": [
+    {
+     "price": 127.61,
+     "kind": "swing low"
+    },
+    {
+     "price": 124.36,
+     "kind": "EMA20"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 132.84,
+     "kind": "swing high"
+    },
+    {
+     "price": 136.01,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Gap up"
+   ],
+   "gap_range": "-1.4% to +0.7% (typical, last 60 sessions; estimate)",
+   "rsi": 65.3,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "GESHIP",
+   "company": "The Great Eastern Shipping Company Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 1609.80, EMA20 1534.55) (+1)",
+    "[DATA] RSI 66 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[ESTIMATE] 1 negative / 2 positive headlines of 6 (+0.5)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 61,
+    "buy": 1617.8,
+    "stop": 1547.79,
+    "t1": 1757.81,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 1609.8,
+   "as_of": "2026-10-30",
+   "direction": "Bullish",
+   "score": 2.5,
+   "gap_risk": "Low",
+   "action": "Hold",
+   "confidence": "High",
+   "thesis_valid": true,
+   "events": [],
+   "support": [
+    {
+     "price": 1598.9,
+     "kind": "swing high"
+    },
+    {
+     "price": 1583.0,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 1647.0,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Inside bar"
+   ],
+   "gap_range": "-0.4% to +0.8% (typical, last 60 sessions; estimate)",
+   "rsi": 65.7,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "ALIVUS",
+   "company": "Alivus Life Sciences Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend sideways (close 1438.00, EMA20 1338.19) (+0)",
+    "[DATA] RSI 65 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] last-session candle: Shooting star, Gap up (-0.5)",
+    "[DATA] closed near the day's low (1% of range) (-0.5)",
+    "[DATA] 5.1x volume on a +2.8% day (+0.5)",
+    "[DATA] within 1% of resistance 1446.00 (-0.5)"
+   ],
+   "ok": true,
+   "state": "CONTINUE_HOLDING",
+   "position": {
+    "qty": 69,
+    "buy": 1439.1,
+    "stop": 1356.5,
+    "t1": 1604.29,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 1438.0,
+   "as_of": "2026-10-30",
+   "direction": "Neutral",
+   "score": 0.0,
+   "gap_risk": "Moderate",
+   "action": "Hold",
+   "confidence": "High",
+   "thesis_valid": true,
+   "events": [],
+   "support": [
+    {
+     "price": 1418.0,
+     "kind": "swing high"
+    },
+    {
+     "price": 1416.6,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 1446.0,
+     "kind": "swing high"
+    },
+    {
+     "price": 1493.8,
+     "kind": "swing high"
+    }
+   ],
+   "patterns": [
+    "Shooting star",
+    "Gap up"
+   ],
+   "gap_range": "-0.4% to +0.6% (typical, last 60 sessions; estimate)",
+   "rsi": 65.2,
+   "trend": "SIDEWAYS"
+  },
+  {
+   "symbol": "RATNAVEER",
+   "company": "Ratnaveer Precision Engineering Limited",
+   "kind": "POSITION",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 348.80, EMA20 336.28) (+1)",
+    "[DATA] RSI 59 healthy (+0.5)",
+    "[DATA] position warnings: Price 348.80 is back below the breakout level 358.80 (beyond the 9.03 noise buffer) (-1)",
+    "[ESTIMATE] 1 negative / 2 positive headlines of 6 (+0.5)"
+   ],
+   "ok": true,
+   "state": "HOLD_WITH_WARNING",
+   "position": {
+    "qty": 278,
+    "buy": 359.0,
+    "stop": 331.91,
+    "t1": 413.17,
+    "strategy": "SHORT_TERM"
+   },
+   "price": 348.8,
+   "as_of": "2026-10-30",
+   "direction": "Neutral",
+   "score": 1.0,
+   "gap_risk": "Moderate",
+   "action": "Monitor Closely",
+   "confidence": "Medium",
+   "thesis_valid": true,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 343.75,
+     "kind": "swing high"
+    },
+    {
+     "price": 336.28,
+     "kind": "EMA20"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 357.7,
+     "kind": "swing high"
+    },
+    {
+     "price": 358.8,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [],
+   "gap_range": "-0.1% to +0.9% (typical, last 60 sessions; estimate)",
+   "rsi": 59.2,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "PASHUPATI",
+   "company": "Pashupati Cotspin Limited",
+   "kind": "CANDIDATE",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 127.83, EMA20 95.59) (+1)",
+    "[DATA] RSI 84 overheated (pullback risk) (-0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] last-session candle: Bullish marubozu, Gap up (+0.5)",
+    "[DATA] closed near the day's high (96% of range) (+0.5)",
+    "[DATA] 1.8x volume on a +5.1% day (+0.5)",
+    "[DATA] within 1% of resistance 128.00 (-0.5)"
+   ],
+   "ok": true,
+   "price": 127.83,
+   "as_of": "2026-10-29",
+   "direction": "Bullish",
+   "score": 2.0,
+   "gap_risk": "Low",
+   "action": "Monitor Closely",
+   "confidence": "High",
+   "thesis_valid": null,
+   "events": [],
+   "support": [
+    {
+     "price": 111.26,
+     "kind": "swing high"
+    },
+    {
+     "price": 98.32,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 128.0,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Bullish marubozu",
+    "Gap up"
+   ],
+   "gap_range": "+0.5% to +3.4% (typical, last 60 sessions; estimate)",
+   "rsi": 84.1,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "SONACOMS",
+   "company": "Sona BLW Precision Forgings Limited",
+   "kind": "CANDIDATE",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 873.60, EMA20 810.89) (+1)",
+    "[DATA] RSI 65 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[ESTIMATE] 0 negative / 2 positive headlines of 6 (+0.5)"
+   ],
+   "ok": true,
+   "price": 873.6,
+   "as_of": "2026-10-29",
+   "direction": "Bullish",
+   "score": 2.5,
+   "gap_risk": "Low",
+   "action": "Monitor Closely",
+   "confidence": "High",
+   "thesis_valid": null,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 844.0,
+     "kind": "swing high"
+    },
+    {
+     "price": 837.0,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 885.8,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [],
+   "gap_range": "-0.7% to +0.5% (typical, last 60 sessions; estimate)",
+   "rsi": 65.3,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "ADANIPORTS",
+   "company": "Adani Ports and Special Economic Zone Limited",
+   "kind": "CANDIDATE",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 1872.00, EMA20 1763.03) (+1)",
+    "[DATA] RSI 65 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] closed near the day's high (100% of range) (+0.5)",
+    "[DATA] 2.4x volume on a +6.3% day (+0.5)",
+    "[ESTIMATE] 1 negative / 1 positive headlines of 6 (+0)"
+   ],
+   "ok": true,
+   "price": 1872.0,
+   "as_of": "2026-10-29",
+   "direction": "Bullish",
+   "score": 3.0,
+   "gap_risk": "Low",
+   "action": "Monitor Closely",
+   "confidence": "High",
+   "thesis_valid": null,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 1859.7,
+     "kind": "swing high"
+    },
+    {
+     "price": 1824.0,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 1891.1,
+     "kind": "swing high"
+    }
+   ],
+   "patterns": [
+    "Gap up"
+   ],
+   "gap_range": "-0.6% to +0.8% (typical, last 60 sessions; estimate)",
+   "rsi": 64.8,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "TANLA",
+   "company": "Tanla Platforms Limited",
+   "kind": "CANDIDATE",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 618.40, EMA20 552.67) (+1)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] 2.4x volume on a +3.3% day (+0.5)",
+    "[ESTIMATE] 0 negative / 3 positive headlines of 6 (+0.5)"
+   ],
+   "ok": true,
+   "price": 618.4,
+   "as_of": "2026-10-29",
+   "direction": "Bullish",
+   "score": 2.5,
+   "gap_risk": "Low",
+   "action": "Monitor Closely",
+   "confidence": "High",
+   "thesis_valid": null,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 598.9,
+     "kind": "swing high"
+    },
+    {
+     "price": 597.5,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 627.05,
+     "kind": "swing high"
+    },
+    {
+     "price": 635.5,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [],
+   "gap_range": "-0.5% to +0.7% (typical, last 60 sessions; estimate)",
+   "rsi": 72.3,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "ANANDRATHI",
+   "company": "Anand Rathi Wealth Limited",
+   "kind": "CANDIDATE",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 2275.80, EMA20 2192.48) (+1)",
+    "[DATA] RSI 68 healthy (+0.5)",
+    "[DATA] closed near the day's high (77% of range) (+0.5)",
+    "[DATA] within 1% of resistance 2290.00 (-0.5)",
+    "[ESTIMATE] 0 negative / 2 positive headlines of 6 (+0.5)"
+   ],
+   "ok": true,
+   "price": 2275.8,
+   "as_of": "2026-10-30",
+   "direction": "Bullish",
+   "score": 2.0,
+   "gap_risk": "Low",
+   "action": "Monitor Closely",
+   "confidence": "High",
+   "thesis_valid": null,
+   "events": [],
+   "support": [
+    {
+     "price": 2268.4,
+     "kind": "swing high"
+    },
+    {
+     "price": 2255.0,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 2290.0,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Inside bar"
+   ],
+   "gap_range": "-0.4% to +0.5% (typical, last 60 sessions; estimate)",
+   "rsi": 68.1,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "KOTAKBANK",
+   "company": "Kotak Mahindra Bank Limited",
+   "kind": "CANDIDATE",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 459.00, EMA20 436.54) (+1)",
+    "[DATA] RSI 68 healthy (+0.5)",
+    "[DATA] MACD histogram positive (+0.5)",
+    "[DATA] closed near the day's high (94% of range) (+0.5)",
+    "[DATA] 1.6x volume on a +4.3% day (+0.5)",
+    "[DATA] within 1% of resistance 460.20 (-0.5)"
+   ],
+   "ok": true,
+   "price": 459.0,
+   "as_of": "2026-10-29",
+   "direction": "Bullish",
+   "score": 2.5,
+   "gap_risk": "Low",
+   "action": "Monitor Closely",
+   "confidence": "High",
+   "thesis_valid": null,
+   "events": [],
+   "support": [
+    {
+     "price": 453.1,
+     "kind": "swing high"
+    },
+    {
+     "price": 445.25,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 460.2,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [],
+   "gap_range": "-0.7% to +0.7% (typical, last 60 sessions; estimate)",
+   "rsi": 68.0,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "BHAGERIA",
+   "company": "Bhageria Industries Limited",
+   "kind": "CANDIDATE",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 370.75, EMA20 355.37) (+1)",
+    "[DATA] RSI 56 healthy (+0.5)",
+    "[DATA] closed near the day's high (100% of range) (+0.5)",
+    "[DATA] 2.6x volume on a +10.0% day (+0.5)"
+   ],
+   "ok": true,
+   "price": 370.75,
+   "as_of": "2026-10-29",
+   "direction": "Bullish",
+   "score": 2.5,
+   "gap_risk": "Low",
+   "action": "Monitor Closely",
+   "confidence": "High",
+   "thesis_valid": null,
+   "events": [
+    "Results season"
+   ],
+   "support": [
+    {
+     "price": 368.2,
+     "kind": "swing high"
+    },
+    {
+     "price": 358.0,
+     "kind": "swing low"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 397.0,
+     "kind": "swing high"
+    },
+    {
+     "price": 415.8,
+     "kind": "20-day high"
+    }
+   ],
+   "patterns": [
+    "Inside bar",
+    "Gap up"
+   ],
+   "gap_range": "-0.5% to +4.9% (typical, last 60 sessions; estimate)",
+   "rsi": 55.5,
+   "trend": "UPTREND"
+  },
+  {
+   "symbol": "IIFLCAPS",
+   "company": "IIFL Capital Services Limited",
+   "kind": "CANDIDATE",
+   "evidence": [
+    "[DATA] daily trend uptrend (close 347.75, EMA20 344.34) (+1)",
+    "[DATA] RSI 59 healthy (+0.5)",
+    "[DATA] 8.6x volume on a +0.4% day (+0.5)",
+    "[DATA] within 1% of resistance 348.50 (-0.5)"
+   ],
+   "ok": true,
+   "price": 347.75,
+   "as_of": "2026-10-29",
+   "direction": "Bullish",
+   "score": 1.5,
+   "gap_risk": "Low",
+   "action": "Monitor Closely",
+   "confidence": "Medium",
+   "thesis_valid": null,
+   "events": [],
+   "support": [
+    {
+     "price": 344.34,
+     "kind": "EMA20"
+    },
+    {
+     "price": 344.0,
+     "kind": "swing high"
+    }
+   ],
+   "resistance": [
+    {
+     "price": 348.5,
+     "kind": "swing high"
+    },
+    {
+     "price": 349.8,
+     "kind": "swing high"
+    }
+   ],
+   "patterns": [
+    "Doji"
+   ],
+   "gap_range": "-0.4% to +0.2% (typical, last 60 sessions; estimate)",
+   "rsi": 58.8,
+   "trend": "UPTREND"
+  }
+ ],
+ "attention": [
+  "TECHM",
+  "WIPRO",
+  "PVRINOX",
+  "AJMERA",
+  "RATNAVEER"
+ ]
+}
