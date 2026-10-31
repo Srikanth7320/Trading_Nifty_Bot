@@ -1,5 +1,7 @@
-"""Dashboard (Flask). Read-only over the data files; it never trades. Login required."""
+"""Dashboard (Flask). Login required. Reads the data files; the only action that changes positions is the explicit, CSRF-protected
+'Sell selected' on the Positions page (paper sells). Analysis pages never trade."""
 import hmac
+import re
 import secrets
 import time
 from datetime import timedelta
@@ -7,12 +9,15 @@ from datetime import timedelta
 from flask import Flask, abort, flash, jsonify, redirect, render_template, request, session, url_for
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+import pandas as pd
+
 import analysis
 import config
 import outlook
 import pnl
 import portfolio
 import reports
+import scanner
 import store
 
 app = Flask(__name__)
@@ -103,7 +108,26 @@ def dashboard():
 @app.route("/positions")
 def positions():
     rows = pnl.position_view()
-    return render_template("positions.html", positions=rows, acct=pnl.account(rows), cooling=portfolio.cooling_symbols(), cfg=config)
+    cache = store.read_json("sector_cache.json", {}) or {}
+    for r in rows:
+        r["sector"] = r.get("sector") or cache.get(r["symbol"], "")
+    return render_template("positions.html", positions=rows, cooling=portfolio.cooling_symbols(), cfg=config)
+
+
+@app.route("/positions/sell", methods=["POST"])
+def positions_sell():
+    """Sell the selected open positions in full (paper). CSRF-protected by the global POST check."""
+    syms = [s for s in request.form.getlist("symbols") if re.fullmatch(r"[A-Za-z0-9&\-]{1,20}", s or "")][:50]
+    if not syms:
+        flash("Select at least one position to sell.", "warning")
+        return redirect("/positions")
+    results = scanner.manual_exit(syms)
+    for r in results:
+        if r["ok"]:
+            flash(f"Sold {r['symbol']}: {r['qty']} @ Rs{r['price']:,.2f} ({r['note']}) - realized P&L Rs{r['pnl']:,.2f}", "success" if r["pnl"] >= 0 else "warning")
+        else:
+            flash(f"{r['symbol']}: {r['note']}", "danger")
+    return redirect("/positions")
 
 
 @app.route("/history")
@@ -111,7 +135,7 @@ def history():
     closed = pnl.closed_positions(300)
     for c in closed:
         c["review"] = pnl.review_closed(c)
-    return render_template("history.html", closed=closed, perf=portfolio.performance(), acct=pnl.account())
+    return render_template("history.html", closed=closed, perf=portfolio.performance(), acct=pnl.account(), summary=pnl.breakdown(closed))
 
 
 @app.route("/performance")
@@ -124,11 +148,17 @@ def signals():
     df = store.read_csv("signal_log.csv")
     sym = (request.args.get("symbol") or "").upper()[:20]
     ev = (request.args.get("event") or "")[:30]
+    nb = df["event"] == "NEW_BUY_OPPORTUNITY"          # per scan the file lists them best-first: show the best N (and every buy)
+    rank = df[nb].groupby("scan_id").cumcount()
+    hide = pd.Series(False, index=df.index)
+    hide[nb] = (rank >= config.SHOW_SIGNALS_PER_SCAN) & ~df.loc[nb, "detail"].str.startswith("BOUGHT")
+    hidden = int(hide.sum())
+    df = df[~hide]
     if sym:
         df = df[df["symbol"] == sym]
     if ev:
         df = df[df["event"] == ev]
-    return render_template("signals.html", rows=df.tail(400).iloc[::-1].to_dict(orient="records"), sym=sym, ev=ev)
+    return render_template("signals.html", rows=df.tail(400).iloc[::-1].to_dict(orient="records"), sym=sym, ev=ev, hidden=hidden, n=config.SHOW_SIGNALS_PER_SCAN)
 
 
 @app.route("/outlook")
@@ -167,7 +197,8 @@ def scan_detail(scan_id):
     run = next((r for r in reports.runs(5000) if r["scan_id"] == scan_id), None)
     if run is None:
         abort(404)
-    return render_template("scan_detail.html", run=run, rows=rows[:1500], decision=dec, total=len(rows))
+    rows, hidden = reports.limit_signals(rows)
+    return render_template("scan_detail.html", run=run, rows=rows[:1500], decision=dec, total=len(rows), hidden=hidden, n=config.SHOW_SIGNALS_PER_SCAN)
 
 
 @app.route("/watchlist")
@@ -182,7 +213,7 @@ def symbol(sym):
 
 @app.route("/journal")
 def journal():
-    return render_template("journal.html", text=store.tail_text("scan_journal.txt", 80000))
+    return render_template("journal.html", text=reports.journal_view(store.tail_text("scan_journal.txt", 80000)))
 
 
 @app.route("/help")

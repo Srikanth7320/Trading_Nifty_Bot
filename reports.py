@@ -160,6 +160,41 @@ def analysis_text(sym):
     return analysis.text_summary(analysis.analyze(r["symbol"], r["name"]))
 
 
+def limit_signals(rows, n=None):
+    """Keep the best n SIGNAL rows of one scan (BOUGHT rows always stay). Returns (rows, hidden_count). Files keep everything."""
+    n = config.SHOW_SIGNALS_PER_SCAN if n is None else n
+    out, seen, hidden = [], 0, 0
+    for r in rows:                                       # rows arrive best-first
+        if r.get("decision") == "SIGNAL":
+            seen += 1
+            if seen > n:
+                hidden += 1
+                continue
+        out.append(r)
+    return out, hidden
+
+
+def journal_view(text, n=None):
+    """Journal for the web page: per scan only the best n 'Signals' and best n 'Closest to a signal' lines (bought lines always
+    stay). The full narrative remains in data/scan_journal.txt."""
+    n = config.SHOW_SIGNALS_PER_SCAN if n is None else n
+    out, lines, i = [], text.splitlines(), 0
+    while i < len(lines):
+        out.append(lines[i])
+        if lines[i].strip() in ("Signals:", "Closest to a signal (watchlist):"):
+            block, i = [], i + 1
+            while i < len(lines) and lines[i].startswith("  "):
+                block.append(lines[i])
+                i += 1
+            keep = [b for k, b in enumerate(block) if k < n or " - BOUGHT " in b]
+            out += keep
+            if len(block) > len(keep):
+                out.append(f"  (+{len(block) - len(keep)} more kept in data/scan_details.csv)")
+            continue
+        i += 1
+    return "\n".join(out)
+
+
 def watchlist_text():
     wl = watchlist()[:10]
     if not wl:

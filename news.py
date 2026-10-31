@@ -126,18 +126,31 @@ def _gemini(symbol, titles):
     return None
 
 
+_EVENT = r"(results?|earnings|board meeting|q[1-4]\s*(fy\d+)?\s*(results?|earnings)|quarterly)"
+_SOON = r"(today|tomorrow|tonight|this evening|after market|post[- ]market)"
+RESULTS_RE = re.compile(rf"{_EVENT}.{{0,40}}\b{_SOON}\b|\b{_SOON}\b.{{0,40}}{_EVENT}|to announce.{{0,30}}{_EVENT}", re.I)
+
+
+def results_risk(titles):
+    """(True, headline) when recent headlines say results / a board meeting are today or tomorrow - a coin-flip gap event."""
+    for t in titles or []:
+        if RESULTS_RE.search(t):
+            return True, t[:140]
+    return False, ""
+
+
 def news_check(symbol):
-    """Returns dict(verdict=POSITIVE|NEUTRAL|NEGATIVE|UNAVAILABLE, note). Advisory unless REQUIRE_NEWS_CONFIRMATION=true."""
+    """Returns dict(verdict=POSITIVE|NEUTRAL|NEGATIVE|UNAVAILABLE, note, titles). Advisory unless REQUIRE_NEWS_CONFIRMATION=true."""
     titles = _headlines(symbol)
     if not titles:
-        return {"verdict": "UNAVAILABLE", "note": "no headlines found"}
+        return {"verdict": "UNAVAILABLE", "note": "no headlines found", "titles": []}
     ai = _gemini(symbol, titles)
     if ai:
-        return {"verdict": ai[0], "note": f"AI: {ai[1]}"}
+        return {"verdict": ai[0], "note": f"AI: {ai[1]}", "titles": titles}
     bad = [t for t in titles if any(w in t.lower() for w in NEGATIVE_WORDS)]
     if bad:
-        return {"verdict": "NEGATIVE", "note": "keyword alert: " + bad[0][:140]}
-    return {"verdict": "NEUTRAL", "note": f"{len(titles)} headlines, no red-flag keywords"}
+        return {"verdict": "NEGATIVE", "note": "keyword alert: " + bad[0][:140], "titles": titles}
+    return {"verdict": "NEUTRAL", "note": f"{len(titles)} headlines, no red-flag keywords", "titles": titles}
 
 
 def e(s):

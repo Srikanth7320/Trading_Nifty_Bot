@@ -4,4 +4,5 @@
 <div class="card"><div class="table-responsive"><table class="table table-sm mb-0"><tr><th>Symbol</th><th>Result</th><th>Score</th><th>Price</th><th>RSI</th><th>Vol x</th><th class="reason">Why</th></tr>
 {% for r in rows %}<tr class="dec-{{ r.decision }}"><td><a href="/symbol/{{ r.symbol }}">{{ r.symbol }}</a></td><td>{{ r.decision }}</td><td>{{ r.score }}</td><td>{{ r.price }}</td><td>{{ r.rsi }}</td><td>{{ r.volume_ratio }}</td><td class="reason">{{ r.reason }}</td></tr>
 {% else %}<tr><td colspan="7" class="p-3 text-muted">No rows.</td></tr>{% endfor %}</table></div></div>
+{% if hidden %}<p class="text-muted small">Showing the best {{ n }} signal(s) of this scan; {{ hidden }} more are kept in data/scan_details.csv.</p>{% endif %}
 {% if total > rows|length %}<p class="text-muted small">Showing {{ rows|length }} of {{ total }} (best first). Full list is in data/scan_details.csv.</p>{% endif %}{% endblock %}

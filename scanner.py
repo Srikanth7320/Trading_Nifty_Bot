@@ -12,6 +12,7 @@ import news
 import pnl
 import portfolio
 import providers
+import sectors
 import store
 import strategy
 import telegram_bot as tg
@@ -116,7 +117,7 @@ def manage_positions(mode="TRADING", notify=True, soft=False, scan_id=""):
                 pos = {**pos, **upd}
             held = _held_sessions(pos["buy_time"])
             m = strategy.manage(pos, price, hc, held, now)
-            a = monitor.assess(pos, price, hc, m, q, mkt, held, count_scan=soft)
+            a = monitor.assess(pos, price, hc, m, q, mkt, held, count_scan=soft, now=now)
             tag = pos["strategy"].replace("_", "-")
             pnl_pct = (price / pos["buy_price"] - 1) * 100
             prior_state = pos["signal_state"]
@@ -152,6 +153,7 @@ def manage_positions(mode="TRADING", notify=True, soft=False, scan_id=""):
                       "last_note": a["note"][:200], "thesis_valid": str(a["thesis_valid"]).lower()}
             if soft:
                 fields["exit_confirm"] = a["exit_confirm"]
+                fields["lost_scans"] = a["lost_scans"]
             if changed:
                 fields.update(stop_loss=round(m["new_stop"], 2), peak_price=round(m["peak"], 2), target1_hit=m["t1_hit"])
                 if m["new_stop"] > pos["stop_loss"] + 0.005:
@@ -170,6 +172,48 @@ def manage_positions(mode="TRADING", notify=True, soft=False, scan_id=""):
 
 
 # ---------------------------------------------------------------- the scan
+def manual_exit(symbols, notify=True):
+    """Paper-sell the selected open positions in full at the latest price (dashboard 'Sell selected').
+
+    Uses a live quote when one can be fetched, otherwise the last cached price (and says so). Never raises; returns one
+    dict per requested symbol: symbol, ok, price, qty, pnl, note."""
+    out = []
+    with _POS_LOCK:
+        cache = store.read_json("quotes_cache.json", {})
+        held = {p["symbol"]: p for p in portfolio.positions()}
+        for sym in dict.fromkeys(str(x).strip().upper() for x in symbols if str(x).strip()):
+            pos = held.get(sym)
+            if not pos:
+                out.append({"symbol": sym, "ok": False, "note": "not an open position (already sold?)"})
+                continue
+            price, src = None, ""
+            try:
+                q = providers.load_quote(sym)
+                price, src = q["price"], f"live quote {str(q['time'])[11:16]}"
+                cache[sym] = {"price": price, "time": q["time"], "provider": q["provider"]}
+            except Exception:
+                c = cache.get(sym) or {}
+                if c.get("price"):
+                    price, src = c["price"], f"last known price from {str(c.get('time', ''))[:16].replace('T', ' ')}"
+            if not price:
+                out.append({"symbol": sym, "ok": False, "note": "no price available - not sold"})
+                continue
+            qty = pos["quantity"]
+            pnl_val = portfolio.sell(sym, price, qty, "Manual exit (dashboard)")
+            if pnl_val is None:
+                out.append({"symbol": sym, "ok": False, "note": "could not be sold (already closed?)"})
+                continue
+            out.append({"symbol": sym, "ok": True, "price": price, "qty": qty, "pnl": pnl_val, "note": src})
+            if notify:
+                tg.send(tg.msg_exit(sym, "EXIT", price, qty, pnl_val, "Manual exit (dashboard)", pos["strategy"].replace("_", "-")))
+        store.write_json("quotes_cache.json", cache)
+    try:
+        pnl.snapshot()
+    except Exception:
+        pass
+    return out
+
+
 def run_scan(trigger="scheduled"):
     if not _SCAN_LOCK.acquire(blocking=False):
         return {"status": "already_running"}
@@ -268,7 +312,12 @@ def _run(trigger):
     cash = pnl.account()["cash"]
     mkt = market.context() if (signals and config.MARKET_FILTER_ENABLED) else None
     signals.sort(key=lambda s: (s[1]["score"], s[1]["metrics"].get("volume_ratio", 0)), reverse=True)
-    sig_lines, slog = [], []
+    sig_lines, slog, alerts = [], [], 0
+    sector_value = {}
+    for p in portfolio.positions():                        # invested value per sector (cache only - no network here)
+        sec = p.get("sector") or sectors.cached(p["symbol"])
+        if sec:
+            sector_value[sec] = sector_value.get(sec, 0.0) + p["buy_price"] * p["quantity"]
     for sym, ev, q, row, hc in signals:
         price = q["price"]
         plan = strategy.build_plan(ev, hc, price, started, status == "OPEN", q, mkt)
@@ -299,7 +348,12 @@ def _run(trigger):
             if alloc["qty"] < 1:
                 block = "capital allocation: " + alloc["why"]
         qty = alloc["qty"]
-        nws = ""
+        nws, sec = "", ""
+        if not block and config.MAX_SECTOR_PCT > 0:
+            sec = sectors.sector_of(sym)
+            if sec and sector_value.get(sec, 0.0) + alloc["value"] > config.CAPITAL * config.MAX_SECTOR_PCT / 100:
+                block = (f"sector limit: {sec} would hold Rs{sector_value.get(sec, 0.0) + alloc['value']:,.0f} "
+                         f"(> {config.MAX_SECTOR_PCT:g}% of capital)")
         if not block:
             veto, ext = news.external_veto(sym)
             if veto:
@@ -307,7 +361,10 @@ def _run(trigger):
             else:
                 nr = news.news_check(sym)
                 nws = f"news {nr['verdict']}: {nr['note']}"
-                if nr["verdict"] == "NEGATIVE" or (config.REQUIRE_NEWS_OK and nr["verdict"] not in ("POSITIVE", "NEUTRAL")):
+                soon, headline = news.results_risk(nr.get("titles"))
+                if config.EARNINGS_VETO and soon:
+                    block = "results/board-meeting event today or tomorrow: " + headline
+                elif nr["verdict"] == "NEGATIVE" or (config.REQUIRE_NEWS_OK and nr["verdict"] not in ("POSITIVE", "NEUTRAL")):
                     block = "news check: " + nr["note"]
         if block:
             row["reason"] = f"SIGNAL [{tag}] but not traded: {block}. {ev['headline']}"
@@ -315,13 +372,17 @@ def _run(trigger):
             slog.append({"time": started.strftime("%Y-%m-%d %H:%M:%S"), "scan_id": scan_id, "symbol": sym, "event": monitor.NEW_BUY,
                          "strategy": plan["strategy"], "price": round(price, 2), "pnl_pct": "", "thesis_valid": "",
                          "detail": f"not traded: {block}"[:300]})
-            if mode == "TRADING":
+            if mode == "TRADING" and alerts < config.SHOW_SIGNALS_PER_SCAN:     # best N not-traded signals only (all stay in the files)
+                alerts += 1
                 tg.send(tg.msg_signal(sym, ev, price, 0, plan["stop"], False, block, plan))
             continue
         why = f"[{tag}] score {ev['score']}; {ev['headline']}; {nws}"
         if portfolio.add_position(sym, price, qty, plan["stop"], plan["target1"], plan["target2"], ev["metrics"]["atr"], ev["score"], why, plan):
             run["buys"] += 1
             held[sym] = {"symbol": sym}
+            if sec:
+                sector_value[sec] = sector_value.get(sec, 0.0) + qty * price
+                portfolio.update_position(sym, sector=sec)
             cash -= qty * price * (1 + config.COST_PCT_PER_SIDE / 100)
             row["decision"] = "BOUGHT"
             row["reason"] = f"BOUGHT {qty} @ {price:.2f} [{tag}], stop {plan['stop']:.2f}. {ev['headline']}"
@@ -329,7 +390,7 @@ def _run(trigger):
                              f"stop {plan['stop']:.2f}, T1 {plan['target1']:.2f}, T2 {plan['target2']:.2f}, hold: {plan['expected_hold']} {nws}")
             slog.append({"time": started.strftime("%Y-%m-%d %H:%M:%S"), "scan_id": scan_id, "symbol": sym, "event": monitor.NEW_BUY,
                          "strategy": plan["strategy"], "price": round(price, 2), "pnl_pct": "", "thesis_valid": "true",
-                         "detail": f"BOUGHT {qty}: {plan['why']}"[:300]})
+                         "detail": f"BOUGHT {qty}: {plan['why']}"[:300], "score": ev["score"]})
             tg.send(tg.msg_signal(sym, ev, price, qty, plan["stop"], True, "", plan, alloc))
     _log_signal(scan_id, slog)
 

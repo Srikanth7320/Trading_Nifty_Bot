@@ -56,7 +56,7 @@ def positions():
                     "company": r.get("company") or company_name(r["symbol"]),
                     "initial_risk": _f(r.get("initial_risk")), "entry_level": _f(r.get("entry_level")),
                     "max_hold_sessions": int(_f(r.get("max_hold_sessions"))), "warn_score": int(_f(r.get("warn_score"))),
-                    "exit_confirm": int(_f(r.get("exit_confirm"))),
+                    "exit_confirm": int(_f(r.get("exit_confirm"))), "lost_scans": int(_f(r.get("lost_scans"))), "sector": r.get("sector") or "",
                     "thesis_valid": (r.get("thesis_valid") or "").lower() != "false",
                     "signal_state": r.get("signal_state") or "CONTINUE_HOLDING"})
     return out
@@ -80,7 +80,8 @@ def add_position(symbol, price, qty, stop, t1, t2, atr, score, reason, plan=None
                "initial_risk": round(plan.get("initial_risk", price - stop), 4), "entry_level": round(plan.get("entry_level", 0) or 0, 2),
                "invalidation": _clean(" | ".join(plan.get("invalidation", [])), 500), "be_r": plan.get("be_r", ""),
                "trail_mult": plan.get("trail_mult", ""), "signal_state": "CONTINUE_HOLDING", "warn_score": 0,
-               "exit_confirm": 0, "last_assessed": _ts(), "last_note": "new position", "thesis_valid": "true"}
+               "exit_confirm": 0, "last_assessed": _ts(), "last_note": "new position", "thesis_valid": "true",
+               "lost_scans": 0, "sector": plan.get("sector", "")}
         store.write_csv("active_stocks.csv", pd.concat([df, pd.DataFrame([row])], ignore_index=True))
         store.append_rows("trades_history.csv", [{"time": _ts(), "symbol": symbol, "type": "BUY", "price": round(price, 2),
                                                  "quantity": qty, "pnl": 0, "reason": reason,

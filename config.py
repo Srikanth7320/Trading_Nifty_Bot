@@ -126,6 +126,15 @@ AUTO_EXIT_ON_RECOMMENDATION = _b("AUTO_EXIT_ON_RECOMMENDATION", True)  # paper-s
 BREAKDOWN_TOL_ATR = _f("BREAKDOWN_TOLERANCE_ATR", 0.5)       # noise buffer below the breakout level before it counts as lost
 GIVEBACK_PCT = _f("GIVEBACK_PCT", 50)                        # warn when this % of the peak open profit (>=1R) has been given back
 
+# ---- loss-avoidance rules added after the 21-30 Oct review -----------------------------------
+FAILED_BREAKOUT_EXIT = _b("FAILED_BREAKOUT_EXIT", True)       # don't carry a dead breakout overnight while deeply underwater
+FAILED_BREAKOUT_SCANS = _i("FAILED_BREAKOUT_SCANS", 8)         # scans spent below the breakout level (8 x 15 min = 2 h)
+FAILED_BREAKOUT_R = _f("FAILED_BREAKOUT_EXIT_R", 0.6)          # ... and at least this many R below the entry price
+FAILED_BREAKOUT_AFTER = _t("FAILED_BREAKOUT_AFTER", "15:00")   # only evaluated on scans at/after this time (the overnight decision)
+EARNINGS_VETO = _b("EARNINGS_VETO", True)                      # no new entry when results / board meeting are today or tomorrow
+MAX_SECTOR_PCT = _f("MAX_SECTOR_PCT_OF_CAPITAL", 30)           # max invested in one sector, % of capital (0 = off; unknown sector = no block)
+SHOW_SIGNALS_PER_SCAN = _i("SHOW_SIGNALS_PER_SCAN", 2)         # web app shows only the best N signals per scan (all stay in the files)
+
 # ---- next-day outlook --------------------------------------------------------------------------
 OUTLOOK_EVENING = _t("OUTLOOK_EVENING_TIME", "16:00")
 OUTLOOK_MORNING = _t("OUTLOOK_MORNING_TIME", "08:30")

@@ -82,7 +82,23 @@ def warnings_for(pos, price, hist, quote=None, market=None, held_sessions=1):
     return w
 
 
-def assess(pos, price, hist, hard, quote=None, market=None, held_sessions=1, count_scan=True):
+def _failed_breakout(pos, price, lost, now, count_scan):
+    """Overnight-gap protection: a Short-Term breakout that has been dead for hours AND is deeply under water should not be
+    carried into the next open. Only evaluated on the late-session scan (the overnight decision), never intraday positions."""
+    if not (config.FAILED_BREAKOUT_EXIT and count_scan) or (pos.get("strategy") or strategy.SHORT_TERM) == strategy.INTRADAY:
+        return ""
+    now = now or config.now_ist()
+    level, risk = pos.get("entry_level") or 0, strategy.initial_risk_of(pos)
+    if not level or risk <= 0 or now.time() < config.FAILED_BREAKOUT_AFTER or lost < config.FAILED_BREAKOUT_SCANS:
+        return ""
+    r_now = (price - pos["buy_price"]) / risk
+    if price < level and r_now <= -config.FAILED_BREAKOUT_R:
+        return (f"failed breakout: {lost} scans below the breakout level {level:.2f} and {r_now:.2f}R under the entry at the late-session "
+                f"check - not carrying the overnight gap risk")
+    return ""
+
+
+def assess(pos, price, hist, hard, quote=None, market=None, held_sessions=1, count_scan=True, now=None):
     """Combine the hard-rule result (`hard` from strategy.manage) with soft warnings into a position state.
 
     Returns dict(state, score, warnings, thesis_valid, exit_confirm, note, exit_reason). `count_scan=False` (the 5-minute
@@ -95,14 +111,25 @@ def assess(pos, price, hist, hard, quote=None, market=None, held_sessions=1, cou
     if count_scan:
         confirm = prev_confirm + 1 if score >= config.EXIT_WARN_SCORE else 0
     thesis_ok = not (score >= config.EXIT_WARN_SCORE or ("BREAKOUT_LOST" in codes and ({"BELOW_EMA20", "MACD_WEAK", "RSI_WEAK"} & codes)))
+    # persistence of a lost breakout: counts scans spent below the level, resets only when price is back above it
+    level = pos.get("entry_level") or 0
+    lost = int(pos.get("lost_scans") or 0)
+    if count_scan:
+        if "BREAKOUT_LOST" in codes:
+            lost += 1
+        elif level and price >= level:
+            lost = 0
     r = (hard.get("reason") or "")
-    out = {"score": score, "warnings": ws, "thesis_valid": thesis_ok, "exit_confirm": confirm, "exit_reason": ""}
+    out = {"score": score, "warnings": ws, "thesis_valid": thesis_ok, "exit_confirm": confirm, "exit_reason": "", "lost_scans": lost}
+    fb = _failed_breakout(pos, price, lost, now, count_scan)
     if r in ("Stop-loss hit", "Protective stop hit"):
         out.update(state=STOP, note=r)
     elif hard["action"] == "PARTIAL" or (hard["action"] == "EXIT" and r.startswith("Target")):
         out.update(state=TARGET, note=r)
     elif hard["action"] == "EXIT":
         out.update(state=EXIT_REC, note=r, exit_reason=r)
+    elif fb:
+        out.update(state=EXIT_REC, note=fb, exit_reason="Strategy deviation: " + fb, thesis_valid=False)
     elif confirm >= config.EXIT_CONFIRM_SCANS and score >= config.EXIT_WARN_SCORE:
         why = "; ".join(x["text"] for x in ws[:3])
         out.update(state=EXIT_REC, note=f"Thesis no longer valid on {confirm} consecutive checks: {why}",

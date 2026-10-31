@@ -1,3 +1,20 @@
-{% extends "base.html" %}{% import "_macros.html" as m %}{% block body %}<h4>Open paper positions</h4>
-{{ m.summary(acct) }}{{ m.postable(positions) }}
+{% extends "base.html" %}{% import "_macros.html" as m %}{% block body %}
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-2"><h4 class="mb-0">Open paper positions <span class="text-muted fs-6">{{ positions|length }} of {{ cfg.MAX_OPEN_POSITIONS }} slots used</span></h4>
+<form id="sellform" method="post" action="/positions/sell" class="d-flex align-items-center gap-2"><input type="hidden" name="csrf" value="{{ csrf() }}">
+<span class="small text-muted" id="selinfo">Select positions to sell</span>
+<button class="btn btn-danger btn-sm" id="sellbtn" disabled>Sell selected</button></form></div>
+{{ m.postable(positions, True) }}
+<p class="small text-muted">Selected positions are sold <b>in full</b> at the latest price (live quote when available, otherwise the last known price - the message after the sale tells you which). Paper trade only; a sold position moves to the Closed page with its realized P&amp;L.</p>
+<script>
+(function(){
+  var btn=document.getElementById('sellbtn'), info=document.getElementById('selinfo'), all=document.getElementById('selall');
+  function picks(){return Array.prototype.slice.call(document.querySelectorAll('input.pick:checked'));}
+  function refresh(){var p=picks(),pnl=0,val=0; p.forEach(function(c){var tr=c.closest('tr');pnl+=parseFloat(tr.getAttribute('data-pnl'))||0;val+=parseFloat(tr.getAttribute('data-value'))||0;});
+    btn.disabled=!p.length; btn.textContent=p.length?('Sell selected ('+p.length+')'):'Sell selected';
+    info.textContent=p.length?(p.length+' selected - value Rs '+val.toLocaleString('en-IN',{maximumFractionDigits:0})+', unrealized Rs '+pnl.toLocaleString('en-IN',{maximumFractionDigits:0})):'Select positions to sell';}
+  document.addEventListener('change',function(e){ if(e.target===all){document.querySelectorAll('input.pick').forEach(function(c){c.checked=all.checked;});} if(e.target===all||(e.target.classList&&e.target.classList.contains('pick'))) refresh(); });
+  document.getElementById('sellform').addEventListener('submit',function(e){var p=picks(); if(!p.length){e.preventDefault();return;}
+    if(!confirm('Sell '+p.length+' position(s) in full at the latest price?\n\n'+p.map(function(c){return c.value;}).join(', ')+'\n\nThis is a paper sale and cannot be undone.')) e.preventDefault();});
+})();
+</script>
 <h5>Cooling-off (no re-entry)</h5>{% if cooling %}<ul>{% for s,h in cooling.items() %}<li>{{ s }} - {{ h }} h left</li>{% endfor %}</ul>{% else %}<p class="text-muted">None.</p>{% endif %}{% endblock %}

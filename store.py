@@ -20,7 +20,7 @@ SCHEMAS = {
                           # --- added: strategy classification, thesis and monitoring state (blank on legacy rows) ---
                           "company", "strategy", "strategy_reason", "expected_hold", "max_hold_sessions", "initial_risk",
                           "entry_level", "invalidation", "be_r", "trail_mult", "signal_state", "warn_score",
-                          "exit_confirm", "last_assessed", "last_note", "thesis_valid"],
+                          "exit_confirm", "last_assessed", "last_note", "thesis_valid", "lost_scans", "sector"],
     "sold_stocks.csv": ["symbol", "buy_price", "sold_price", "quantity", "profit", "sold_time", "reason",
                         "company", "strategy", "buy_time", "buy_value", "sell_value", "pnl_pct", "hold_days",
                         "exit_type", "peak_price", "thesis", "stop_loss", "initial_stop"],
@@ -32,7 +32,7 @@ SCHEMAS = {
     "scan_details.csv": ["scan_id", "time", "symbol", "decision", "score", "price", "rsi", "volume_ratio",
                          "reason"],
     # one row per event: new buy opportunity / hold / warning / exit recommended / stop / target / closed
-    "signal_log.csv": ["time", "scan_id", "symbol", "event", "strategy", "price", "pnl_pct", "thesis_valid", "detail"],
+    "signal_log.csv": ["time", "scan_id", "symbol", "event", "strategy", "price", "pnl_pct", "thesis_valid", "detail", "score"],
     # one row per trading day, upserted during the day (see pnl.snapshot)
     "daily_pnl.csv": ["date", "realized_day", "cum_realized", "unrealized", "total_pnl", "day_pnl", "invested",
                       "market_value", "open_positions", "closed_trades", "updated"],

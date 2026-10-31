@@ -171,11 +171,40 @@ def review_closed(c):
         notes.append(f"Initial stop Rs{ist:.2f} was {sp:.1f}% below entry" + (" (hit the maximum-stop cap)" if sp >= config.MAX_STOP_PCT - 0.1 else "") +
                      f"; the trade lost {abs(c['pnl_pct']):.1f}% after costs." if c["pnl"] < 0 else f"; the trade made {c['pnl_pct']:.1f}% after costs.")
     pk = _f(c.get("peak_price"), 0)
+    if pk and _f(c["buy_price"]) and c["pnl"] < 0 and pk <= _f(c["buy_price"]) * 1.01:
+        notes.append(f"No follow-through: best price after entry was only {(pk / _f(c['buy_price']) - 1) * 100:+.1f}% - bought at the high of the move, "
+                     "so every later tick was against the position.")
+    if c["strategy"] == "INTRADAY" and "square-off" in (c.get("reason") or "").lower():
+        notes.append("Neither the intraday stop nor target was reached; closed flat-ish at the 15:15 square-off.")
     if pk and _f(c["buy_price"]):
         mfe = (pk / _f(c["buy_price"]) - 1) * 100
         notes.append(f"Best price after entry Rs{pk:.2f} ({mfe:+.1f}%); finished {c['pnl_pct']:+.1f}% - " +
                      ("gave back all open profit" if mfe > 3 and c["pnl"] < 0 else "see exit reason"))
     return notes
+
+
+def breakdown(closed):
+    """Net result grouped by strategy and by exit reason - shows where the money is lost. Partial exits count as sells."""
+    def group(key):
+        g = {}
+        for c in closed:
+            x = g.setdefault(key(c), {"name": key(c), "sells": 0, "wins": 0, "losses": 0, "net": 0.0, "pct": [], "worst": 0.0, "best": 0.0})
+            x["sells"] += 1
+            x["wins"] += c["pnl"] > 0
+            x["losses"] += c["pnl"] < 0
+            x["net"] += c["pnl"]
+            if c["pnl_pct"] is not None:
+                x["pct"].append(c["pnl_pct"])
+            x["worst"], x["best"] = min(x["worst"], c["pnl"]), max(x["best"], c["pnl"])
+        out = []
+        for x in g.values():
+            pct = x.pop("pct")
+            x["avg_pct"] = round(sum(pct) / len(pct), 2) if pct else None
+            x["net"] = round(x["net"], 2)
+            out.append(x)
+        return sorted(out, key=lambda r: r["net"])
+    return {"strategy": group(lambda c: c["strategy"].replace("_", " ").title() + (" (legacy)" if c["strategy_legacy"] else "")),
+            "exit": group(lambda c: c["exit_class"])}
 
 
 # ---------------------------------------------------------------- daily / historical

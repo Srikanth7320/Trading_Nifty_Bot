@@ -17,14 +17,15 @@
 <p class="small text-muted">Prices as of {{ a.newest_quote|hhmm or 'n/a' }}{% if a.oldest_quote and a.oldest_quote!=a.newest_quote %} (oldest {{ a.oldest_quote|hhmm }}){% endif %}.
 Unrealized P&L is net of estimated round-trip costs. {% if a.prices_missing %}<b class="text-danger">No price yet for: {{ a.prices_missing|join(', ') }} (shown at cost).</b>{% endif %}</p>
 {% endmacro %}
-{% macro postable(positions) %}
+{% macro postable(positions, selectable=False) %}
 <div class="card mb-3"><div class="table-responsive"><table class="table table-sm mb-0">
-<tr><th>Symbol</th><th>Strategy</th><th>Bought</th><th>Qty</th><th>Avg buy</th><th>Invested</th><th>Price</th><th>Value</th><th>Unreal. P&amp;L</th><th>%</th><th>Target</th><th>Stop</th><th>Signal</th><th class="reason">Status / latest assessment</th></tr>
-{% for p in positions %}<tr><td><a href="/analyze?q={{ p.symbol }}">{{ p.symbol }}</a><div class="small text-muted">{{ p.company }}</div></td><td>{{ strat(p.strategy) }}{% if p.strategy_legacy %}<div class="small text-muted">legacy</div>{% endif %}</td>
-<td>{{ p.buy_time }}</td><td>{{ p.quantity }}{% if p.quantity!=p.original_quantity %}/{{ p.original_quantity }}{% endif %}</td><td>{{ p.buy_price|inr }}</td><td>{{ p.invested|inr }}{% if p.over_cap %}<div class="small text-warning">above per-stock cap</div>{% endif %}</td>
+<tr>{% if selectable %}<th class="nosort"><input type="checkbox" id="selall" title="Select all"></th>{% endif %}<th>Symbol</th><th>Strategy</th>{% if selectable %}<th>Sector</th>{% endif %}<th>Bought</th><th>Qty</th><th>Avg buy</th><th>Invested</th><th>Price</th><th>Value</th><th>Unreal. P&amp;L</th><th>%</th><th>Target</th><th>Stop</th><th>Signal</th><th class="reason">Status / latest assessment</th></tr>
+{% for p in positions %}<tr data-pnl="{{ p.pnl if p.pnl is not none else 0 }}" data-value="{{ p.market_value }}">{% if selectable %}<td><input type="checkbox" class="pick" name="symbols" value="{{ p.symbol }}" form="sellform" aria-label="Select {{ p.symbol }}"></td>{% endif %}<td><a href="/analyze?q={{ p.symbol }}">{{ p.symbol }}</a><div class="small text-muted">{{ p.company }}</div></td><td>{{ strat(p.strategy) }}{% if p.strategy_legacy %}<div class="small text-muted">legacy</div>{% endif %}</td>{% if selectable %}<td>{{ p.sector or '-' }}</td>{% endif %}
+<td>{{ p.buy_time }}</td><td data-sort="{{ p.quantity }}">{{ p.quantity }}{% if p.quantity!=p.original_quantity %}/{{ p.original_quantity }}{% endif %}</td><td>{{ p.buy_price|inr }}</td><td>{{ p.invested|inr }}{% if p.over_cap %}<div class="small text-warning">above per-stock cap</div>{% endif %}</td>
 <td>{{ p.price|inr }}<div class="small text-muted">{{ p.quote_time|hhmm }}</div></td><td>{{ p.market_value|inr }}</td>
 <td class="{{ p.pnl|tone }}">{{ p.pnl|inr }}</td><td class="{{ p.pnl_pct|tone }}">{{ p.pnl_pct|pct }}</td>
-<td>T1 {{ p.target1|inr }}<div class="small text-muted">T2 {{ p.target2|inr }}</div></td><td>{{ p.stop_loss|inr }}</td>
-<td class="st-{{ p.signal_state }}">{{ p.signal_state|nice }}</td><td class="reason">{{ 'Thesis valid' if p.thesis_valid else 'Thesis weakened' }}{% if p.warn_score %} (warning pts {{ p.warn_score }}){% endif %}<div class="small text-muted">{{ p.last_note }}</div></td></tr>
-{% else %}<tr><td colspan="14" class="p-3 text-muted">No open positions.</td></tr>{% endfor %}</table></div></div>
+<td data-sort="{{ p.target1 }}">T1 {{ p.target1|inr }}<div class="small text-muted">T2 {{ p.target2|inr }}</div></td><td>{{ p.stop_loss|inr }}</td>
+<td class="st-{{ p.signal_state }}" data-sort="{{ p.signal_state|nice }}">{{ p.signal_state|nice }}</td><td class="reason">{{ 'Thesis valid' if p.thesis_valid else 'Thesis weakened' }}{% if p.warn_score %} (warning pts {{ p.warn_score }}){% endif %}<div class="small text-muted">{{ p.last_note }}</div></td></tr>
+{% else %}<tr><td colspan="{{ 16 if selectable else 14 }}" class="p-3 text-muted">No open positions.</td></tr>{% endfor %}
+</table></div></div>
 {% endmacro %}
